@@ -8,7 +8,7 @@ FROM
   JOIN poll_options ON responses.poll_option_id = poll_options.id
   JOIN polls on polls.id = poll_options.poll_id
 WHERE
-  poll_id = 1
+  poll_id = 4
 GROUP BY
   poll_options.id
 ORDER BY
