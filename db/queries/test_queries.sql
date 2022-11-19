@@ -13,3 +13,14 @@ GROUP BY
   poll_options.id
 ORDER BY
   SUM(score) DESC;
+
+-- Poll History based on user
+SELECT
+  polls.question AS title,
+  created_on AS date_created,
+  CASE WHEN deadline < NOW()
+  THEN 'Active' ELSE 'Closed'
+  END AS status
+FROM polls
+  JOIN users ON creator_id = users.id
+WHERE users.id = 1;
