@@ -24,3 +24,7 @@ SELECT
 FROM polls
   JOIN users ON creator_id = users.id
 WHERE users.id = 1;
+
+
+
+
