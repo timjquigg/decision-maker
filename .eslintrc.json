@@ -3,7 +3,9 @@
     "commonjs": true,
     "es6": true,
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "jquery": true,
+    "browser": true
   },
   "extends": "eslint:recommended",
   "globals": {
@@ -35,16 +37,34 @@
     ],
     "space-before-blocks": "error",
     "keyword-spacing": "error",
-    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "no-trailing-spaces": [
+      "error",
+      {
+        "skipBlankLines": true
+      }
+    ],
     "semi-spacing": "error",
-    "func-style": ["error", "expression"],
+    "func-style": [
+      "error",
+      "expression"
+    ],
     "space-infix-ops": "error",
     "space-in-parens": "error",
     "camelcase": "error",
     "eqeqeq": "error",
     "brace-style": "error",
-    "space-before-function-paren": [ "warn", { "anonymous": "never", "named": "never", "asyncArrow": "never" } ],
-    "func-names": ["error", "never"],
+    "space-before-function-paren": [
+      "warn",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "never"
+      }
+    ],
+    "func-names": [
+      "error",
+      "never"
+    ],
     "quotes": "off"
   }
 }
