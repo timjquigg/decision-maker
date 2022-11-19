@@ -97,3 +97,28 @@ Vertical
 Integrate mailgun?
 
 
+## CHECKLIST
+
+* DB Schema
+* DB Seeds
+* API Routes
+* User Routes
+* External API (mailgun) (sms - stretch)
+* Cookies for disallowing multiple votes (stretch)
+* EJS Files
+  * Header
+  * Footer?
+  * Home page
+  * Login/Signup
+  * Create Poll
+  * Profile page (stretch)
+  * Respond to poll
+  * View Results
+  * 404 Page
+* Front end form/input validation
+* Form submissions - AJAX
+* jQuery - event listeners
+* jQuery - charts
+* jQuery - drag/drop
+* SASS - mobile / tablet / desktop - FAVICON
+* Documentation
