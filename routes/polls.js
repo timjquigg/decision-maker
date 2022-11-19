@@ -28,6 +28,7 @@ router.get('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     }); */
+  res.render('profile');
 });
 
 router.get('/new', (req, res) => {

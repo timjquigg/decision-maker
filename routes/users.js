@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const db = require('../db/queries/users');
 const router  = express.Router();
 
 // Signup - Login page
@@ -16,7 +17,19 @@ router.get('/', (req, res) => {
 
 // Receive login credentials
 router.post('/login', (req, res) => {
-  console.log(req.body);
+  db.getUsers(req.body)
+    .then((result) => {
+      if (result === undefined) {
+        console.log('invalid user');
+        res.send(result);
+        return;
+      }
+    
+      req.session.userId = result.id;
+      res.send(result);
+    }).catch((err) => {
+      console.log(err);
+    });
   // Send credentials db to see if credentials exist
   // After receiving DB promise redirect to user profile
 });

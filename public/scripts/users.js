@@ -1,34 +1,32 @@
 // Scripts for login - signup - logout
 
-// Client facing scripts here
 $(() => {
 
-  console.log('document read');
-  $('.login').on('click', function(event) {
+  $('form.login').on('submit', function(event) {
     event.preventDefault();
-    console.log(this);
-    $.post('/users/login',$(this).serialize());
+    const email = $(this.user_email).val();
+    const name = $(this.user_name).val();
+
+    if (name.length === 0 || email.length === 0) {
+      alert('Name & email must be filled in');
+      return;
+    }
+
+    $.post('/users/login',$(this).serialize())
+      .then((result) => {
+        if (result === '') {
+          alert('Invalid user');
+          return;
+        }
+        window.location.href = '../polls';
+      });
+    
   });
   
-  $('.signup').on('click', function(event) {
+  $('form.signup').on('submit', function(event) {
     event.preventDefault();
     console.log(this);
     $.post('/users/signup', $(this).serialize());
   });
 
-
-  // $('#fetch-users').on('click', () => {
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: '/api/users'
-  //   })
-  //     .done((response) => {
-  //       const $usersList = $('#users');
-  //       $usersList.empty();
-
-  //       for (const user of response.users) {
-  //         $(`<li class="user">`).text(user.name).appendTo($usersList);
-  //       }
-  //     });
-  // });
 });
