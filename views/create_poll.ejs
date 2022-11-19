@@ -1,1 +1,43 @@
 <!-- Create poll form goes here -->
+<!-- Login - Signup goes here -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Create Poll</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/create_poll.js"></script>
+</head>
+
+<body>
+
+  <form class="new_poll">
+    <h1> Create New Poll</h1>
+    <input class="poll_question_box" name="poll_question" placeholder="Poll Question">
+
+    <div class="options_box">
+    <input class="options" name="option_1" placeholder="Option">
+    </div>
+    <button class="new_option_textbox">Add Options</button>
+    <button class="submit_button">Submit</button>
+  </form>
+  <div class="submission_confirmation">
+    <h1>Success!</h1>
+    <p>Thank you for your submission</p>
+    <button class="profile_button">Back to profile</button>
+    <!-- URLS -->
+  </div>
+
+</body>
+
+</html>

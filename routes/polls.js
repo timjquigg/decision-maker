@@ -11,11 +11,12 @@ const db = require('../db/connection');
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
+
   // If logged in, will display profile page
   // send request to polls db file to get polls
   // belonging to user
   // redirect to history page
- 
+
   /*  const query = `SELECT * FROM widgets`;
   console.log(query);
   db.query(query)
@@ -31,7 +32,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  // load create-poll page
+  res.render('create_poll');
 });
 
 router.post('/', (req, res) => {
@@ -42,7 +43,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // logic to check for logged in
-  
+
   // Logged in user:
   // query db for response summary data
   // then redirect to admin page for poll id
