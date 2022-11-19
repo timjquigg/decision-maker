@@ -1,3 +1,37 @@
 <!-- Login - Signup goes here -->
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/users" method="post"></form>
+<head>
+  <title>Home Page</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/users.js"></script>
+</head>
+
+<body>
+
+  <form class="login">
+    <input name="user_name" placeholder="name">
+    <input name="user_email" placeholder="email">
+    <button>login</button>
+  </form>
+
+  <form class="signup">
+    <input name="user_name" placeholder="name">
+    <input name="user_email" placeholder="email">
+    <button>signup</button>
+  </form>
+
+</body>
+
+</html>
