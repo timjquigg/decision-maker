@@ -4,17 +4,14 @@ $(() => {
 
   $('form.login').on('submit', function(event) {
     event.preventDefault();
-    const email = $(this.user_email).val();
-    const name = $(this.user_name).val();
 
-    if (name.length === 0 || email.length === 0) {
-      alert('Name & email must be filled in');
+    if (invalidInput(this)) {
       return;
     }
 
     $.post('/users/login',$(this).serialize())
       .then((result) => {
-        if (result === '') {
+        if (result === null) {
           alert('Invalid user');
           return;
         }
@@ -25,8 +22,40 @@ $(() => {
   
   $('form.signup').on('submit', function(event) {
     event.preventDefault();
-    console.log(this);
-    $.post('/users/signup', $(this).serialize());
+
+    if (invalidInput(this)) {
+      return;
+    }
+
+    $.post('/users/signup', $(this).serialize())
+      .then((result) => {
+        if (result === '') {
+          alert('Email already exists');
+          return;
+        }
+        window.location.href = '../polls';
+      });
+    
+      
   });
+  
+  $('#logout').on('click', () => {
+    $.post('/users/logout')
+      .then(() => {
+        window.location.href = '../';
+      });
+  });
+
+  const invalidInput = function(source) {
+    console.log(source);
+    const email = $(source.user_email).val();
+    const name = $(source.user_name).val();
+    console.log(name, email);
+    if (name.length === 0 || email.length === 0) {
+      alert('Name & email must be filled in');
+      return true;
+    }
+    return false;
+  };
 
 });

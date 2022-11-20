@@ -1,15 +1,5 @@
 const db = require('../connection');
 
-// const getUsers = () => {
-//   return db.query('SELECT * FROM users;')
-//     .then(data => {
-//       return data.rows;
-//     });
-// };
-
-// From '/login'
-// Receive login credentials, and check vs database, and send promise
-// back to users route.
 const getUsers = (credentials) => {
   const queryParams = [credentials.user_name, credentials.user_email];
   const queryString = `
@@ -21,20 +11,58 @@ const getUsers = (credentials) => {
     .query(
       queryString, queryParams)
     .then((result) => {
-      console.log(result.rows[0]);
-      return result.rows[0];
+      if (result.rows.length > 0) {
+        return result.rows[0];
+      }
+      return null;
     })
     .catch((err) => {
       console.log(err.message);
     });
 };
 
-// From '/signup'
-// Receive credentials and add to database, send promise back to
-// users route
-const addUsers = () => {
+const getUserByEmail = (credentials) => {
+  const queryParams = [credentials];
+  const queryString = `
+    SELECT * FROM users
+    WHERE email = $1;`;
+  return db
+    .query(
+      queryString, queryParams)
+    .then((result) => {
+      console.log(result);
+      if (result.rows.length > 0) {
+        return result.rows[0];
+      }
+      return null;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const addUsers = (credentials) => {
+  const queryParams = [credentials.name, credentials.email];
+  const queryString = `
+    INSERT INTO users
+    (name, email)
+    VALUES
+    ($1, $2)
+    RETURNING *;`;
+  return db
+    .query(
+      queryString, queryParams)
+    .then((result) => {
+      if (result.rows.length > 0) {
+        return result.rows[0];
+      }
+      return null;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 
 };
 
 
-module.exports = { getUsers, addUsers };
+module.exports = { getUsers, addUsers, getUserByEmail };
