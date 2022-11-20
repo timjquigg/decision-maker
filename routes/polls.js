@@ -7,7 +7,8 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../db/connection');
+// const db = require('../db/connection');
+const db = require('../db/queries/polls');
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
@@ -39,6 +40,23 @@ router.post('/', (req, res) => {
   // Send data from poll creation form to db js file
   // forward promise response to front end so
   // client side js can display links
+
+  // console.log('Poll Info', req.body);
+
+  //Adds a new poll to the db then adds the options of that poll to the db.
+  db.addNewPoll(req.body)
+    .then(result => {
+      console.log('poll log:', result.rows);
+      const pollId = result.rows[0].id;
+      db.addOptionsToPoll(req.body, pollId)
+      .then(result => {
+        console.log('options log', result.rows)
+      })
+      // return result;
+    })
+    .catch(err => console.log(err));
+
+
 });
 
 router.get('/:id', (req, res) => {

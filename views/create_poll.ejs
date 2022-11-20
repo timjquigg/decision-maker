@@ -20,22 +20,40 @@
 </head>
 
 <body>
-
-  <form class="new_poll">
+  <div class="poll">
     <h1> Create New Poll</h1>
+  <form class="new_poll">
     <input class="poll_question_box" name="poll_question" placeholder="Poll Question">
-
+    <br>
+    <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
+    <label for="isAnonymous">Set respondents as anonymous</label>
+    <br>
+    <label for="deadline">Deadline</label>
+    <input type="date" name="deadline"/>
     <div class="options_box">
-    <input class="options" name="option_1" placeholder="Option">
+    <input class="options1" name="option_1" placeholder="Option 1">
+    <input class="description1" name="option_1" placeholder="Description">
+    <!-- <br> -->
+    <input class="options2" name="option_2" placeholder="Option 2">
+    <input class="description2" name="option_2" placeholder="Description">
+    <!-- <br> -->
+    <input class="options3" name="option_3" placeholder="Option 3">
+    <input class="description3" name="option_3" placeholder="Description">
     </div>
-    <button class="new_option_textbox">Add Options</button>
-    <button class="submit_button">Submit</button>
+
+    <br>
+    <button class="new_option_textbox">Add Option</button>
+    <button class="delete_option_textbox">Delete Option</button>
+    <button type="submit" class="submit_button">Submit</button>
   </form>
+  </div>
+
   <div class="submission_confirmation">
     <h1>Success!</h1>
     <p>Thank you for your submission</p>
+    <p>Share URL</p>
+    <p>Your URL</p>
     <button class="profile_button">Back to profile</button>
-    <!-- URLS -->
   </div>
 
 </body>
