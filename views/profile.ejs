@@ -28,18 +28,23 @@
 <body>
   <header>
     <h2>Welcome back!</h2>
-    <h3>Your poll history...</h3>
-    <table class="charts-css bar">
-      <% for (let title in data) { %>
-        <div class="poll_history">
-        <%= title %>
-
-      </div>
-      <% } %>
-    </table>
   </header>
   <main>
-
+    <h3>Your poll history...</h3>
+    <% for (let title in object) { %>
+      <section>
+        <h3><%= title %></h3>
+        <ul class="chart">
+          <% for (let i = 0; i < object[title].length; i++) {%>
+          <li style="grid-column: span <%= object[title][i].score %>">
+            <%= object[title][i].option %>
+            <span><%= object[title][i].score %></span>
+          </li>
+          <% } %>
+        </ul>
+        
+      </section> 
+    <% } %>
   </main>
 </body>
 </html>

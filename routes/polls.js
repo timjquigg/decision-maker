@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
     }
       
     const tempVar = {
-      data: object
+      object: object
     }
     console.log(object)
     res.render('profile', tempVar);
