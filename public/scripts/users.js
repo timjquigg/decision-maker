@@ -5,13 +5,13 @@ $(() => {
   $('form.login').on('submit', function(event) {
     event.preventDefault();
 
-    if (invalidInput(this)) {
+    if (!validateLogin(this)) {
       return;
     }
 
     $.post('/users/login',$(this).serialize())
       .then((result) => {
-        if (result === null) {
+        if (result === '') {
           alert('Invalid user');
           return;
         }
@@ -23,7 +23,7 @@ $(() => {
   $('form.signup').on('submit', function(event) {
     event.preventDefault();
 
-    if (invalidInput(this)) {
+    if (!validateSignup(this)) {
       return;
     }
 
@@ -46,16 +46,35 @@ $(() => {
       });
   });
 
-  const invalidInput = function(source) {
-    console.log(source);
+  const validateLogin = function(source) {
+  
     const email = $(source.user_email).val();
-    const name = $(source.user_name).val();
-    console.log(name, email);
-    if (name.length === 0 || email.length === 0) {
-      alert('Name & email must be filled in');
-      return true;
+    const password = $(source.password).val();
+
+    if (email.length === 0 || password.length === 0) {
+      alert('Email & password must not be blank.');
+      return false;
     }
-    return false;
+    return true;
+  };
+
+  const validateSignup = function(source) {
+    
+    const name = $(source.user_name).val();
+    const email = $(source.user_email).val();
+    const password = $(source.password).val();
+    const confirmPassword = $(source.confirm_password).val();
+
+    if (name.length === 0 || email.length === 0 || password.length === 0) {
+      alert('Name, email & password must not be blank.');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match.');
+      return false;
+    }
+    return true;
   };
 
 });
