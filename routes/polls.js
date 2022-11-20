@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
   
   // If logged in, will display profile page
   // send request to polls db file to get polls
-  // const userId = req.session.userId;
-  db.getPollsByUserID(1)
+  const userId = req.session.userId;
+  db.getPollsByUserID(userId)
   .then((data) => {
     const object = {};
     for (let i = 0; i < data.length; i++) {
