@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: rgb(255, 255, 255);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav h2 {
+  margin-left: 20px;
+}
+
+nav .buttons {
+  margin-right: 20px;
+  display: flex;
+}
+
+.createpoll {
+  margin-right: 20px;
+}
+
+header {
+  margin-left: 30px;
+}
+
+
+
+

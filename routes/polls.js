@@ -5,33 +5,53 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+const e = require('express');
 const express = require('express');
 const router  = express.Router();
-const db = require('../db/connection');
+const db = require('../db/queries/polls');
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
+  
   // If logged in, will display profile page
   // send request to polls db file to get polls
+  // const userId = req.session.userId;
+  db.getPollsByUserID(1)
+  .then((data) => {
+  
+    const object = {};
+    for (let i = 0; i < data.length; i++) {
+      const group = data[i];
+      const poll = group.title;
+
+      if (object[poll]) {
+        object[poll].push({
+          option: group.option,
+          score: group.score,
+        });
+      } else {
+        object[poll] = [{
+          option: group.option,
+          score: group.score,
+        }];
+      }
+    }
+      
+    const tempVar = {
+      data: object
+    }
+    console.log(object)
+    res.render('profile', tempVar);
+  })
+  .catch(e => res.send(e));
   // belonging to user
   // redirect to history page
  
-  /*  const query = `SELECT * FROM widgets`;
-  console.log(query);
-  db.query(query)
-    .then(data => {
-      const widgets = data.rows;
-      res.json({ widgets });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    }); */
 });
 
 router.get('/new', (req, res) => {
   // load create-poll page
+  res.render('create_poll');
 });
 
 router.post('/', (req, res) => {

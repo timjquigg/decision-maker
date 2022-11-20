@@ -1,1 +1,45 @@
 <!-- All polls go here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/profile.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+<nav>
+  <h2>Deisicion Maker</h2>
+  <div class="buttons">
+    <form action="/polls/new" method="GET">
+      <button class="createpoll">Create a poll</button>
+    </form>
+    <form action="/users" method="GET">
+      <button class="logout">logout</button>
+    </form>
+  </div>
+</nav>
+<body>
+  <header>
+    <h2>Welcome back!</h2>
+    <h3>Your poll history...</h3>
+    <table class="charts-css bar">
+      <% for (let title in data) { %>
+        <div class="poll_history">
+        <%= title %>
+
+      </div>
+      <% } %>
+    </table>
+  </header>
+  <main>
+
+  </main>
+</body>
+</html>
