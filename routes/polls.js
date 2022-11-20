@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
   // const userId = req.session.userId;
   db.getPollsByUserID(1)
   .then((data) => {
-  
     const object = {};
     for (let i = 0; i < data.length; i++) {
       const group = data[i];
@@ -28,19 +27,21 @@ router.get('/', (req, res) => {
         object[poll].push({
           option: group.option,
           score: group.score,
+          date_created: group.date_created
         });
       } else {
         object[poll] = [{
           option: group.option,
           score: group.score,
+          date_created: group.date_created
         }];
       }
     }
       
     const tempVar = {
-      object: object
+      object: object,
+      username: data[0].username
     }
-    console.log(object)
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));

@@ -18,38 +18,55 @@ nav {
   height: 80px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
+  h2 {
+    margin-left: 20px;
+  }
+  .buttons {
+    margin-right: 20px;
+    display: flex;
+  }
+  button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+  }
+  .createpoll {
+    margin-right: 20px;
+  }
 }
 
-nav h2 {
-  margin-left: 20px;
-}
-
-nav .buttons {
-  margin-right: 20px;
-  display: flex;
-}
-
-.createpoll {
-  margin-right: 20px;
-}
 
 header {
   margin-left: 30px;
+  margin-right: 30px;
+  font-size: 30px;
 }
 
 main {
   margin-left: 30px;
+  margin-right: 30px;
+  p {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  section {
+    margin-bottom: 150px;
+    h3 {
+      text-align: center;
+    }
+  }
 }
+
 
 .chart {
   display:table;
   table-layout: fixed;   
-  
+  background-color: rgb(255, 255, 255);
   width:60%;
-  
+  border-radius: 10px;
   height:300px;
   margin:0 auto;
-  
+  padding:0;
   background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
   background-size: 100% 50px;
   background-position: left top;
@@ -59,6 +76,7 @@ li {
   display:table-cell;
   vertical-align:bottom;
   height:200px;
+  padding-top: 30px;
   }
   
 span {
@@ -66,7 +84,7 @@ span {
   display: block;
   background: rgba(#94caa4, .75);
   animation: draw 1s ease-in-out;
-  
+  border-radius: 10px 10px 0 0;
   &:before{
     position:absolute;
     left:0;right:0;top:100%;

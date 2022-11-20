@@ -21,7 +21,7 @@
   <h2>Deisicion Maker</h2>
   <div class="buttons">
     <form action="/polls/new" method="GET">
-      <button class="createpoll">Create a poll</button>
+      <button class="createpoll">Create a new poll</button>
     </form>
     <form action="/users" method="GET">
       <button class="logout">logout</button>
@@ -30,14 +30,15 @@
 </nav>
 <body>
   <header>
-    <h2>Welcome back!</h2>
+    <h2>Welcome back <%= username %>!</h2>
   </header>
   <main>
-    <h3>Your poll history...</h3>
+    <h3>Your poll history</h3>
     <% for (let title in object) { %>
       <% let scores = 0; %>
       <section>
         <h3><%= title %></h3>
+        <p><%= object[title][0]['date_created'] %></p>
         <ul class="chart">
           <% for (let i = 0; i < 5; i++) { %>
             <%scores += Number(object[title][i].score)%>

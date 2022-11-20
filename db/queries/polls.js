@@ -7,6 +7,7 @@ const db = require('../connection');
 const getPollsByUserID = (id) => {
   const queryString = `
   SELECT
+  users.name AS username,
   polls.id AS poll_id,
   polls.question AS title,
   poll_options.poll_option_title AS option,
@@ -17,7 +18,7 @@ const getPollsByUserID = (id) => {
   JOIN poll_options ON polls.id = poll_id
   JOIN responses ON poll_options.id = poll_option_id
   WHERE users.id = $1
-  GROUP BY polls.id, poll_options.poll_option_title;
+  GROUP BY polls.id, poll_options.poll_option_title, users.name;
   `;
   const queryParam = [id];
   return db.query(queryString, queryParam)
@@ -32,8 +33,6 @@ const getPollsByUserID = (id) => {
     console.log('error message from database:', err.message);
   })
 };
-
-
 
 // from post '/polls'
 // Send promise back to router
