@@ -9,6 +9,7 @@ const e = require('express');
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
+const userdb = require('../db/queries/users')
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
@@ -16,11 +17,13 @@ router.get('/', (req, res) => {
   // If logged in, will display profile page
   // send request to polls db file to get polls
   const userId = req.session.userId;
-  db.getPollsByUserID(userId)
+  userdb.getUserById(userId)
   .then((data) => {
+  db.getPollsByUserID(userId)
+  .then((data2) => {
     const object = {};
-    for (let i = 0; i < data.length; i++) {
-      const group = data[i];
+    for (let i = 0; i < data2.length; i++) {
+      const group = data2[i];
       const poll = group.title;
 
       if (object[poll]) {
@@ -37,15 +40,16 @@ router.get('/', (req, res) => {
         }];
       }
     }
-      
+  
     const tempVar = {
+      data: data,
       object: object,
-      username: data[0].username
+      username: data.name
     }
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));
-  
+})
 });
 
 router.get('/new', (req, res) => {

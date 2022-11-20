@@ -41,6 +41,25 @@ const getUserByEmail = (credentials) => {
     });
 };
 
+const getUserById = (userId) => {
+  const queryParams = [userId];
+  const queryString = `
+  SELECT * FROM users
+  WHERE id = $1;
+  `
+  return db
+  .query(queryString, queryParams)
+  .then((result) => {
+    if (result.rows) {
+      return result.rows[0];
+    }
+    return null;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
 const addUsers = (credentials) => {
   const queryParams = [credentials.name, credentials.email];
   const queryString = `
@@ -65,4 +84,4 @@ const addUsers = (credentials) => {
 };
 
 
-module.exports = { getUsers, addUsers, getUserByEmail };
+module.exports = { getUsers, addUsers, getUserByEmail, getUserById };
