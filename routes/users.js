@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const db = require('../db/queries/users');
 const router  = express.Router();
 
 // Signup - Login page
@@ -16,20 +17,50 @@ router.get('/', (req, res) => {
 
 // Receive login credentials
 router.post('/login', (req, res) => {
-  console.log(req.body);
   // Send credentials db to see if credentials exist
-  // After receiving DB promise redirect to user profile
+  db.getUsers(req.body)
+    .then((result) => {
+      if (result === null) {
+        res.send(result);
+        return;
+      }
+      // Assign cookie for logged in user
+      req.session.userId = result.id;
+      res.send(result);
+
+    }).catch((err) => {
+      console.log(err);
+    });
 });
 
 // Receive signup credentials
 router.post('/signup', (req, res) => {
-  console.log(req.body);
   // Send credentials to db to create user
-  // After receiving DB promise redirect to user profile
+  const name = req.body.user_name;
+  const email = req.body.user_email;
+  // Check to see if user already exists
+  db.getUserByEmail(email)
+    .then((result) => {
+      
+      if (result !== null) {
+        res.send(null);
+        return;
+      }
+      
+      // If user does not exist create user
+      db.addUsers({name, email})
+        .then((result) => {
+          req.session.userId = result.id;
+          res.send(result);
+        });
+    });
 });
 
 router.post('/logout', (req, res) => {
   // Delete cookie, redirect to home
+  req.session.userId = null;
+  res.send('');
+  return;
 });
 
 module.exports = router;
