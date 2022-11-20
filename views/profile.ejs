@@ -32,13 +32,17 @@
   <main>
     <h3>Your poll history...</h3>
     <% for (let title in object) { %>
+      <% let scores = 0; %>
       <section>
         <h3><%= title %></h3>
         <ul class="chart">
-          <% for (let i = 0; i < object[title].length; i++) {%>
-          <li style="grid-column: span <%= object[title][i].score %>">
-            <%= object[title][i].option %>
-            <span><%= object[title][i].score %></span>
+          <% for (let i = 0; i < object[title].length; i++) { %>
+            <%scores += Number(object[title][i].score)%>
+          <% } %>
+          <% for (let i = 0; i < object[title].length; i++) { %>
+          <li>
+            
+            <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 100) %>%" title="<%= object[title][i].option %>"></span>
           </li>
           <% } %>
         </ul>

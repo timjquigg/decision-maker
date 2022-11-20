@@ -44,9 +44,7 @@ router.get('/', (req, res) => {
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));
-  // belonging to user
-  // redirect to history page
- 
+  
 });
 
 router.get('/new', (req, res) => {
