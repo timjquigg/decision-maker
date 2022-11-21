@@ -65,7 +65,8 @@ router.post('/', (req, res) => {
   // console.log('Poll Info', req.body);
 
   //Adds a new poll to the db then adds the options of that poll to the db.
-  db.addNewPoll(req.body)
+  const userId = req.session.userId;
+  db.addNewPoll(req.body, userId)
     .then(result => {
       console.log('poll log:', result.rows);
       const pollId = result.rows[0].id;

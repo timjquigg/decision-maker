@@ -37,8 +37,8 @@ const getPollsByUserID = (id) => {
 
 // from post '/polls'
 // Send promise back to router
-const addNewPoll = (pollInfo) => {
-  const {creator_id = 1, poll_question, isAnonymous = false, deadline} = pollInfo
+const addNewPoll = (pollInfo, userID) => {
+  const {creator_id = userID, poll_question, isAnonymous = false, deadline} = pollInfo
   const currenttime = 'NOW()'
   const queryString = `INSERT INTO
   polls (creator_id, question, annonymous, created_on, deadline)
