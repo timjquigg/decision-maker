@@ -49,6 +49,7 @@ router.get('/', (req, res) => {
       username: userFirstName
     }
     res.render('profile', tempVar);
+    //*
   })
   .catch(e => res.send(e));
 // })
@@ -93,21 +94,22 @@ router.get('/:id', (req, res) => {
         // console.log(data.poll_id);
         if(!pollData[data.poll_id]) {
           pollData[data.poll_id] = {
+            // optionId: data.option_id,
             question : data.question,
             isAnonymous: data.is_anonymous,
-            options : [[data.options, data.description]]
+            options : [[data.option_id,data.options, data.description]]
           };
         } else {
-          pollData[data.poll_id].options.push([data.options, data.description])
+          pollData[data.poll_id].options.push([data.option_id, data.options, data.description])
         }
       })
-      // console.log('apple:',pollData[pollId]);
+      console.log('apple:',pollData[pollId]);
 
       const tempVar = {
+
         question: pollData[pollId].question,
         anonymous: pollData[pollId].isAnonymous,
         options: pollData[pollId].options,
-        count: 1
     }
     console.log(tempVar)
       res.render('response.ejs', tempVar);
@@ -119,11 +121,31 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
+  // console.log('apple:', req.body)
+  const {name = null, result} = req.body;
+  // console.log(req.body)
+  // console.log(name)
+  // console.log(result)
+  let resultLen = result.length
+  const scoreSheet = [];
+  result.forEach(optionId => {
+    scoreSheet.push([Number(optionId), resultLen]);
+    resultLen--;
+  });
+
+  console.log(scoreSheet)
+
+  db.addResultsToPoll(name,scoreSheet)
+    .then(result => result)
+    .catch(error => console.log(error))
+
   // A returned poll is received
 
   // send form data to db js for adding to db
   // after recieving promise from db, client side
   // js display thank you and link to home page
+
+
 });
 
 module.exports = router;

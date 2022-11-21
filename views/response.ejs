@@ -31,9 +31,9 @@
   <h1><%= question %></h1>
 <ul id="sortable">
   <% options.forEach((option, i) => { %>
-    <li class="ui-state-default option" id=<%= i %>><%= option[0]%>
-    <% if(option[1]) { %>
-     : <%=option[1]%>
+    <li class="ui-state-default option" id=<%= option[0] %>><%= option[1]%>
+    <% if(option[2]) { %>
+     : <%=option[2]%>
     <%} %>
     </li>
   <% }) %>
