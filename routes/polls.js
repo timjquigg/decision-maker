@@ -18,7 +18,11 @@ router.get('/', (req, res) => {
   // send request to polls db file to get polls
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
-  
+  // Redirect to home page if not logged in
+  if (!userId) {
+    res.redirect('../');
+    return;
+  }
   // Get polls & option info without results
   db.getPollsByUserID(userId)
     .then((data) => {
@@ -72,8 +76,13 @@ router.get('/', (req, res) => {
     .catch(e => res.send(e));
 });
 
+// load create-poll page
 router.get('/new', (req, res) => {
-  // load create-poll page
+  // Redirect to home page if not logged in
+  if (!req.session.userId) {
+    res.redirect('../');
+    return;
+  }
   const tempVar = {username: req.session.userFirst};
   res.render('create_poll', tempVar);
 });
@@ -104,7 +113,11 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // logic to check for logged in
-
+  // Redirect to home page if not logged in
+  if (!req.session.userId) {
+    res.redirect('../');
+    return;
+  }
   // Logged in user:
   // query db for response summary data
   // then redirect to admin page for poll id
@@ -180,6 +193,6 @@ router.get('/results/:id', (req, res) => {
         });
     })
     .catch(e => res.send(e));
-})
+});
 
 module.exports = router;
