@@ -19,25 +19,32 @@ router.get('/', (req, res) => {
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
   
-  db.getPollsByUserID(userId) // initial query just gets all the polls without results
+  // Get polls & option info without results
+  db.getPollsByUserID(userId)
     .then((data) => {
+      // Get results data
       db.getPollResultsByPoll(userId)
         .then((score)=>{
+          // Convert array of scores, to useable object
           const newScores = {};
           for (const index in score) {
             newScores[score[index].option] = score[index].score;
           }
+
           const object = {};
+          
           for (let i = 0; i < data.length; i++) {
             const group = data[i];
-            // console.log(group);
             const poll = group.title;
+
+            // If results are not available yet, make score 0
             let thisScore;
             if (newScores[group.option]) {
               thisScore = newScores[group.option];
             } else {
               thisScore = '0';
             }
+
             if (object[poll]) {
               object[poll].push({
                 option: group.option,
@@ -53,7 +60,6 @@ router.get('/', (req, res) => {
                 pollId: group.poll_id
               }];
             }
-            // console.log(object[poll]);
           }
           const tempVar = {
             object: object,
