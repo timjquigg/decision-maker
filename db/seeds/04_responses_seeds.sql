@@ -139,14 +139,7 @@ VALUES
   (22, 10, NOW() + INTERVAL '1 day'),
   (23, 9, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 7, NOW() + INTERVAL '1 day'),
-  (25, 6, NOW() + INTERVAL '1 day'),
-  (26, 5, NOW() + INTERVAL '1 day'),
-  (27, 4, NOW() + INTERVAL '1 day'),
-  (28, 3, NOW() + INTERVAL '1 day'),
-  (29, 2, NOW() + INTERVAL '1 day'),
-  (30, 1, NOW() + INTERVAL '1 day'),
-  (31, 0, NOW() + INTERVAL '1 day');
+  (24, 7, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -157,14 +150,7 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 8, NOW() + INTERVAL '1 day'),
   (18, 7, NOW() + INTERVAL '1 day'),
-  (24, 6, NOW() + INTERVAL '1 day'),
-  (25, 5, NOW() + INTERVAL '1 day'),
-  (26, 4, NOW() + INTERVAL '1 day'),
-  (27, 3, NOW() + INTERVAL '1 day'),
-  (28, 2, NOW() + INTERVAL '1 day'),
-  (29, 1, NOW() + INTERVAL '1 day'),
-  (30, 0, NOW() + INTERVAL '1 day'),
-  (31, 13, NOW() + INTERVAL '1 day');
+  (24, 6, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -175,14 +161,7 @@ VALUES
   (22, 4, NOW() + INTERVAL '1 day'),
   (23, 5, NOW() + INTERVAL '1 day'),
   (18, 6, NOW() + INTERVAL '1 day'),
-  (24, 7, NOW() + INTERVAL '1 day'),
-  (25, 8, NOW() + INTERVAL '1 day'),
-  (26, 9, NOW() + INTERVAL '1 day'),
-  (27, 0, NOW() + INTERVAL '1 day'),
-  (28, 10, NOW() + INTERVAL '1 day'),
-  (29, 11, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 13, NOW() + INTERVAL '1 day');
+  (24, 7, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -193,14 +172,7 @@ VALUES
   (22, 8, NOW() + INTERVAL '1 day'),
   (23, 10, NOW() + INTERVAL '1 day'),
   (18, 12, NOW() + INTERVAL '1 day'),
-  (24, 1, NOW() + INTERVAL '1 day'),
-  (25, 3, NOW() + INTERVAL '1 day'),
-  (26, 5, NOW() + INTERVAL '1 day'),
-  (27, 7, NOW() + INTERVAL '1 day'),
-  (28, 9, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 11, NOW() + INTERVAL '1 day'),
-  (31, 13, NOW() + INTERVAL '1 day');
+  (24, 1, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -211,14 +183,7 @@ VALUES
   (22, 8, NOW() + INTERVAL '1 day'),
   (23, 7, NOW() + INTERVAL '1 day'),
   (18, 6, NOW() + INTERVAL '1 day'),
-  (24, 5, NOW() + INTERVAL '1 day'),
-  (25, 4, NOW() + INTERVAL '1 day'),
-  (26, 3, NOW() + INTERVAL '1 day'),
-  (27, 2, NOW() + INTERVAL '1 day'),
-  (28, 1, NOW() + INTERVAL '1 day'),
-  (29, 12, NOW() + INTERVAL '1 day'),
-  (30, 13, NOW() + INTERVAL '1 day'),
-  (31, 0, NOW() + INTERVAL '1 day');
+  (24, 5, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -229,14 +194,7 @@ VALUES
   (22, 7, NOW() + INTERVAL '1 day'),
   (23, 9, NOW() + INTERVAL '1 day'),
   (18, 11, NOW() + INTERVAL '1 day'),
-  (24, 13, NOW() + INTERVAL '1 day'),
-  (25, 0, NOW() + INTERVAL '1 day'),
-  (26, 2, NOW() + INTERVAL '1 day'),
-  (27, 4, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 8, NOW() + INTERVAL '1 day'),
-  (30, 10, NOW() + INTERVAL '1 day'),
-  (31, 12, NOW() + INTERVAL '1 day');
+  (24, 13, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -247,14 +205,7 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 2, NOW() + INTERVAL '1 day'),
-  (25, 7, NOW() + INTERVAL '1 day'),
-  (26, 1, NOW() + INTERVAL '1 day'),
-  (27, 13, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 11, NOW() + INTERVAL '1 day');
+  (24, 2, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -265,14 +216,7 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 2, NOW() + INTERVAL '1 day'),
-  (25, 7, NOW() + INTERVAL '1 day'),
-  (26, 1, NOW() + INTERVAL '1 day'),
-  (27, 13, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 11, NOW() + INTERVAL '1 day');
+  (24, 2, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -283,14 +227,7 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 2, NOW() + INTERVAL '1 day'),
-  (25, 7, NOW() + INTERVAL '1 day'),
-  (26, 1, NOW() + INTERVAL '1 day'),
-  (27, 13, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 11, NOW() + INTERVAL '1 day');
+  (24, 2, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -301,14 +238,7 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 2, NOW() + INTERVAL '1 day'),
-  (25, 7, NOW() + INTERVAL '1 day'),
-  (26, 11, NOW() + INTERVAL '1 day'),
-  (27, 13, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 1, NOW() + INTERVAL '1 day');
+  (24, 2, NOW() + INTERVAL '1 day');
 
 INSERT INTO
   responses (poll_option_id, score, responded)
@@ -319,13 +249,4 @@ VALUES
   (22, 9, NOW() + INTERVAL '1 day'),
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
-  (24, 2, NOW() + INTERVAL '1 day'),
-  (25, 7, NOW() + INTERVAL '1 day'),
-  (26, 11, NOW() + INTERVAL '1 day'),
-  (27, 13, NOW() + INTERVAL '1 day'),
-  (28, 6, NOW() + INTERVAL '1 day'),
-  (29, 0, NOW() + INTERVAL '1 day'),
-  (30, 12, NOW() + INTERVAL '1 day'),
-  (31, 1, NOW() + INTERVAL '1 day');
-
-
+  (24, 2, NOW() + INTERVAL '1 day');

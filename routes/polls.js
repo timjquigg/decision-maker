@@ -9,7 +9,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
-const userdb = require('../db/queries/users')
+const userdb = require('../db/queries/users');
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
@@ -22,37 +22,55 @@ router.get('/', (req, res) => {
   // userdb.getUserById(userId)
   // .then((data) => {
   db.getPollsByUserID(userId)
-  .then((data) => {
-    console.log('data:', data)
-    const object = {};
-    for (let i = 0; i < data.length; i++) {
-      const group = data[i];
-      const poll = group.title;
+    .then((data) => {
+      // Get results data
+      db.getPollResultsByPoll(userId)
+        .then((score)=>{
+          // Convert array of scores, to useable object
+          const newScores = {};
+          for (const index in score) {
+            newScores[score[index].option] = score[index].score;
+          }
 
-      if (object[poll]) {
-        object[poll].push({
-          option: group.option,
-          score: group.score,
-          date_created: group.date_created
+          const object = {};
+
+          for (let i = 0; i < data.length; i++) {
+            const group = data[i];
+            const poll = group.title;
+
+            // If results are not available yet, make score 0
+            let thisScore;
+            if (newScores[group.option]) {
+              thisScore = newScores[group.option];
+            } else {
+              thisScore = '0';
+            }
+
+            if (object[poll]) {
+              object[poll].push({
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              });
+            } else {
+              object[poll] = [{
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              }];
+            }
+          }
+          const tempVar = {
+            object: object,
+            username: userFirstName
+          };
+          console.log("object:", object);
+          res.render('profile', tempVar);
         });
-      } else {
-        object[poll] = [{
-          option: group.option,
-          score: group.score,
-          date_created: group.date_created
-        }];
-      }
-    }
-
-    const tempVar = {
-      object: object,
-      username: userFirstName
-    }
-    res.render('profile', tempVar);
-    //*
-  })
-  .catch(e => res.send(e));
-// })
+    })
+    .catch(e => res.send(e));
 });
 
 router.get('/new', (req, res) => {
@@ -74,9 +92,9 @@ router.post('/', (req, res) => {
       console.log('poll log:', result.rows);
       const pollId = result.rows[0].id;
       db.addOptionsToPoll(req.body, pollId)
-      .then(result => {
-        console.log('options log', result.rows)
-      })
+        .then(result => {
+          console.log('options log', result.rows);
+        });
       // return result;
     })
     .catch(err => console.log(err));
@@ -85,14 +103,14 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const pollId = req.params.id
+  const pollId = req.params.id;
   const pollData = {};
   db.getPollDataById(pollId)
     .then(result => {
       // console.log(result.rows)
       result.rows.forEach(data => {
         // console.log(data.poll_id);
-        if(!pollData[data.poll_id]) {
+        if (!pollData[data.poll_id]) {
           pollData[data.poll_id] = {
             // optionId: data.option_id,
             question : data.question,
@@ -100,9 +118,9 @@ router.get('/:id', (req, res) => {
             options : [[data.option_id,data.options, data.description]]
           };
         } else {
-          pollData[data.poll_id].options.push([data.option_id, data.options, data.description])
+          pollData[data.poll_id].options.push([data.option_id, data.options, data.description]);
         }
-      })
+      });
       console.log('apple:',pollData[pollId]);
 
       const tempVar = {
@@ -110,8 +128,8 @@ router.get('/:id', (req, res) => {
         question: pollData[pollId].question,
         anonymous: pollData[pollId].isAnonymous,
         options: pollData[pollId].options,
-    }
-    console.log(tempVar)
+      };
+      console.log(tempVar);
       res.render('response.ejs', tempVar);
       // res.render('response.ejs');
     })
@@ -126,18 +144,18 @@ router.post('/:id', (req, res) => {
   // console.log(req.body)
   // console.log(name)
   // console.log(result)
-  let resultLen = result.length
+  let resultLen = result.length;
   const scoreSheet = [];
   result.forEach(optionId => {
     scoreSheet.push([Number(optionId), resultLen]);
     resultLen--;
   });
 
-  console.log(scoreSheet)
+  console.log(scoreSheet);
 
   db.addResultsToPoll(name,scoreSheet)
     .then(result => result)
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
 
   // A returned poll is received
 

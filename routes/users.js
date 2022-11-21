@@ -22,6 +22,12 @@ router.post('/login', (req, res) => {
   // Send credentials db to see if credentials exist
   db.getUserByEmail(req.body.email)
     .then((user) => {
+      
+      if (user === null) {
+        res.send(null);
+        return;
+      }
+
 
       if (bcrypt.compareSync(req.body.password, user.password)) {
         // Assign cookie for logged in user
@@ -36,8 +42,6 @@ router.post('/login', (req, res) => {
         return;
       }
 
-      res.send(null);
-      // return;
     }).catch((err) => {
       console.log(err);
     });
@@ -78,8 +82,8 @@ router.post('/signup', (req, res) => {
 
 router.post('/logout', (req, res) => {
   // Delete cookie, redirect to home
-  req.session.userId = null;
-  res.send('');
+  req.session = null;
+  res.redirect('/');
   return;
 });
 

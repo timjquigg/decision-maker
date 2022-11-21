@@ -43,17 +43,10 @@ VALUES
 INSERT INTO
   poll_options (poll_id, poll_option_title)
 VALUES
-  (4, 'Netherlands'),
   (4, 'England'),
-  (4, 'USA'),
   (4, 'Argentina'),
   (4, 'France'),
-  (4, 'Spain'),
   (4, 'Japan'),
-  (4, 'Germany'),
-  (4, 'Belgium'),
   (4, 'Canada'),
   (4, 'Brazil'),
-  (4, 'Cameroon'),
-  (4, 'Portugal'),
-  (4, 'Ghana');
+  (4, 'Portugal');
