@@ -107,7 +107,17 @@ const getResultsByPollId = () => {
 
 // from get '/polls/:id' --- Not logged in
 // return promise to router
-const getPollDataById = () => {
+const getPollDataById = (id) => {
+let queryParams = [id]
+let queryString = `
+SELECT poll_id, question ,poll_option_title AS options, poll_option_description  AS description, annonymous AS is_Anonymous
+FROM polls JOIN poll_options ON polls.id = poll_id
+WHERE polls.id=$1;
+`
+return db
+  .query(queryString, queryParams)
+  .then(result => result)
+  .catch(err => console.log(err))
 
 };
 
@@ -121,7 +131,8 @@ const addResultsToPoll = () => {
 module.exports = {
   addNewPoll,
   addOptionsToPoll,
-  getPollsByUserID
+  getPollsByUserID,
+  getPollDataById
 }
 
 // };

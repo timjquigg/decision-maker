@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   // send request to polls db file to get polls
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
-  
+
   // userdb.getUserById(userId)
   // .then((data) => {
   db.getPollsByUserID(userId)
@@ -84,18 +84,37 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // logic to check for logged in
+  const pollId = req.params.id
+  const pollData = {};
+  db.getPollDataById(pollId)
+    .then(result => {
+      // console.log(result.rows)
+      result.rows.forEach(data => {
+        // console.log(data.poll_id);
+        if(!pollData[data.poll_id]) {
+          pollData[data.poll_id] = {
+            question : data.question,
+            isAnonymous: data.is_anonymous,
+            options : [[data.options, data.description]]
+          };
+        } else {
+          pollData[data.poll_id].options.push([data.options, data.description])
+        }
+      })
+      // console.log('apple:',pollData[pollId]);
 
-  // Logged in user:
-  // query db for response summary data
-  // then redirect to admin page for poll id
-  // router forwards promise response in redirect
-  // to results.ejs
-  // potential mailgun?
+      const tempVar = {
+        question: pollData[pollId].question,
+        anonymous: pollData[pollId].isAnonymous,
+        options: pollData[pollId].options
+    }
+    console.log(tempVar)
+      res.render('response.ejs', tempVar);
+      // res.render('response.ejs');
+    })
+    .catch(err => console.log(err.message));
 
-  // not logged in user:
-  // query db for poll data
-  // forward db response in redirect to response.ejs
+
 });
 
 router.post('/:id', (req, res) => {
