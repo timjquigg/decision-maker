@@ -19,8 +19,6 @@ router.get('/', (req, res) => {
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
   
-  // userdb.getUserById(userId)
-  // .then((data) => {
   db.getPollsByUserID(userId)
   .then((data) => {
     console.log('data:', data)
@@ -51,7 +49,6 @@ router.get('/', (req, res) => {
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));
-// })
 });
 
 router.get('/new', (req, res) => {
