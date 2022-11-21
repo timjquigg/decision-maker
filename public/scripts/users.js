@@ -1,34 +1,80 @@
 // Scripts for login - signup - logout
 
-// Client facing scripts here
 $(() => {
 
-  console.log('document read');
-  $('.login').on('click', function(event) {
+  $('form.login').on('submit', function(event) {
     event.preventDefault();
-    console.log(this);
-    $.post('/users/login',$(this).serialize());
+
+    if (!validateLogin(this)) {
+      return;
+    }
+
+    $.post('/users/login',$(this).serialize())
+      .then((result) => {
+        if (result === '') {
+          alert('Invalid user');
+          return;
+        }
+        window.location.href = '../polls';
+      });
+    
   });
   
-  $('.signup').on('click', function(event) {
+  $('form.signup').on('submit', function(event) {
     event.preventDefault();
-    console.log(this);
-    $.post('/users/signup', $(this).serialize());
+
+    if (!validateSignup(this)) {
+      return;
+    }
+
+    $.post('/users/signup', $(this).serialize())
+      .then((result) => {
+        if (result === '') {
+          alert('Email already exists');
+          return;
+        }
+        window.location.href = '../polls';
+      });
+    
+      
+  });
+  
+  $('#logout').on('click', () => {
+    $.post('/users/logout')
+      .then(() => {
+        window.location.href = '../';
+      });
   });
 
+  const validateLogin = function(source) {
+  
+    const email = $(source.user_email).val();
+    const password = $(source.password).val();
 
-  // $('#fetch-users').on('click', () => {
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: '/api/users'
-  //   })
-  //     .done((response) => {
-  //       const $usersList = $('#users');
-  //       $usersList.empty();
+    if (email.length === 0 || password.length === 0) {
+      alert('Email & password must not be blank.');
+      return false;
+    }
+    return true;
+  };
 
-  //       for (const user of response.users) {
-  //         $(`<li class="user">`).text(user.name).appendTo($usersList);
-  //       }
-  //     });
-  // });
+  const validateSignup = function(source) {
+    
+    const name = $(source.user_name).val();
+    const email = $(source.user_email).val();
+    const password = $(source.password).val();
+    const confirmPassword = $(source.confirm_password).val();
+
+    if (name.length === 0 || email.length === 0 || password.length === 0) {
+      alert('Name, email & password must not be blank.');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match.');
+      return false;
+    }
+    return true;
+  };
+
 });

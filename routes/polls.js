@@ -5,35 +5,55 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+// const e = require('express');
 const express = require('express');
 const router  = express.Router();
-// const db = require('../db/connection');
 const db = require('../db/queries/polls');
+const userdb = require('../db/queries/users')
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
 
   // If logged in, will display profile page
   // send request to polls db file to get polls
-  // belonging to user
-  // redirect to history page
+  const userId = req.session.userId;
+  userdb.getUserById(userId)
+  .then((data) => {
+  db.getPollsByUserID(userId)
+  .then((data2) => {
+    const object = {};
+    for (let i = 0; i < data2.length; i++) {
+      const group = data2[i];
+      const poll = group.title;
 
-  /*  const query = `SELECT * FROM widgets`;
-  console.log(query);
-  db.query(query)
-    .then(data => {
-      const widgets = data.rows;
-      res.json({ widgets });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    }); */
+      if (object[poll]) {
+        object[poll].push({
+          option: group.option,
+          score: group.score,
+          date_created: group.date_created
+        });
+      } else {
+        object[poll] = [{
+          option: group.option,
+          score: group.score,
+          date_created: group.date_created
+        }];
+      }
+    }
+
+    const tempVar = {
+      data: data,
+      object: object,
+      username: data.name
+    }
+    res.render('profile', tempVar);
+  })
+  .catch(e => res.send(e));
+})
 });
 
 router.get('/new', (req, res) => {
-  // templateVars = {shareURL, userURL};
+  // load create-poll page
   res.render('create_poll');
 });
 

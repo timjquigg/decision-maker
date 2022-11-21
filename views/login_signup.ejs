@@ -1,4 +1,3 @@
-<!-- Login - Signup goes here -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,19 +18,29 @@
 </head>
 
 <body>
+  <main>
 
-  <form class="login">
-    <input name="user_name" placeholder="name">
-    <input name="user_email" placeholder="email">
-    <button>login</button>
-  </form>
+    <div class="login">
+      <h2>Login</h2>
+      <form class="authentication login">
+        <input name="user_email" type="email" placeholder="email">
+        <input name="password" type="password" placeholder="password">
+        <button>login</button>
+      </form>
+    </div>
 
-  <form class="signup">
-    <input name="user_name" placeholder="name">
-    <input name="user_email" placeholder="email">
-    <button>signup</button>
-  </form>
+    <div class="signup">
+      <h2>Signup</h2>
+      <form class="authentication signup">
+        <input name="user_name" type="text" placeholder="name">
+        <input name="user_email" type="email" placeholder="email">
+        <input name="password" type="password" placeholder="password">
+        <input name="confirm_password" type="password" placeholder="confirm password">
+        <button>signup</button>
+      </form>
+    </div>
 
+  </main>
 </body>
 
 </html>

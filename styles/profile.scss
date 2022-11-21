@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: rgb(253, 249, 241);
+  font-family: 'Montserrat', sans-serif;
+  color: #022c31;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #022c31;
+  color:rgb(255, 255, 255);
+  height: 120px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+  h2 {
+    margin-left: 20px;
+  }
+  .fa-chart-simple {
+    padding-right: 10px;
+  }
+  .buttons {
+    margin-right: 20px;
+    margin-top: 30px;
+    display: flex;
+  }
+  button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+  }
+  div.createpoll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  button.createpoll {
+    margin-right: 20px;
+  }
+  div.icon {
+    margin-right: 20px;
+  }
+  i.fa-regular {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+  button:hover {
+    background-color:rgb(255, 255, 255);
+  }
+}
+
+
+header {
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 30px;
+}
+
+main {
+  margin-left: 30px;
+  margin-right: 30px;
+  .pollhistory {
+    margin-bottom: 30px;
+    margin-left: 10px;
+  }
+  p {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .fa-arrow-trend-down {
+    padding-left: 5px;
+  }
+  section {
+    margin-bottom: 150px;
+    h3 {
+      text-align: center;
+      font-size: 25px;
+    }
+  }
+}
+
+
+.chart {
+  display:table;
+  table-layout: fixed;   
+  background-color: rgb(255, 255, 255);
+  width:60%;
+  border-radius: 10px;
+  height:300px;
+  margin:0 auto;
+  padding:0;
+  background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
+  background-size: 100% 50px;
+  background-position: left top;
+  
+li {
+  position:relative;
+  display:table-cell;
+  vertical-align:bottom;
+  height:200px;
+  padding-top: 30px;
+  }
+  
+span {
+  margin:0 1em;
+  display: block;
+  background: rgba(#94caa4, .75);
+  animation: draw 1s ease-in-out;
+  border-radius: 10px 10px 0 0;
+  &:before{
+    position:absolute;
+    left:0;right:0;top:100%;
+    padding:5px 1em 0;
+    display:block;
+    text-align:center;
+    content:attr(title);
+    word-wrap: break-word;
+  }
+  
+}
+  
+}
+
+@keyframes draw{
+  0%{height:0;} 
+}
+
+

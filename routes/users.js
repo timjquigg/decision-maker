@@ -6,7 +6,9 @@
  */
 
 const express = require('express');
+const db = require('../db/queries/users');
 const router  = express.Router();
+const bcrypt = require('bcryptjs');
 
 // Signup - Login page
 router.get('/', (req, res) => {
@@ -16,20 +18,64 @@ router.get('/', (req, res) => {
 
 // Receive login credentials
 router.post('/login', (req, res) => {
-  console.log(req.body);
   // Send credentials db to see if credentials exist
-  // After receiving DB promise redirect to user profile
+  db.getUserByEmail(req.body.user_email)
+    .then((user) => {
+
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        // Assign cookie for logged in user
+        req.session = {
+          userId : user.id,
+          userName : user.name,
+          userEmail : user.email
+        };
+
+        res.send('valid user');
+        return;
+      }
+
+      res.send(null);
+      // return;
+    }).catch((err) => {
+      console.log(err);
+    });
 });
 
 // Receive signup credentials
 router.post('/signup', (req, res) => {
-  console.log(req.body);
   // Send credentials to db to create user
-  // After receiving DB promise redirect to user profile
+  const name = req.body.user_name;
+  const email = req.body.user_email;
+  const password = bcrypt.hashSync(req.body.password, 12);
+  
+  // Check to see if user already exists
+  db.getUserByEmail(email)
+    .then((user) => {
+      
+      // If e-mail already exists
+      if (user !== null) {
+        res.send(null);
+        return;
+      }
+      
+      // If user does not exist create user
+      db.addUsers({name, email, password})
+        .then((result) => {
+          req.session = {
+            userId : result.id,
+            userName : result.name,
+            userEmail : result.email
+          };
+          res.send(result);
+        });
+    });
 });
 
 router.post('/logout', (req, res) => {
   // Delete cookie, redirect to home
+  req.session.userId = null;
+  res.send('');
+  return;
 });
 
 module.exports = router;
