@@ -49,4 +49,7 @@ nav {
   button.createpoll:hover, button.logout:hover {
     background-color:rgb(255, 255, 255);
   }
+  button:hover {
+    cursor: pointer;
+  }
 }

@@ -46,6 +46,7 @@ main {
     }
     button:hover {
       color:#94caa4;
+      cursor: pointer;
     }
   }
 }
@@ -75,6 +76,10 @@ main {
     font-size: 30px;
     i {
       padding: 10px;
+    }
+    i:hover {
+      color:#94caa4;
+      cursor: pointer;
     }
   }
   li {

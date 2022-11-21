@@ -130,36 +130,55 @@ router.get('/results/:id', (req, res) => {
   const pollId = req.params.id;
 
   db.getResultsByPollId(pollId)
-  .then((data) => {
-    console.log('data:', data)
-    const object = {};
-    for (let i = 0; i < data.length; i++) {
-      const group = data[i];
-      const poll = group.title;
+    .then((data) => {
+      // Get results data
+      db.getPollResultsByPoll(userId)
+        .then((score)=>{
+          // Convert array of scores, to useable object
+          const newScores = {};
+          for (const index in score) {
+            newScores[score[index].option] = score[index].score;
+          }
 
-      if (object[poll]) {
-        object[poll].push({
-          option: group.option,
-          score: group.score,
-          date_created: group.date_created
+          const object = {};
+          
+          for (let i = 0; i < data.length; i++) {
+            const group = data[i];
+            const poll = group.title;
+
+            // If results are not available yet, make score 0
+            let thisScore;
+            if (newScores[group.option]) {
+              thisScore = newScores[group.option];
+            } else {
+              thisScore = '0';
+            }
+
+            if (object[poll]) {
+              object[poll].push({
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              });
+            } else {
+              object[poll] = [{
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              }];
+            }
+          }
+          const tempVar = {
+            object: object,
+            username: userFirstName
+          };
+          console.log("object:", object);
+          res.render('results', tempVar);
         });
-      } else {
-        object[poll] = [{
-          option: group.option,
-          score: group.score,
-          date_created: group.date_created
-        }];
-      }
-    }
-
-    const tempVar = {
-      object: object,
-      username: userFirstName
-    }
-    console.log("object:", object)
-    res.render('results', tempVar);
-  })
-  .catch(e => res.send(e));
+    })
+    .catch(e => res.send(e));
 })
 
 module.exports = router;

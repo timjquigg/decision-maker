@@ -136,27 +136,26 @@ const getResultsByPollId = (pollId) => {
   polls.id AS poll_id,
   polls.question AS title,
   poll_options.poll_option_title AS option,
-  SUM(responses.score) AS score,
   created_on AS date_created
   FROM polls
   JOIN users ON creator_id = users.id
   JOIN poll_options ON polls.id = poll_id
-  JOIN responses ON poll_options.id = poll_option_id
   WHERE polls.id = $1
   GROUP BY polls.id, poll_options.poll_option_title, users.first_name, users.last_name;
   `;
   const queryParam = [pollId];
   return db.query(queryString, queryParam)
-  .then((results) => {
-    if(results) {
-      return results.rows;
-    } else {
-      return null;
-    }
-  })
-  .catch((err) => {
-    console.log('error message from database:', err.message);
-  })
+    .then((results) => {
+      
+      if (results) {
+        return results.rows;
+      } else {
+        return null;
+      }
+    })
+    .catch((err) => {
+      console.log('error message from database:', err.message);
+    });
 };
 
 // from get '/polls/:id' --- Not logged in
