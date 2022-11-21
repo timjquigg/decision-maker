@@ -74,7 +74,8 @@ router.get('/', (req, res) => {
 
 router.get('/new', (req, res) => {
   // load create-poll page
-  res.render('create_poll');
+  const tempVar = {username: req.session.userFirst};
+  res.render('create_poll', tempVar);
 });
 
 router.post('/', (req, res) => {
