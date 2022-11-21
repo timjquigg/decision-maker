@@ -42,7 +42,7 @@ const addUsers = (credentials) => {
   const queryParams = [credentials.firstName, credentials.lastName, credentials.email, credentials.password];
   const queryString = `
     INSERT INTO users
-    (firstName, lastName, email, password)
+    (first_name, last_name, email, password)
     VALUES
     ($1, $2, $3, $4)
     RETURNING *;`;
