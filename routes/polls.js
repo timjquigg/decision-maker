@@ -134,8 +134,6 @@ router.get('/results/:id', (req, res) => {
     for (let name of names) {
       peopleResponded.push(name.respondedby);
     }
-    
-    console.log('people:', peopleResponded)
   
   db.getResultsByPollId(pollId)
     .then((data) => {
@@ -189,6 +187,6 @@ router.get('/results/:id', (req, res) => {
     })
   })
   .catch(e => res.send(e));
-})
+});
 
 module.exports = router;
