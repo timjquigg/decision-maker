@@ -33,6 +33,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
+  // templateVars = {shareURL, userURL};
   res.render('create_poll');
 });
 

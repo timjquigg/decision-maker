@@ -86,11 +86,6 @@ $('.poll_question_box').on('focus', function(event) {
 })
 
 
-
-
-
-
-
 const createTextbox = () => {
   let output = `
   <input class="options${textboxCount + 1} ob" name="option_${textboxCount + 1}" placeholder="Option ${textboxCount+1}"></input>
