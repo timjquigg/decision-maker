@@ -17,13 +17,16 @@ router.get('/', (req, res) => {
   // If logged in, will display profile page
   // send request to polls db file to get polls
   const userId = req.session.userId;
-  userdb.getUserById(userId)
-  .then((data) => {
+  const userFirstName = req.session.userFirst;
+  
+  // userdb.getUserById(userId)
+  // .then((data) => {
   db.getPollsByUserID(userId)
-  .then((data2) => {
+  .then((data) => {
+    console.log('data:', data)
     const object = {};
-    for (let i = 0; i < data2.length; i++) {
-      const group = data2[i];
+    for (let i = 0; i < data.length; i++) {
+      const group = data[i];
       const poll = group.title;
 
       if (object[poll]) {
@@ -42,14 +45,13 @@ router.get('/', (req, res) => {
     }
 
     const tempVar = {
-      data: data,
       object: object,
-      username: data.name
+      username: userFirstName
     }
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));
-})
+// })
 });
 
 router.get('/new', (req, res) => {

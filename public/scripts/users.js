@@ -4,10 +4,10 @@ $(() => {
 
   $('form.login').on('submit', function(event) {
     event.preventDefault();
-
     if (!validateLogin(this)) {
       return;
     }
+    console.log($(this).serialize);
 
     $.post('/users/login',$(this).serialize())
       .then((result) => {
@@ -48,7 +48,7 @@ $(() => {
 
   const validateLogin = function(source) {
   
-    const email = $(source.user_email).val();
+    const email = $(source.email).val();
     const password = $(source.password).val();
 
     if (email.length === 0 || password.length === 0) {
@@ -60,12 +60,16 @@ $(() => {
 
   const validateSignup = function(source) {
     
-    const name = $(source.user_name).val();
-    const email = $(source.user_email).val();
+    const firstName = $(source.first_name).val();
+    const lastName = $(source.last_name).val();
+    const email = $(source.email).val();
     const password = $(source.password).val();
     const confirmPassword = $(source.confirm_password).val();
 
-    if (name.length === 0 || email.length === 0 || password.length === 0) {
+    if (firstName.length === 0 ||
+          lastName.length === 0 ||
+          email.length === 0 ||
+          password.length === 0) {
       alert('Name, email & password must not be blank.');
       return false;
     }
