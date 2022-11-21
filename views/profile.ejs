@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/profile.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,13 +42,13 @@
       Your poll history<i class="fa-solid fa-arrow-trend-down"></i>
     </h3>
     <% for (let title in object) { %>
-      <% let scores = 0; %>
+      <% let scores = 0;  %>
       <section>
         <h3><%= title %></h3>
         <p><%= object[title][0]['date_created'] %></p>
         <ul class="chart">
           <% for (let i = 0; i < 5; i++) { %>
-            <%scores += Number(object[title][i].score)%>
+            <% scores += Number(object[title][i].score)%>
           <% } %>
 
           <% for (let i = 0; i < 5; i++) { %>

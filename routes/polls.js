@@ -46,6 +46,7 @@ router.get('/', (req, res) => {
       object: object,
       username: userFirstName
     }
+    console.log("object:", object)
     res.render('profile', tempVar);
   })
   .catch(e => res.send(e));
