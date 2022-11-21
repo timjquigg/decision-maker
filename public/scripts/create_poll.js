@@ -15,9 +15,9 @@ $(() => {
   $('.option_error').hide();
   $('.date_error').hide();
 
-  $('form').on('submit', function(event) {
+  $('form.new_poll').on('submit', function(event) {
     event.preventDefault();
-    // console.log('on submit');
+    console.log('on submit');
     let valueCheck = 0;
     //if question textbox is empty
     if (!$('.poll_question_box').val()) {
