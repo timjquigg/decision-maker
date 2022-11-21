@@ -128,7 +128,15 @@ router.get('/results/:id', (req, res) => {
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
   const pollId = req.params.id;
-
+  db.getNamesResponded(pollId)
+  .then(names => {
+    let peopleResponded = [];
+    for (let name of names) {
+      peopleResponded.push(name.respondedby);
+    }
+    
+    console.log('people:', peopleResponded)
+  
   db.getResultsByPollId(pollId)
     .then((data) => {
       // Get results data
@@ -141,11 +149,9 @@ router.get('/results/:id', (req, res) => {
           }
 
           const object = {};
-          
           for (let i = 0; i < data.length; i++) {
             const group = data[i];
             const poll = group.title;
-
             // If results are not available yet, make score 0
             let thisScore;
             if (newScores[group.option]) {
@@ -159,26 +165,30 @@ router.get('/results/:id', (req, res) => {
                 option: group.option,
                 score: thisScore,
                 date_created: group.date_created,
-                pollId: group.poll_id
+                pollId: group.poll_id,
+                annonymous: group.isannonymous
               });
             } else {
               object[poll] = [{
                 option: group.option,
                 score: thisScore,
                 date_created: group.date_created,
-                pollId: group.poll_id
+                pollId: group.poll_id,
+                annonymous: group.isannonymous
               }];
             }
           }
           const tempVar = {
             object: object,
-            username: userFirstName
+            username: userFirstName,
+            peopleResponded
           };
           console.log("object:", object);
           res.render('results', tempVar);
         });
     })
-    .catch(e => res.send(e));
+  })
+  .catch(e => res.send(e));
 })
 
 module.exports = router;

@@ -64,7 +64,14 @@
             <% } %>
           <% } %>
           </ul>
-
+          <%if (!object[title][0].annonymous) { %>
+          <section class="participants">
+            <h3>View Participants</h3>
+            <% for (let name of peopleResponded) { %>
+            <p><%= name %></p>
+            <% } %>
+          </section>
+          <% } %>
       </section>
     <% } %>
   </main>
