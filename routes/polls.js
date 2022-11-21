@@ -106,7 +106,8 @@ router.get('/:id', (req, res) => {
       const tempVar = {
         question: pollData[pollId].question,
         anonymous: pollData[pollId].isAnonymous,
-        options: pollData[pollId].options
+        options: pollData[pollId].options,
+        count: 1
     }
     console.log(tempVar)
       res.render('response.ejs', tempVar);

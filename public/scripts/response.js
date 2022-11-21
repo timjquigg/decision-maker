@@ -6,12 +6,18 @@ $(() => {
 
 
 $(".option_row").sortable();
-$("#sortable").sortable();
+$("#sortable").sortable({
+  placeholder: 'placeholder',
+  axis : 'y',
+  opacity: 0.3,
+});
 
 console.log('document ready!');
 
-$('.name_prompt').on('submit', function(event) {
+$('form').on('submit', function(event) {
   event.preventDefault();
+  let result = $('#sortable').sortable('toArray');
+  console.log(result);
 });
 
 

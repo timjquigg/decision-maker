@@ -29,23 +29,23 @@
 </header>
 <form>
   <h1><%= question %></h1>
-
 <ul id="sortable">
-  <% options.forEach(option => { %>
-    <li class="ui-state-default option"><%= option[0] %></li>
+  <% options.forEach((option, i) => { %>
+    <li class="ui-state-default option" id=<%= i %>><%= option[0]%>
+    <% if(option[1]) { %>
+     : <%=option[1]%>
+    <%} %>
+    </li>
   <% }) %>
 </ul>
 <br>
 <% if(!anonymous) { %>
   <input class="name_box" name="name" placeholder="Enter your name"></input>
   <br>
-  <button class="submit_button" type="submit" >Submit</button>
-<% } %>
+  <% } %>
+  <button class="submit_button" type="submit" >Submit response</button>
 
 </div>
-
 </form>
-
 </body>
-
 </html>
