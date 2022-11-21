@@ -18,15 +18,17 @@ router.get('/', (req, res) => {
 
 // Receive login credentials
 router.post('/login', (req, res) => {
+
   // Send credentials db to see if credentials exist
-  db.getUserByEmail(req.body.user_email)
+  db.getUserByEmail(req.body.email)
     .then((user) => {
 
       if (bcrypt.compareSync(req.body.password, user.password)) {
         // Assign cookie for logged in user
         req.session = {
           userId : user.id,
-          userName : user.name,
+          userFirst : user.first_name,
+          userLast : user.last_name,
           userEmail : user.email
         };
 
@@ -44,7 +46,8 @@ router.post('/login', (req, res) => {
 // Receive signup credentials
 router.post('/signup', (req, res) => {
   // Send credentials to db to create user
-  const name = req.body.user_name;
+  const firstName = req.body.first_name;
+  const lastName = req.body.last_name;
   const email = req.body.user_email;
   const password = bcrypt.hashSync(req.body.password, 12);
   
@@ -59,14 +62,15 @@ router.post('/signup', (req, res) => {
       }
       
       // If user does not exist create user
-      db.addUsers({name, email, password})
-        .then((result) => {
+      db.addUsers({firstName, lastName, email, password})
+        .then((user) => {
           req.session = {
-            userId : result.id,
-            userName : result.name,
-            userEmail : result.email
+            userId : user.id,
+            userFirst : user.first_name,
+            userLast : user.last_name,
+            userEmail : user.email
           };
-          res.send(result);
+          res.send(user);
         });
     });
 });

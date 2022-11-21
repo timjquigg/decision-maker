@@ -39,19 +39,19 @@ const getUserById = (userId) => {
 };
 
 const addUsers = (credentials) => {
-  const queryParams = [credentials.name, credentials.email, credentials.password];
+  const queryParams = [credentials.firstName, credentials.lastName, credentials.email, credentials.password];
   const queryString = `
     INSERT INTO users
-    (name, email, password)
+    (firstName, lastName, email, password)
     VALUES
-    ($1, $2, $3)
+    ($1, $2, $3, $4)
     RETURNING *;`;
   return db
     .query(
       queryString, queryParams)
-    .then((result) => {
-      if (result.rows.length > 0) {
-        return result.rows[0];
+    .then((user) => {
+      if (user.rows.length > 0) {
+        return user.rows[0];
       }
       return null;
     })
