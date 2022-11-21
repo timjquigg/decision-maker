@@ -9,25 +9,91 @@ $(() => {
 console.log('document ready')
 
 
+let textboxCount = 3;
 $('.submission_confirmation').hide();
+$('.question_error').hide();
+$('.option_error').hide();
+$('.date_error').hide();
 
 $('form').on('submit', function(event) {
   event.preventDefault();
   // console.log('on submit');
+  let valueCheck = 0;
+  //if question textbox is empty
+  if (!$('.poll_question_box').val()){
+    $('.question_error').show();
+    $('.poll_question_box').css('box-shadow', '0 0 5px 0.5px red');
+    return;
+  } else {
+    $('.question_error').hide();
+  };
+
+  //if option textbox is empty
+
+  const $optionBox = $('.options_box').find('.ob');
+
+  $optionBox.each(function() {
+    console.log(this.value);
+    if(this.value) {
+      valueCheck ++;
+    } else {
+      $(this).css('box-shadow', '0 0 5px 0.5px red');
+    }
+  });
+  $optionBox.on('focus', function(event) {
+    event.preventDefault();
+    $(this).css('box-shadow', '');
+    $('.option_error').hide();
+    $('.date_error').hide();
+  })
+
+  // console.log(valueCheck, textboxCount);
+
+   if (valueCheck != textboxCount) {
+   $('.option_error').show();
+   return
+   }
+
+   //if date input is null
+
+   if(!$('.deadline_box').val()) {
+    $('.date_error').show();
+    return;
+   }
+
+   $('.deadline_box').on('click', function(event) {
+    event.preventDefault();
+    $('.date_error').hide();
+   })
+
+
+
+  //If submission is successful.
   $.post('/polls', $(this).serialize())
     .then (result => {
       console.log('query log:', result);
       return result})
     .catch (error => console.log(error))
       $('.submission_confirmation').show();
-      $('.new_poll').hide();
+      $('.poll').hide();
+      // $('#poll_label').hide();
 });
 
-let textboxCount = 3;
+$('.poll_question_box').on('focus', function(event) {
+  event.preventDefault();
+  $('.question_error').hide();
+  $('.poll_question_box').css('box-shadow', '');
+})
+
+
+
+
+
+
 
 const createTextbox = () => {
   let output = `
-  <input class="options${textboxCount + 1}" name="option_${textboxCount + 1}" placeholder="Option ${textboxCount+1}"></input>
+  <input class="options${textboxCount + 1} ob" name="option_${textboxCount + 1}" placeholder="Option ${textboxCount+1}"></input>
   <input class="description${textboxCount + 1}" name="option_${textboxCount + 1}" placeholder="Description"></input>`;
   if(textboxCount > 6) {
     return;
