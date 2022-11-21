@@ -1,6 +1,7 @@
 <!-- Show poll results here -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +17,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
+
 <body>
   <nav>
     <form action="/polls" method="GET">
-      <button class="home"><h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2></button>
+      <button class="home">
+        <h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2>
+      </button>
     </form>
-    <div  class="buttons">
+    <div class="buttons">
       <div class="createpoll">
         <form action="/polls/new" method="GET">
           <button class="createpoll">Create a new poll</button>
@@ -39,34 +45,39 @@
   </nav>
   <main>
     <% for (let title in object) { %>
-      <% let scores = 0;  %>
-      <section>
-        <h3><%= title %></h3>
-        <p><%= object[title][0]['date_created'] %></p>
-        <ul class="chart">
-          <% for (let i = 0; i < object[title].length; i++) { %>
-            <% scores += Number(object[title][i].score)%>
-          <% } %>
-          <% if (object[title][0].score === '0') { %>
-            <p class="noresponse">There's no response to this poll yet</p>
-            <p>Share this poll with your frineds!</p>
-            <p class="icons">
-              <i class="fa-solid fa-link"></i>
-              <i class="fa-brands fa-square-twitter"></i>
-              <i class="fa-brands fa-square-facebook"></i>
-            </p>
-          <% } else { %>
+      <% let scores=0; %>
+        <section>
+          <h3>
+            <%= title %>
+          </h3>
+          <p>
+            <%= object[title][0]['date_created'] %>
+          </p>
+          <ul class="chart">
             <% for (let i=0; i < object[title].length; i++) { %>
-            <li>
-              <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
-                title="<%= object[title][i].option %>"></span>
-            </li>
-            <% } %>
-          <% } %>
+              <% scores +=Number(object[title][i].score)%>
+                <% } %>
+                  <% if (object[title][0].score==='0' ) { %>
+                    <p class="noresponse">There's no response to this poll yet</p>
+                    <p>Share this poll with your frineds!</p>
+                    <p class="icons">
+                      <i class="fa-solid fa-link"></i>
+                      <i class="fa-brands fa-square-twitter"></i>
+                      <i class="fa-brands fa-square-facebook"></i>
+                    </p>
+                    <% } else { %>
+                      <% for (let i=0; i < object[title].length; i++) { %>
+                        <li>
+                          <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
+                            title="<%= object[title][i].option %>"></span>
+                        </li>
+                        <% } %>
+                          <% } %>
           </ul>
 
-      </section>
-    <% } %>
+        </section>
+        <% } %>
   </main>
 </body>
+
 </html>

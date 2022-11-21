@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
           }
 
           const object = {};
-          
+
           for (let i = 0; i < data.length; i++) {
             const group = data[i];
             const poll = group.title;
@@ -112,18 +112,46 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // logic to check for logged in
+  const pollId = req.params.id;
+  const pollData = {};
+  db.getPollDataById(pollId)
+    .then(result => {
+      // console.log(result.rows)
+      result.rows.forEach(data => {
+        // console.log(data.poll_id);
+        if (!pollData[data.poll_id]) {
+          pollData[data.poll_id] = {
+            // optionId: data.option_id,
+            question : data.question,
+            isAnonymous: data.is_anonymous,
+            options : [[data.option_id,data.options, data.description]]
+          };
+        } else {
+          pollData[data.poll_id].options.push([data.option_id, data.options, data.description]);
+        }
+      });
+      console.log('apple:',pollData[pollId]);
+      // Redirect to home page if not logged in
+      if (!req.session.userId) {
+        res.redirect('../');
+        return;
+      }
+      const tempVar = {
+
+        question: pollData[pollId].question,
+        anonymous: pollData[pollId].isAnonymous,
+        options: pollData[pollId].options,
+      };
+      console.log(tempVar);
+      res.render('response.ejs', tempVar);
+      // res.render('response.ejs');
+    })
+    .catch(err => console.log(err.message));
   // Redirect to home page if not logged in
   if (!req.session.userId) {
     res.redirect('../');
     return;
   }
-  // Logged in user:
-  // query db for response summary data
-  // then redirect to admin page for poll id
-  // router forwards promise response in redirect
-  // to results.ejs
-  // potential mailgun?
 
   // not logged in user:
   // query db for poll data
@@ -131,11 +159,31 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
+  // console.log('apple:', req.body)
+  const {name = null, result} = req.body;
+  // console.log(req.body)
+  // console.log(name)
+  // console.log(result)
+  let resultLen = result.length;
+  const scoreSheet = [];
+  result.forEach(optionId => {
+    scoreSheet.push([Number(optionId), resultLen]);
+    resultLen--;
+  });
+
+  console.log(scoreSheet);
+
+  db.addResultsToPoll(name,scoreSheet)
+    .then(result => result)
+    .catch(error => console.log(error));
+
   // A returned poll is received
 
   // send form data to db js for adding to db
   // after recieving promise from db, client side
   // js display thank you and link to home page
+
+
 });
 
 router.get('/results/:id', (req, res) => {
@@ -155,7 +203,64 @@ router.get('/results/:id', (req, res) => {
           }
 
           const object = {};
-          
+
+          for (let i = 0; i < data.length; i++) {
+            const group = data[i];
+            const poll = group.title;
+
+            // If results are not available yet, make score 0
+            let thisScore;
+            if (newScores[group.option]) {
+              thisScore = newScores[group.option];
+            } else {
+              thisScore = '0';
+            }
+
+            if (object[poll]) {
+              object[poll].push({
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              });
+            } else {
+              object[poll] = [{
+                option: group.option,
+                score: thisScore,
+                date_created: group.date_created,
+                pollId: group.poll_id
+              }];
+            }
+          }
+          const tempVar = {
+            object: object,
+            username: userFirstName
+          };
+          console.log("object:", object);
+          res.render('results', tempVar);
+        });
+    })
+    .catch(e => res.send(e));
+});
+
+router.get('/results/:id', (req, res) => {
+  const userId = req.session.userId;
+  const userFirstName = req.session.userFirst;
+  const pollId = req.params.id;
+
+  db.getResultsByPollId(pollId)
+    .then((data) => {
+      // Get results data
+      db.getPollResultsByPoll(userId)
+        .then((score)=>{
+          // Convert array of scores, to useable object
+          const newScores = {};
+          for (const index in score) {
+            newScores[score[index].option] = score[index].score;
+          }
+
+          const object = {};
+
           for (let i = 0; i < data.length; i++) {
             const group = data[i];
             const poll = group.title;
