@@ -23,26 +23,32 @@
 
 <body>
 <header>
-  <div class="user_greeter">
-    <h2></h2>
-  </div>
+
 </header>
+
+<div class="submit_window">
+<h2>Success!</h2>
+<p id="name_greet">Thank you for answering</p>
+<button class="home_button">Back to homepage</button>
+</div>
+
 <form>
   <h1><%= question %></h1>
+
+
 <ul id="sortable">
   <% options.forEach((option, i) => { %>
     <li class="ui-state-default option" id=<%= option[0] %>><%= option[1]%>
-    <% if(option[2]) { %>
-     : <%=option[2]%>
-    <%} %>
+    <span class="description"><%=option[2]%></span>
     </li>
   <% }) %>
 </ul>
 <br>
 <% if(!anonymous) { %>
   <input class="name_box" name="name" placeholder="Enter your name"></input>
-  <br>
+  <p class="error_name">Please enter you name to submit response</p>
   <% } %>
+  <br>
   <button class="submit_button" type="submit" >Submit response</button>
 
 </div>

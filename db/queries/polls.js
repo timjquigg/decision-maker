@@ -169,9 +169,6 @@ scoreSheet.forEach((data, index) => {
 
 })
 
-
-
-
 queryString +=  `RETURNING *;`
 console.log(queryParams);
 console.log(queryString);
