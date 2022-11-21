@@ -82,8 +82,8 @@ router.post('/signup', (req, res) => {
 
 router.post('/logout', (req, res) => {
   // Delete cookie, redirect to home
-  req.session.userId = null;
-  res.send('');
+  req.session = null;
+  res.redirect('/');
   return;
 });
 

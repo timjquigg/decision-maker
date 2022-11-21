@@ -8,49 +8,52 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Local style Sheets -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/users.js"></script>
 </head>
+<%- include('partial/header.ejs') %>
 
-<body>
-  <main>
+  <body>
+    <main>
 
-    <div class="login">
-      <h2>Login</h2>
-      <form class="authentication login">
-        <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="email">
-        <label for="password">Password</label>
-        <input name="password" type="password" placeholder="password">
-        <button>login</button>
-      </form>
-      <p class="authentication_error" hidden></p>
-    </div>
+      <div class="login">
+        <h2>Login</h2>
+        <form class="authentication login">
+          <label for="email">E-mail</label>
+          <input name="email" type="email" placeholder="email">
+          <label for="password">Password</label>
+          <input name="password" type="password" placeholder="password">
+          <button>login</button>
+        </form>
+        <p class="authentication_error" hidden></p>
+      </div>
 
-    <div class="signup">
-      <h2>Signup</h2>
-      <form class="authentication signup">
-        <label for="first_name">First Name</label>
-        <input name="first_name" type="text" placeholder="First Name">
-        <label for="last_name">Last Name</label>
-        <input name="last_name" type="text" placeholder="Last Name">
-        <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="email">
-        <label for="Password">Password</label>
-        <input name="password" type="password" placeholder="password">
-        <label for="confirm_password">Confirm Password</label>
-        <input name="confirm_password" type="password" placeholder="confirm password">
-        <button>signup</button>
-      </form>
-      <p class="authentication_error" hidden></p>
-    </div>
+      <div class="signup">
+        <h2>Signup</h2>
+        <form class="authentication signup">
+          <label for="first_name">First Name</label>
+          <input name="first_name" type="text" placeholder="First Name">
+          <label for="last_name">Last Name</label>
+          <input name="last_name" type="text" placeholder="Last Name">
+          <label for="email">E-mail</label>
+          <input name="email" type="email" placeholder="email">
+          <label for="Password">Password</label>
+          <input name="password" type="password" placeholder="password">
+          <label for="confirm_password">Confirm Password</label>
+          <input name="confirm_password" type="password" placeholder="confirm password">
+          <button>signup</button>
+        </form>
+        <p class="authentication_error" hidden></p>
+      </div>
 
-  </main>
-</body>
+    </main>
+  </body>
 
 </html>
