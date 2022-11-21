@@ -22,7 +22,7 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
-<%- include('partial/header') %>
+<%- include('partials/header') %>
 <body>
   <header>
     <h2>Welcome back <%= username %>!</h2>
@@ -34,7 +34,9 @@
     <% for (let title in object) { %>
       <% let scores = 0;  %>
       <section>
-        <h3><%= title %></h3>
+        <form action="/polls/results/<%=object[title][0]['pollId']%>" method="GET">
+          <button class="polltitle"><%= title %></button>
+        </form>
         <p><%= object[title][0]['date_created'] %></p>
         <ul class="chart">
           <% for (let i = 0; i < object[title].length; i++) { %>

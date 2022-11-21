@@ -176,7 +176,8 @@ module.exports = {
   addNewPoll,
   addOptionsToPoll,
   getPollsByUserID,
-  getPollResultsByPoll
+  getPollResultsByPoll,
+  getResultsByPollId
 };
 
 // };
