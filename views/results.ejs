@@ -67,8 +67,9 @@
           <%if (!object[title][0].annonymous) { %>
           <section class="participants" id="viewParticipants">
             <button><h3>View Participants</h3></button>
-            <% for (let name of peopleResponded) { %>
-            <p><%= name %></p>
+            <% for (let names of peopleResponded) { %>
+            <p><%= names[0] %></p>
+            <p>responded on <%= names[1] %></p>
             <% } %>
           </section>
           <% } %>

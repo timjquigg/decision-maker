@@ -130,10 +130,16 @@ router.get('/results/:id', (req, res) => {
   const pollId = req.params.id;
   db.getNamesResponded(pollId)
   .then(names => {
+    console.log('names:', names)
     let peopleResponded = [];
     for (let name of names) {
-      peopleResponded.push(name.respondedby);
+      console.log('name.respondedby:', name.respondedby)
+      let innerArr = [];
+      innerArr.push(name.respondedby);
+      innerArr.push(name['time_responded']);
+      peopleResponded.push(innerArr);
     }
+    console.log('peopleresponded:', peopleResponded)
   
   db.getResultsByPollId(pollId)
     .then((data) => {

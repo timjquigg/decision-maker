@@ -161,11 +161,12 @@ const getResultsByPollId = (pollId) => {
 
 const getNamesResponded = (pollId) => {
   const queryString = `
-  SELECT responses.name AS respondedBy
+  SELECT responses.name AS respondedBy,
+  responses.responded AS time_responded
   FROM responses JOIN poll_options ON poll_options.id = poll_option_id
   JOIN polls ON poll_id = polls.id
   WHERE polls.id = $1
-  GROUP BY responses.name;
+  GROUP BY responses.name, time_responded;
   `
   return db.query(queryString, [pollId])
   .then(results => {
