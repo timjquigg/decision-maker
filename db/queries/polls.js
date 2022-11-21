@@ -128,8 +128,34 @@ VALUES`;
 // send request to db for results summary and
 // return promise to router.
 
-const getResultsByPollId = () => {
-
+const getResultsByPollId = (pollId) => {
+  const queryString = `
+  SELECT
+  users.first_name AS firstname,
+  users.last_name AS lastname,
+  polls.id AS poll_id,
+  polls.question AS title,
+  poll_options.poll_option_title AS option,
+  created_on AS date_created
+  FROM polls
+  JOIN users ON creator_id = users.id
+  JOIN poll_options ON polls.id = poll_id
+  WHERE polls.id = $1
+  GROUP BY polls.id, poll_options.poll_option_title, users.first_name, users.last_name;
+  `;
+  const queryParam = [pollId];
+  return db.query(queryString, queryParam)
+    .then((results) => {
+      
+      if (results) {
+        return results.rows;
+      } else {
+        return null;
+      }
+    })
+    .catch((err) => {
+      console.log('error message from database:', err.message);
+    });
 };
 
 // from get '/polls/:id' --- Not logged in
@@ -149,7 +175,8 @@ module.exports = {
   addNewPoll,
   addOptionsToPoll,
   getPollsByUserID,
-  getPollResultsByPoll
+  getPollResultsByPoll,
+  getResultsByPollId
 };
 
 // };

@@ -40,6 +40,22 @@ main {
       text-align: center;
       font-size: 25px;
     }
+
+    form {
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    button:hover {
+      color: #94caa4;
+      cursor: pointer;
+    }
   }
 }
 
@@ -56,6 +72,29 @@ main {
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
   background-size: 100% 50px;
   background-position: left top;
+
+  p {
+    margin: 5px;
+    align-self: center;
+  }
+
+  p.noresponse {
+    margin-top: 70px;
+  }
+
+  p.icons {
+    margin-top: 20px;
+    font-size: 30px;
+
+    i {
+      padding: 10px;
+    }
+
+    i:hover {
+      color: #94caa4;
+      cursor: pointer;
+    }
+  }
 
   li {
     position: relative;
@@ -83,9 +122,7 @@ main {
       content: attr(title);
       word-wrap: break-word;
     }
-
   }
-
 }
 
 @keyframes draw {
