@@ -5,7 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const e = require('express');
+// const e = require('express');
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
@@ -13,7 +13,7 @@ const userdb = require('../db/queries/users')
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
-  
+
   // If logged in, will display profile page
   // send request to polls db file to get polls
   const userId = req.session.userId;
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
         }];
       }
     }
-  
+
     const tempVar = {
       object: object,
       username: userFirstName
@@ -60,11 +60,29 @@ router.post('/', (req, res) => {
   // Send data from poll creation form to db js file
   // forward promise response to front end so
   // client side js can display links
+
+  // console.log('Poll Info', req.body);
+
+  //Adds a new poll to the db then adds the options of that poll to the db.
+  const userId = req.session.userId;
+  db.addNewPoll(req.body, userId)
+    .then(result => {
+      console.log('poll log:', result.rows);
+      const pollId = result.rows[0].id;
+      db.addOptionsToPoll(req.body, pollId)
+      .then(result => {
+        console.log('options log', result.rows)
+      })
+      // return result;
+    })
+    .catch(err => console.log(err));
+
+
 });
 
 router.get('/:id', (req, res) => {
   // logic to check for logged in
-  
+
   // Logged in user:
   // query db for response summary data
   // then redirect to admin page for poll id
