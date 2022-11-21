@@ -42,13 +42,22 @@
           <% for (let i = 0; i < object[title].length; i++) { %>
             <% scores += Number(object[title][i].score)%>
           <% } %>
-
-                  <% for (let i=0; i < object[title].length; i++) { %>
-                    <li>
-                      <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
-                        title="<%= object[title][i].option %>"></span>
-                    </li>
-                    <% } %>
+          <% if (object[title][0].score === '0') { %>
+            <p class="noresponse">There's no response to this poll yet</p>
+            <p>Share this poll with your frineds!</p>
+            <p class="icons">
+              <i class="fa-solid fa-link"></i>
+              <i class="fa-brands fa-square-twitter"></i>
+              <i class="fa-brands fa-square-facebook"></i>
+            </p>
+          <% } else { %>
+            <% for (let i=0; i < object[title].length; i++) { %>
+            <li>
+              <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
+                title="<%= object[title][i].option %>"></span>
+            </li>
+            <% } %>
+          <% } %>
           </ul>
 
         </section>

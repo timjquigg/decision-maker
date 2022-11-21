@@ -63,33 +63,44 @@ main {
   background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
   background-size: 100% 50px;
   background-position: left top;
-  
-li {
-  position:relative;
-  display:table-cell;
-  vertical-align:bottom;
-  height:200px;
-  padding-top: 30px;
+  p {
+    margin: 5px;
+    align-self: center;
   }
-  
-span {
-  margin:0 1em;
-  display: block;
-  background: rgba(#94caa4, .75);
-  animation: draw 1s ease-in-out;
-  border-radius: 10px 10px 0 0;
-  &:before{
-    position:absolute;
-    left:0;right:0;top:100%;
-    padding:5px 1em 0;
-    display:block;
-    text-align:center;
-    content:attr(title);
-    word-wrap: break-word;
+  p.noresponse {
+    margin-top: 70px;
   }
-  
-}
-  
+  p.icons {
+    margin-top: 20px;
+    font-size: 30px;
+    i {
+      padding: 10px;
+    }
+  }
+  li {
+    position:relative;
+    display:table-cell;
+    vertical-align:bottom;
+    height:200px;
+    padding-top: 30px;
+    }
+    
+  span {
+    margin:0 1em;
+    display: block;
+    background: rgba(#94caa4, .75);
+    animation: draw 1s ease-in-out;
+    border-radius: 10px 10px 0 0;
+    &:before{
+      position:absolute;
+      left:0;right:0;top:100%;
+      padding:5px 1em 0;
+      display:block;
+      text-align:center;
+      content:attr(title);
+      word-wrap: break-word;
+    }
+  }
 }
 
 @keyframes draw{
