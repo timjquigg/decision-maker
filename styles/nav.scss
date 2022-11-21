@@ -23,6 +23,12 @@ nav {
     border-radius: 25px;
     padding: 10px 20px;
   }
+  button.home {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    color: aliceblue;
+  }
   div.createpoll {
     display: flex;
     flex-direction: column;
@@ -40,7 +46,7 @@ nav {
     text-align: center;
     width: 100%;
   }
-  button:hover {
+  button.createpoll:hover, button.logout:hover {
     background-color:rgb(255, 255, 255);
   }
 }

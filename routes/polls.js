@@ -31,13 +31,15 @@ router.get('/', (req, res) => {
         object[poll].push({
           option: group.option,
           score: group.score,
-          date_created: group.date_created
+          date_created: group.date_created,
+          pollId: group['poll_id']
         });
       } else {
         object[poll] = [{
           option: group.option,
           score: group.score,
-          date_created: group.date_created
+          date_created: group.date_created,
+          pollId: group['poll_id']
         }];
       }
     }
@@ -103,5 +105,43 @@ router.post('/:id', (req, res) => {
   // after recieving promise from db, client side
   // js display thank you and link to home page
 });
+
+router.get('/results/:id', (req, res) => {
+  const userId = req.session.userId;
+  const userFirstName = req.session.userFirst;
+  const pollId = req.params.id;
+
+  db.getResultsByPollId(pollId)
+  .then((data) => {
+    console.log('data:', data)
+    const object = {};
+    for (let i = 0; i < data.length; i++) {
+      const group = data[i];
+      const poll = group.title;
+
+      if (object[poll]) {
+        object[poll].push({
+          option: group.option,
+          score: group.score,
+          date_created: group.date_created
+        });
+      } else {
+        object[poll] = [{
+          option: group.option,
+          score: group.score,
+          date_created: group.date_created
+        }];
+      }
+    }
+
+    const tempVar = {
+      object: object,
+      username: userFirstName
+    }
+    console.log("object:", object)
+    res.render('results', tempVar);
+  })
+  .catch(e => res.send(e));
+})
 
 module.exports = router;

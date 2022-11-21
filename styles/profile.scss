@@ -35,6 +35,18 @@ main {
       text-align: center;
       font-size: 25px;
     }
+    form {
+      text-align: center;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    button:hover {
+      color:#94caa4;
+    }
   }
 }
 

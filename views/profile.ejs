@@ -19,20 +19,7 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
-<nav>
-  <h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2>
-  <div  class="buttons">
-    <div class="createpoll">
-      <form action="/polls/new" method="GET">
-        <button class="createpoll">Create a new poll</button>
-        <div class="icon"><i class="fa-regular fa-hand-pointer fa-beat-fade"></i></div>
-      </form>
-    </div>
-    <form action="/users" method="GET">
-      <button class="logout">logout</button>
-    </form>
-  </div>
-</nav>
+<%- include('partial/header') %>
 <body>
   <header>
     <h2>Welcome back <%= username %>!</h2>
@@ -44,7 +31,9 @@
     <% for (let title in object) { %>
       <% let scores = 0;  %>
       <section>
-        <h3><%= title %></h3>
+        <form action="/polls/results/<%=object[title][0]['pollId']%>" method="GET">
+          <button class="polltitle"><%= title %></button>
+        </form>
         <p><%= object[title][0]['date_created'] %></p>
         <ul class="chart">
           <% for (let i = 0; i < 5; i++) { %>
