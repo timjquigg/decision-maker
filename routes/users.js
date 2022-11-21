@@ -48,7 +48,7 @@ router.post('/signup', (req, res) => {
   // Send credentials to db to create user
   const firstName = req.body.first_name;
   const lastName = req.body.last_name;
-  const email = req.body.user_email;
+  const email = req.body.email;
   const password = bcrypt.hashSync(req.body.password, 12);
   
   // Check to see if user already exists
@@ -60,10 +60,11 @@ router.post('/signup', (req, res) => {
         res.send(null);
         return;
       }
-      
+
       // If user does not exist create user
       db.addUsers({firstName, lastName, email, password})
         .then((user) => {
+          console.log(user);
           req.session = {
             userId : user.id,
             userFirst : user.first_name,
