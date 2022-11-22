@@ -22,6 +22,9 @@ main {
   .pollhistory {
     margin-bottom: 30px;
     margin-left: 10px;
+    i {
+      margin-left: 5px;
+    }
   }
 
   p {
@@ -56,6 +59,29 @@ main {
       color: #94caa4;
       cursor: pointer;
     }
+  }
+}
+
+section.nopoll {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+
+  button.createpoll {
+    margin-top: 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #8b5e10;
+    color: #fff;
+    font-weight: bold;
   }
 }
 

@@ -23,14 +23,13 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/display_results.js"></script>
 </head>
-
-<body>
-  <nav>
+<header>
     <%- include('partials/header.ejs') %>
-  </nav>
+</header>
+<body>
   <main>
     <% for (let title in object) { %>
-      <% let scores=0; %>
+      <% let scores=[]; %>
         <section>
           <h3>
             <%= title %>
@@ -40,7 +39,7 @@
           </p>
           <ul class="chart">
             <% for (let i=0; i < object[title].length; i++) { %>
-              <% scores +=Number(object[title][i].score)%>
+              <% scores.push(Number(object[title][i].score))%>
                 <% } %>
                   <% if (object[title][0].score==='0' ) { %>
                     <p class="noresponse">There's no response to this poll yet</p>
@@ -53,7 +52,7 @@
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>
                         <li>
-                          <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
+                          <span style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
                             title="<%= object[title][i].option %>"></span>
                         </li>
                         <% } %>

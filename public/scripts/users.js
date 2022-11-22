@@ -2,6 +2,8 @@
 
 $(() => {
 
+  $('.nav-right').hide();
+
   $('.authentication>input').on('change', function(event) {
     $(this).parent().parent().find('p').slideUp();
   });
