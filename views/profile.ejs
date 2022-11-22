@@ -38,7 +38,7 @@
       Your poll history<i class="fa-solid fa-arrow-trend-down"></i>
     </h3>
     <% for (let title in object) { %>
-      <% let scores=0; %>
+      <% let scores=[]; %>
         <section>
           <form action="/polls/results/<%=object[title][0]['pollId']%>" method="GET">
             <button class="polltitle">
@@ -50,7 +50,7 @@
           </p>
           <ul class="chart">
             <% for (let i=0; i < object[title].length; i++) { %>
-              <% scores +=Number(object[title][i].score)%>
+              <% scores.push(Number(object[title][i].score))%>
                 <% } %>
                   <% if (object[title][0].score==='0' ) { %>
                     <p class="noresponse">There's no response to this poll yet</p>
@@ -64,7 +64,7 @@
                       <% for (let i=0; i < object[title].length; i++) { %>
                         
                         <li>
-                          <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
+                          <span style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
                             title="<%= object[title][i].option %>"></span>
                         </li>
                         <% } %>
