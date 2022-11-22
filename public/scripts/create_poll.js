@@ -68,15 +68,25 @@ $(() => {
 
 
 
+
     //If submission is successful.
     $.post('/polls', $(this).serialize())
       .then(result => {
         console.log('query log:', result);
+
+        $('.url_respond').text(`http://localhost:8080/polls/${result}`);
+        $('.url_respond').attr('href', `http://localhost:8080/polls/${result}`);
+        $('.url_user').text(`http://localhost:8080/polls/results/${result}`);
+        $('.url_user').attr('href', `http://localhost:8080/polls/results/${result}`);
+
+        $('.submission_confirmation').show();
+        $('.poll').hide();
         return result;
       })
-      .catch(error => console.log(error));
-    $('.submission_confirmation').show();
-    $('.poll').hide();
+      .catch(error => console.log(error.message));
+
+    // $('.submission_confirmation').show();
+    // $('.poll').hide();
     // $('#poll_label').hide();
   });
 

@@ -66,7 +66,7 @@ const getPollResultsByPoll = (id) => {
 
 // from post '/polls'
 // Send promise back to router
-const addNewPoll = (pollInfo, userID) => {
+const addNewPoll = (pollInfo, userID = null) => {
   const {creator_id = userID, poll_question, isAnonymous = false, deadline} = pollInfo;
   const currenttime = 'NOW()';
   const queryString = `INSERT INTO
@@ -258,6 +258,16 @@ VALUES
 
 };
 
+const getTotalPoll = () => {
+  let queryString = `SELECT COUNT(*) FROM polls;`;
+  return db
+    .query(queryString, [])
+    .then(result => result)
+    .catch(err => console.log(err));
+};
+
+
+
 
 
 module.exports = {
@@ -268,7 +278,8 @@ module.exports = {
   addResultsToPoll,
   getPollResultsByPoll,
   getOptionsByPollId,
-  getNamesResponded
+  getNamesResponded,
+  getTotalPoll
 };
 
 

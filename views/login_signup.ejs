@@ -30,18 +30,6 @@
 <body>
   <main>
 
-    <div class="login">
-      <h2>Login</h2>
-      <form class="authentication login">
-        <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="email">
-        <label for="password">Password</label>
-        <input name="password" type="password" placeholder="password">
-        <button>login</button>
-      </form>
-      <p class="authentication_error" hidden></p>
-    </div>
-
     <div class="signup">
       <h2>Signup</h2>
       <form class="authentication signup">
@@ -55,11 +43,25 @@
         <input name="password" type="password" placeholder="password">
         <label for="confirm_password">Confirm Password</label>
         <input name="confirm_password" type="password" placeholder="confirm password">
-        <button>signup</button>
+        <p class="authentication_error" hidden></p>
+        <button>Sign Up</button>
       </form>
-      <p class="authentication_error" hidden></p>
     </div>
 
+    <div class="login" hidden>
+      <h2>Login</h2>
+      <form class="authentication login">
+        <label for="email">E-mail</label>
+        <input name="email" type="email" placeholder="email">
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="password">
+        <button>login</button>
+        <p class="authentication_error" hidden></p>
+      </form>
+    </div>
+
+    <p>Already have an account? <span class="show_login">Log In</span></p>
+    <p hidden>Create an account <span class="show_signup">Here</span></p>
   </main>
 </body>
 

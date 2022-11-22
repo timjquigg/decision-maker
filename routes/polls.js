@@ -70,7 +70,7 @@ router.get('/', (req, res) => {
             object: object,
             username: userFirstName
           };
-          console.log("object:", object);
+          // console.log("object:", object);
           res.render('profile', tempVar);
         });
     })
@@ -88,6 +88,7 @@ router.get('/new', (req, res) => {
       userEmail : null
     };
   }
+
   const tempVar = {username: req.session.userFirst};
   res.render('create_poll', tempVar);
 });
@@ -95,7 +96,7 @@ router.get('/new', (req, res) => {
 // // Create Anonymous Poll
 // router.get('/new:anonymous', (req, res) => {
 //   // Redirect to home page if not logged in
-  
+
 //   const tempVar = {username: 'anonymous'};
 //   res.render('create_poll', tempVar);
 // });
@@ -130,6 +131,9 @@ router.post('/', (req, res) => {
           .then(result => {
             console.log('poll log:', result.rows);
             const pollId = result.rows[0].id;
+            db.getTotalPoll()
+              .then(result => res.send(result.rows[0].count))
+              .catch(err => console.log(err.message));
             db.addOptionsToPoll(req.body, pollId)
               .then(result => {
                 console.log('options log', result.rows);
@@ -144,11 +148,16 @@ router.post('/', (req, res) => {
   const userId = req.session.userId;
   db.addNewPoll(req.body, userId)
     .then(result => {
-      console.log('poll log:', result.rows);
+      // console.log('poll log:', result.rows);
+      db.getTotalPoll()
+        .then(result => res.send(result.rows[0].count))
+        .catch(err => console.log(err.message));
       const pollId = result.rows[0].id;
       db.addOptionsToPoll(req.body, pollId)
         .then(result => {
-          console.log('options log', result.rows);
+          // console.log('options log', result.rows);
+
+          return result;
         });
       // return result;
     })
@@ -183,7 +192,7 @@ router.get('/:id', (req, res) => {
       //   return;
       // }
       const tempVar = {
-
+        username: req.session.userFirst,
         question: pollData[pollId].question,
         anonymous: pollData[pollId].isAnonymous,
         options: pollData[pollId].options,
