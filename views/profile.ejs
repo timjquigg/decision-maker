@@ -35,8 +35,15 @@
   </header>
   <main>
     <h3 class="pollhistory">
-      Your poll history<i class="fa-solid fa-arrow-trend-down"></i>
+      Your poll history<i class="fa-solid fa-angles-down"></i>
     </h3>
+    <% if (Object.keys(object).length === 0) { %>
+      <section  class="nopoll">
+        <div><h2>No polls here yet!</h2></div>
+        <div><p>Start creating interactive and engaging polls to include your friends.</p></div>
+        <div><button class="createpoll">Create a poll</button></div>
+      </section>
+    <% } %>
     <% for (let title in object) { %>
       <% let scores=[]; %>
         <section>
