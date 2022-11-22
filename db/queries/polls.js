@@ -174,7 +174,7 @@ const getNamesResponded = (pollId) => {
   return db.query(queryString, [pollId])
     .then(results => {
       if (results) {
-        console.log('results from getNamesResponses', results.rows);
+        // console.log('results from getNamesResponses', results.rows);
         return results.rows;
       } else {
         return null;
