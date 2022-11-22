@@ -9,7 +9,7 @@
     <% if (username !==undefined && username !==null) { %>
       <h3>Welcome back <%=username %>!</h3>
       </h3>
-      <div class="buttons">
+      <div class="buttons profile_buttons">
         <div class="createpoll">
           <form action="/polls/new" method="GET">
             <button class="createpoll">Create a new poll</button>
@@ -21,13 +21,12 @@
         </form>
       </div>
       <% } else { %>
-        <h3>Welcome!</h3>
         <div class="buttons">
-          <form action="/polls/new" method="GET">
-            <button>Create Anonymous Poll</button>
+          <form action="/users" method="GET">
+            <button class="signup">Sign up</button>
           </form>
           <form action="/users" method="GET">
-            <button>Login</button>
+            <button class="login">Login</button>
           </form>
         </div>
         <% } %>

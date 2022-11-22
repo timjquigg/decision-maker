@@ -24,11 +24,17 @@ nav {
     h3 {
       margin-right: 20px;
     }
+    button.signup {
+      margin-right: 20px;
+    }
+    div.profile_buttons {
+      margin-top: 25px;
+    }
   }
 
   .buttons {
     margin-right: 20px;
-    margin-top: 30px;
+    // margin-top: 30px;
     display: flex;
     flex-direction: row;
   }

@@ -23,11 +23,10 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/display_results.js"></script>
 </head>
-
-<body>
-  <nav>
+<header>
     <%- include('partials/header.ejs') %>
-  </nav>
+</header>
+<body>
   <main>
     <% for (let title in object) { %>
       <% let scores=0; %>
