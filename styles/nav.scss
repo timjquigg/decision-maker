@@ -1,4 +1,5 @@
 nav {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,12 +23,15 @@ nav {
     margin-right: 20px;
     justify-content: center;
     align-items: center;
+
     h3 {
       margin-right: 20px;
     }
+
     button.signup {
       margin-right: 20px;
     }
+
     div.profile_buttons {
       margin-top: 25px;
       margin-right: 0;
@@ -81,6 +85,7 @@ nav {
   }
 
   div.nav-right {
+
     button.createpoll:hover,
     button.logout:hover,
     button.login:hover,
