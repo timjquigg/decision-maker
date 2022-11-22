@@ -6,7 +6,7 @@
     </button>
   </form>
   <div class="nav-right">
-    <% if (username !==undefined ) { %>
+    <% if (username !==undefined && username !==null) { %>
       <h3>Welcome back <%=username %>!</h3>
       </h3>
       <div class="buttons">
@@ -23,6 +23,9 @@
       <% } else { %>
         <h3>Welcome!</h3>
         <div class="buttons">
+          <form action="/polls/new" method="GET">
+            <button>Create Anonymous Poll</button>
+          </form>
           <form action="/users" method="GET">
             <button>Login</button>
           </form>

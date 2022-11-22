@@ -26,22 +26,7 @@
 
 <body>
   <nav>
-    <form action="/polls" method="GET">
-      <button class="home">
-        <h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2>
-      </button>
-    </form>
-    <div class="buttons">
-      <div class="createpoll">
-        <form action="/polls/new" method="GET">
-          <button class="createpoll">Create a new poll</button>
-          <div class="icon"><i class="fa-regular fa-hand-pointer fa-beat-fade"></i></div>
-        </form>
-      </div>
-      <form action="/users" method="GET">
-        <button class="logout">logout</button>
-      </form>
-    </div>
+    <%- include('partials/header.ejs') %>
   </nav>
   <main>
     <% for (let title in object) { %>

@@ -129,9 +129,10 @@ VALUES`;
 // send request to db for results summary and
 // return promise to router.
 
-const getResultsByPollId = (pollId) => {
+const getOptionsByPollId = (pollId) => {
   const queryString = `
   SELECT
+  users.id as userId,
   users.first_name AS firstname,
   users.last_name AS lastname,
   polls.id AS poll_id,
@@ -142,12 +143,13 @@ const getResultsByPollId = (pollId) => {
   JOIN users ON creator_id = users.id
   JOIN poll_options ON polls.id = poll_id
   WHERE polls.id = $1
-  GROUP BY polls.id, poll_options.poll_option_title, users.first_name, users.last_name;
+  GROUP BY users.id, polls.id, poll_options.poll_option_title, users.first_name, users.last_name;
   `;
   const queryParam = [pollId];
+  // console.log(queryParam);
   return db.query(queryString, queryParam)
     .then((results) => {
-
+      // console.log(results);
       if (results) {
         return results.rows;
       } else {
@@ -241,7 +243,7 @@ module.exports = {
   getPollDataById,
   addResultsToPoll,
   getPollResultsByPoll,
-  getResultsByPollId
+  getOptionsByPollId
 };
 
 
