@@ -21,7 +21,7 @@
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/display_results.js"></script>
 </head>
 
 <body>
@@ -59,10 +59,37 @@
                         <% } %>
                           <% } %>
           </ul>
+          <%if (!object[title][0].annonymous) { %>
+            <section class="participants" id="viewParticipants">
+              <button>
+                <h3>View Participants</h3>
+              </button>
+              <% for (let names of peopleResponded) { %>
+                <p>
+                  <%= names[0] %>
+                </p>
+                <p>responded on <%= names[1] %>
+                </p>
+                <% } %>
+            </section>
+            <% } %>
 
+              <%if (object[title][0].annonymous) { %>
+                <section class="participants">
+                  <p>This poll is anonymous</p>
+                </section>
+                <% } %>
         </section>
         <% } %>
   </main>
+  <footer>
+    <p>Share this poll with your friends!</p>
+    <p class="icons">
+      <i class="fa-solid fa-link"></i>
+      <i class="fa-brands fa-square-twitter"></i>
+      <i class="fa-brands fa-square-facebook"></i>
+    </p>
+  </footer>
 </body>
 
 </html>
