@@ -1,4 +1,4 @@
--- Table to hold responses to polls 
+-- Table to hold responses to polls
 DROP TABLE IF EXISTS responses CASCADE;
 
 CREATE TABLE responses (

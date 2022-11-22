@@ -9,10 +9,12 @@ const express = require('express');
 const db = require('../db/queries/users');
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
+const cookieSession = require('cookie-session');
 
 // Signup - Login page
 router.get('/', (req, res) => {
-  res.render('login_signup');
+  const tempVar = {username : req.session.userFirst};
+  res.render('login_signup', tempVar);
 });
 
 

@@ -3,52 +3,72 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: #022c31;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
+
   h2 {
     margin-left: 20px;
   }
+
   .fa-chart-simple {
     padding-right: 10px;
   }
+
+  div.nav-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .buttons {
     margin-right: 20px;
     margin-top: 30px;
     display: flex;
+    flex-direction: row;
   }
+
   button {
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
   }
+
   button.home {
     background-color: transparent;
     border-radius: 0;
     padding: 0;
     color: aliceblue;
   }
+
   div.createpoll {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+
   button.createpoll {
     margin-right: 20px;
   }
+
   div.icon {
     margin-right: 20px;
   }
+
   i.fa-regular {
     margin-top: 10px;
     text-align: center;
     width: 100%;
   }
-  button.createpoll:hover, button.logout:hover {
-    background-color:rgb(255, 255, 255);
+
+  button.createpoll:hover,
+  button.logout:hover {
+    background-color: rgb(255, 255, 255);
   }
+
   button:hover {
     cursor: pointer;
   }
