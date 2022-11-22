@@ -232,6 +232,16 @@ VALUES
 
 };
 
+const getTotalPoll = () => {
+  let queryString = `SELECT COUNT(*) FROM polls;`;
+  return db
+    .query(queryString, [])
+    .then(result => result)
+    .catch(err => console.log(err));
+};
+
+
+
 
 
 module.exports = {
@@ -241,7 +251,8 @@ module.exports = {
   getPollDataById,
   addResultsToPoll,
   getPollResultsByPoll,
-  getResultsByPollId
+  getResultsByPollId,
+  getTotalPoll
 };
 
 

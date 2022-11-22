@@ -17,41 +17,47 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+    integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/response.js"></script>
 </head>
 
 <body>
-<header>
+  <header>
 
-</header>
+  </header>
 
-<div class="submit_window">
-<h2>Success!</h2>
-<p id="name_greet">Thank you for answering</p>
-<button class="home_button">Back to homepage</button>
-</div>
+  <div class="submit_window">
+    <h2>Success!</h2>
+    <p id="name_greet">Thank you for answering</p>
+    <button class="home_button">Back to homepage</button>
+  </div>
 
-<form>
-  <h1><%= question %></h1>
+  <form>
+    <h1>
+      <%= question %>
+    </h1>
 
 
-<ul id="sortable">
-  <% options.forEach((option, i) => { %>
-    <li class="ui-state-default option" id=<%= option[0] %>><%= option[1]%>
-    <span class="description"><%=option[2]%></span>
-    </li>
-  <% }) %>
-</ul>
-<br>
-<% if(!anonymous) { %>
-  <input class="name_box" name="name" placeholder="Enter your name"></input>
-  <p class="error_name">Please enter you name to submit response</p>
-  <% } %>
-  <br>
-  <button class="submit_button" type="submit" >Submit response</button>
+    <ul id="sortable">
+      <% options.forEach((option, i)=> { %>
+        <li class="ui-state-default option" id=<%=option[0] %>><%= option[1]%>
+            <span class="description">
+              <%=option[2]%>
+            </span>
+        </li>
+        <% }) %>
+    </ul>
+    <br>
+    <% if(!anonymous) { %>
+      <input class="name_box" name="name" placeholder="Enter your name"></input>
+      <p class="error_name">Please enter you name to submit response</p>
+      <% } %>
+        <br>
+        <button class="submit_button" type="submit">Submit response</button>
 
-</div>
-</form>
+        </div>
+  </form>
 </body>
+
 </html>
