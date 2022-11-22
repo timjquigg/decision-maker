@@ -62,6 +62,7 @@
                     </p>
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>
+                        
                         <li>
                           <span style="height: <%= Math.round((Number(object[title][i].score) / scores) * 300) %>%"
                             title="<%= object[title][i].option %>"></span>

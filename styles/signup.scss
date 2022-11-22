@@ -1,0 +1,54 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .first_name, .last_name, .email, .password, .confirm_password, .signup_button {
+    margin-top: 25px;
+    text-align: left;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  div.create_account {
+    margin-bottom: 40px;
+  }
+
+  form input {
+    border: 1px solid #484848;
+    border-radius: 4px;
+    width: 353px;
+    height: 41px;
+    left: 463px;
+    top: 335px;
+  }
+
+  button {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #8b5e10;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .show_login, .show_signup {
+    color: rgb(0, 83, 161);
+  }
+
+  .show_login:hover, .show_signup:hover {
+    cursor: pointer;
+    border-bottom: rgb(0, 83, 161) solid 1px;
+  }
+
+  button:hover {
+    background-color: #022c31;
+  }
+  
+}
