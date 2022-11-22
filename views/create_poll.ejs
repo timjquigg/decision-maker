@@ -36,28 +36,31 @@
     <h5 class="option_error">Poll option missing, please enter your option</h5>
     <h5 class="date_error">Please specify the poll deadline</h5>
     <form class="new_poll">
-      <input class="poll_question_box" name="poll_question" placeholder="Poll Question">
-      <br>
-      <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
-      <label for="isAnonymous">Set respondents as anonymous</label>
-      <br>
-      <label for="deadline">Deadline</label>
-      <input type="date" class="deadline_box" name="deadline" />
-      <div class="options_box">
-        <input class="options1 ob" name="option_1" placeholder="Option 1">
-        <input class="description1" name="option_1" placeholder="Description">
-        <!-- <br> -->
-        <input class="options2 ob" name="option_2" placeholder="Option 2">
-        <input class="description2" name="option_2" placeholder="Description">
-        <!-- <br> -->
-        <input class="options3 ob" name="option_3" placeholder="Option 3">
-        <input class="description3" name="option_3" placeholder="Description">
-      </div>
+      <% if (username===null ) { %>
+        <input name="email" type="email" placeholder="email">
+        <% } %>
+          <input class="poll_question_box" name="poll_question" placeholder="Poll Question">
+          <br>
+          <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
+          <label for="isAnonymous">Set respondents as anonymous</label>
+          <br>
+          <label for="deadline">Deadline</label>
+          <input type="date" class="deadline_box" name="deadline" />
+          <div class="options_box">
+            <input class="options1 ob" name="option_1" placeholder="Option 1">
+            <input class="description1" name="option_1" placeholder="Description">
+            <!-- <br> -->
+            <input class="options2 ob" name="option_2" placeholder="Option 2">
+            <input class="description2" name="option_2" placeholder="Description">
+            <!-- <br> -->
+            <input class="options3 ob" name="option_3" placeholder="Option 3">
+            <input class="description3" name="option_3" placeholder="Description">
+          </div>
 
-      <br>
-      <button class="new_option_textbox">Add Option</button>
-      <button class="delete_option_textbox">Delete Option</button>
-      <button type="submit" class="submit_button">Submit</button>
+          <br>
+          <button class="new_option_textbox">Add Option</button>
+          <button class="delete_option_textbox">Delete Option</button>
+          <button type="submit" class="submit_button">Submit</button>
     </form>
   </div>
 

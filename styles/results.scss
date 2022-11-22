@@ -1,3 +1,18 @@
 main section {
   margin-top: 100px;
+  .participants {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+footer {
+  margin-bottom: 50px;
+  text-align: center;
+  .icons {
+    font-size: 20px;
+    margin-top: 0;
+  }
 }

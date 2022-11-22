@@ -21,27 +21,12 @@
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/display_results.js"></script>
 </head>
 
 <body>
   <nav>
-    <form action="/polls" method="GET">
-      <button class="home">
-        <h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2>
-      </button>
-    </form>
-    <div class="buttons">
-      <div class="createpoll">
-        <form action="/polls/new" method="GET">
-          <button class="createpoll">Create a new poll</button>
-          <div class="icon"><i class="fa-regular fa-hand-pointer fa-beat-fade"></i></div>
-        </form>
-      </div>
-      <form action="/users" method="GET">
-        <button class="logout">logout</button>
-      </form>
-    </div>
+    <%- include('partials/header.ejs') %>
   </nav>
   <main>
     <% for (let title in object) { %>
@@ -74,10 +59,37 @@
                         <% } %>
                           <% } %>
           </ul>
+          <%if (!object[title][0].annonymous) { %>
+            <section class="participants" id="viewParticipants">
+              <button>
+                <h3>View Participants</h3>
+              </button>
+              <% for (let names of peopleResponded) { %>
+                <p>
+                  <%= names[0] %>
+                </p>
+                <p>responded on <%= names[1] %>
+                </p>
+                <% } %>
+            </section>
+            <% } %>
 
+              <%if (object[title][0].annonymous) { %>
+                <section class="participants">
+                  <p>This poll is anonymous</p>
+                </section>
+                <% } %>
         </section>
         <% } %>
   </main>
+  <footer>
+    <p>Share this poll with your friends!</p>
+    <p class="icons">
+      <i class="fa-solid fa-link"></i>
+      <i class="fa-brands fa-square-twitter"></i>
+      <i class="fa-brands fa-square-facebook"></i>
+    </p>
+  </footer>
 </body>
 
 </html>
