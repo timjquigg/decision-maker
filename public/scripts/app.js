@@ -8,7 +8,6 @@ $(() => {
     $temp.val($url).select();
     document.execCommand("copy");
     $temp.remove();
-    console.log($url)
     alert("URL copied!");
   })
     

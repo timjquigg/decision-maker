@@ -15,4 +15,12 @@ footer {
     font-size: 20px;
     margin-top: 0;
   }
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  button:hover {
+    color: #94caa4;
+  }
 }
