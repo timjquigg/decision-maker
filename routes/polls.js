@@ -6,7 +6,7 @@
  */
 
 // const e = require('express');
-
+require('dotenv').config();
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
@@ -17,22 +17,9 @@ const userdb = require('../db/queries/users');
 const mailgun = require("mailgun-js");
 
 //Enter domain and api_keys key here
-const DOMAIN = null;
-const api_key = null;
+const DOMAIN = process.env.MG_DOMAIN_KEY;
+const api_key = process.env.MG_API_KEY;
 const mg = mailgun({apiKey: api_key, domain: DOMAIN});
-
-// const data = {
-//   from: 'Kiko <kikopocampo@gmail.com>',
-//   to: 'kikopocampo@gmail.com',
-//   subject: 'Hello',
-//   text: 'Testing some Mailgun awesomness!'
-// };
-// mg.messages().send(data, function(error, body) {
-//   if (error) {
-//     console.log(error);
-//   }
-//   console.log(body);
-// });
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
@@ -160,11 +147,15 @@ router.post('/', (req, res) => {
               from: 'Decision Maker <kikopocampo@gmail.com>',
               to: req.body.email,
               subject: 'Success! Poll created',
-              text: `
-              You have created a Poll:
-              Share your poll: http://localhost:8080/polls/${pollId}
-              See the results: http://localhost:8080/polls/results/${pollId}
+              text: `Hi! You have created a Poll:
+              \nShare your poll: http://localhost:8080/polls/${pollId}
+              \nSee the results: http://localhost:8080/polls/results/${pollId}
 
+              \nTo start saving your polls, make an account now: http://localhost:8080/users
+              \nThank you for using Decision-Maker.
+
+              \nBest,
+              \nDecision-Maker Team
               `
             };
             mg.messages().send(data, function(error, body) {
@@ -202,18 +193,24 @@ router.post('/', (req, res) => {
       db.getEmailByPoll(pollId)
         .then(result => {
 
-          console.log('apple',result.rows[0].email);
+          console.log('apple',result.rows[0]);
           ///////////////////////MAILGUN/////////////////////////
           const data = {
             from: 'Decision Maker <kikopocampo@gmail.com>',
             to: result.rows[0].email,
             subject: 'Success! Poll created',
-            text: `
-            You have created a Poll:
-            Share your poll: http://localhost:8080/polls/${pollId}
-            See the results: http://localhost:8080/polls/results/${pollId}
+            text: `Hi, ${result.rows[0].first_name}.
 
-            `
+              \nYou have created a Poll:
+              \nShare your poll: http://localhost:8080/polls/${pollId}
+              \nSee the results: http://localhost:8080/polls/results/${pollId}
+
+              \nTo manage your polls, log in to your account: http://localhost:8080/users
+              \nThank you for using Decision-Maker.
+
+              \nBest,
+              \nDecision-Maker Team
+              `
           };
           mg.messages().send(data, function(error, body) {
             if (error) {
@@ -292,7 +289,40 @@ router.post('/:id', (req, res) => {
 
   db.addResultsToPoll(name,scoreSheet)
     .then(result => {
+      // console.log('apple', result.rows, 'mango', result);
+      db.getPollDataByOptionsId(result.rows[0].poll_option_id)
+        .then(result => {
+          console.log('mango', result.rows[0]);
+          const {id : pollId, email, question, created_on : dateCreated} = result.rows[0];
 
+          ///////////////////////MAILGUN/////////////////////////
+          const data = {
+            from: 'Decision Maker <kikopocampo@gmail.com>',
+            to: email,
+            subject: 'Response Notification',
+            text: `
+            \nHi! Someone has responded to your poll.
+            \nPoll question: ${question}
+            \nCreated at: ${dateCreated}
+            \nSee the results: http://localhost:8080/polls/results/${pollId}
+
+            \nTo manage your polls, log in to your account: http://localhost:8080/users
+            \nThank you for using Decision-Maker.
+
+            \nBest,
+            \nDecision-Maker Team
+            `
+          };
+          mg.messages().send(data, function(error, body) {
+            if (error) {
+              console.log(error);
+            }
+            console.log(body);
+          });
+          //////////////////////////////////////////////////////
+
+          return result;
+        });
       return result;
     })
     .catch(error => console.log(error));
