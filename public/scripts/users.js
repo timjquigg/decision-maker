@@ -16,7 +16,7 @@ $(() => {
       .then((result) => {
         if (result === '') {
           const errorText = 'Error: Invalid User';
-          $(this).parent().find('p').text(errorText).slideDown();
+          $(this).find('p').text(errorText).slideDown();
           return;
         }
         window.location.href = '../polls';
@@ -35,7 +35,7 @@ $(() => {
       .then((result) => {
         if (result === '') {
           const errorText = 'Error: E-mail already exists';
-          $(this).parent().find('p').text(errorText).slideDown();
+          $(this).find('p').text(errorText).slideDown();
           return;
         }
         window.location.href = '../polls';
@@ -44,12 +44,20 @@ $(() => {
       
   });
   
-  $('#logout').on('click', () => {
-    $.post('/users/logout')
-      .then(() => {
-        window.location.href = '../';
-      });
+  $('.show_login').on('click', function() {
+    $(this).parent().parent().find('.signup').hide();
+    $(this).parent().parent().find('.login').show();
+    $(this).parent().hide();
+    $(this).parent().next().show();
   });
+
+  $('.show_signup').on('click', function() {
+    $(this).parent().parent().find('.login').hide();
+    $(this).parent().parent().find('.signup').show();
+    $(this).parent().hide();
+    $(this).parent().prev().show();
+  });
+
 
   const validateLogin = function(source) {
   
@@ -58,7 +66,7 @@ $(() => {
 
     if (email.length === 0 || password.length === 0) {
       const errorText = 'Email & password must not be blank.';
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
     return true;
@@ -88,13 +96,13 @@ $(() => {
       
     if (errorVals.length > 0) {
       const errorText = `${errorVals.join(', ')} must not be blank.`;
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
 
     if (password !== confirmPassword) {
       const errorText = 'Passwords do not match.';
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
     return true;
