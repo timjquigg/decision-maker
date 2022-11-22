@@ -35,8 +35,15 @@
   </header>
   <main>
     <h3 class="pollhistory">
-      Your poll history<i class="fa-solid fa-arrow-trend-down"></i>
+      Your poll history<i class="fa-solid fa-angles-down"></i>
     </h3>
+    <% if (Object.keys(object).length === 0) { %>
+      <section  class="nopoll">
+        <div><h2>No polls here yet!</h2></div>
+        <div><p>Start creating interactive and engaging polls to include your friends.</p></div>
+        <div><button class="createpoll">Create a poll</button></div>
+      </section>
+    <% } %>
     <% for (let title in object) { %>
       <% let scores=[]; %>
         <section>
@@ -56,9 +63,9 @@
                     <p class="noresponse">There's no response to this poll yet</p>
                     <p>Share this poll with your frineds!</p>
                     <p class="icons">
-                      <i class="fa-solid fa-link"></i>
-                      <i class="fa-brands fa-square-twitter"></i>
-                      <i class="fa-brands fa-square-facebook"></i>
+                      <button class="clipboard" href="http://localhost8080/polls/results/<%=object[title][0].pollId%>"><i class="fa-solid fa-link"></i></button>
+                      <button><i class="fa-brands fa-square-twitter"></i></button>
+                      <button><i class="fa-brands fa-square-facebook"></i></button>
                     </p>
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>

@@ -14,9 +14,6 @@ $(() => {
     opacity: 0.3,
   });
 
-
-
-
   console.log('document ready!');
 
   $('.option').on('mouseover', function(e) {

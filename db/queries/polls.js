@@ -266,6 +266,32 @@ const getTotalPoll = () => {
     .catch(err => console.log(err));
 };
 
+const getEmailByPoll = (pollId) => {
+  let queryString = `SELECT DISTINCT(email), first_name
+  FROM polls JOIN users
+  ON creator_id = users.id
+  WHERE polls.id = $1;`;
+
+  return db
+    .query(queryString, [pollId])
+    .then(result => result)
+    .catch(err => console.log(err));
+};
+
+const getPollDataByOptionsId = (optionId) => {
+  let queryString = `SELECT polls.id, email, question, polls.created_on
+  FROM polls
+  JOIN poll_options ON poll_id = polls.id
+  JOIN users ON users.id = creator_id
+  WHERE poll_options.id = $1`;
+
+  return db
+    .query(queryString, [optionId])
+    .then(result => result)
+    .catch(err => console.log(err));
+
+};
+
 
 
 
@@ -279,7 +305,9 @@ module.exports = {
   getPollResultsByPoll,
   getOptionsByPollId,
   getNamesResponded,
-  getTotalPoll
+  getTotalPoll,
+  getEmailByPoll,
+  getPollDataByOptionsId
 };
 
 
