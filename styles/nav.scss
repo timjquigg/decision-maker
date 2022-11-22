@@ -43,6 +43,7 @@ nav {
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
+    font-weight: bold;
   }
 
   button.home {
@@ -73,12 +74,16 @@ nav {
     width: 100%;
   }
 
-  button.createpoll:hover,
-  button.logout:hover {
-    background-color: rgb(255, 255, 255);
-  }
-
   button:hover {
     cursor: pointer;
+  }
+
+  div.nav-right {
+    button.createpoll:hover,
+    button.logout:hover,
+    button.login:hover,
+    button.signup:hover {
+      background-color: rgb(255, 255, 255);
+    }
   }
 }
