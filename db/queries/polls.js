@@ -138,6 +138,7 @@ const getOptionsByPollId = (pollId) => {
   polls.id AS poll_id,
   polls.question AS title,
   poll_options.poll_option_title AS option,
+  polls.annonymous AS isAnnonymous,
   created_on AS date_created
   FROM polls
   JOIN users ON creator_id = users.id
@@ -151,6 +152,29 @@ const getOptionsByPollId = (pollId) => {
     .then((results) => {
       // console.log(results);
       if (results) {
+        return results.rows;
+      } else {
+        return null;
+      }
+    })
+    .catch((err) => {
+      console.log('error message from database:', err.message);
+    });
+};
+
+const getNamesResponded = (pollId) => {
+  const queryString = `
+  SELECT responses.name AS respondedBy,
+  responses.responded AS time_responded
+  FROM responses JOIN poll_options ON poll_options.id = poll_option_id
+  JOIN polls ON poll_id = polls.id
+  WHERE polls.id = $1
+  GROUP BY responses.name, time_responded;
+  `;
+  return db.query(queryString, [pollId])
+    .then(results => {
+      if (results) {
+        console.log('results from getNamesResponses', results.rows);
         return results.rows;
       } else {
         return null;
@@ -243,7 +267,8 @@ module.exports = {
   getPollDataById,
   addResultsToPoll,
   getPollResultsByPoll,
-  getOptionsByPollId
+  getOptionsByPollId,
+  getNamesResponded
 };
 
 
