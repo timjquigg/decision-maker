@@ -15,9 +15,12 @@ const userdb = require('../db/queries/users');
 
 //mailgun
 const mailgun = require("mailgun-js");
+
+//Enter domain and api_keys key here
 const DOMAIN = null;
 const api_key = null;
 const mg = mailgun({apiKey: api_key, domain: DOMAIN});
+
 // const data = {
 //   from: 'Kiko <kikopocampo@gmail.com>',
 //   to: 'kikopocampo@gmail.com',
