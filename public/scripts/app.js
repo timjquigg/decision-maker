@@ -1,4 +1,5 @@
 $(() => {
+
   let $temp = $("<input>");
   let $url = $('.clipboard').attr('href');
   
@@ -10,5 +11,5 @@ $(() => {
     $temp.remove();
     alert("URL copied!");
   })
-    
-  })
+
+})
