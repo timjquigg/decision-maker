@@ -266,6 +266,18 @@ const getTotalPoll = () => {
     .catch(err => console.log(err));
 };
 
+const getEmailByPoll = (pollId) => {
+  let queryString = `SELECT DISTINCT(email)
+  FROM polls JOIN users
+  ON creator_id = users.id
+  WHERE polls.id = $1;`;
+
+  return db
+    .query(queryString, [pollId])
+    .then(result => result)
+    .catch(err => console.log(err));
+};
+
 
 
 
@@ -279,7 +291,8 @@ module.exports = {
   getPollResultsByPoll,
   getOptionsByPollId,
   getNamesResponded,
-  getTotalPoll
+  getTotalPoll,
+  getEmailByPoll
 };
 
 

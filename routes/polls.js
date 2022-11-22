@@ -15,8 +15,8 @@ const userdb = require('../db/queries/users');
 
 //mailgun
 const mailgun = require("mailgun-js");
-const DOMAIN = 'sandbox9d0f37251f6c40a1a7e73f133df83629.mailgun.org';
-const api_key = '9dbac35569f76b42d6be13b415d1da68-2de3d545-ed51c661';
+const DOMAIN = null;
+const api_key = null;
 const mg = mailgun({apiKey: api_key, domain: DOMAIN});
 // const data = {
 //   from: 'Kiko <kikopocampo@gmail.com>',
