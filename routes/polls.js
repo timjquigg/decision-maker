@@ -253,6 +253,7 @@ router.get('/results/:id', (req, res) => {
           res.render('results', tempVar);
         });
     })
+  })
     .catch(e => res.send(e));
 })
 
