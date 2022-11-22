@@ -17,7 +17,7 @@ $(() => {
     $.post('/users/login',$(this).serialize())
       .then((result) => {
         if (result === '') {
-          const errorText = 'Error: Invalid User';
+          const errorText = 'Error: Invalid email and/or password';
           $(this).find('p').text(errorText).slideDown();
           return;
         }
@@ -47,17 +47,12 @@ $(() => {
   });
   
   $('.show_login').on('click', function() {
-    $(this).parent().parent().find('.signup').hide();
-    $(this).parent().parent().find('.login').show();
-    $(this).parent().hide();
-    $(this).parent().next().show();
+    console.log('click');
+    $('.nav-right .login').trigger('click');
   });
 
   $('.show_signup').on('click', function() {
-    $(this).parent().parent().find('.login').hide();
-    $(this).parent().parent().find('.signup').show();
-    $(this).parent().hide();
-    $(this).parent().prev().show();
+    $('.nav-right .signup').trigger('click');
   });
 
 

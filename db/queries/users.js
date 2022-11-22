@@ -10,7 +10,7 @@ const getUserByEmail = (email) => {
       queryString, queryParams)
     .then((user) => {
       if (user.rows.length > 0) {
-        return user.rows[0];
+        return user.rows;
       }
       return null;
     })

@@ -30,57 +30,64 @@
 
 <body>
   <main>
-
-    <div class="signup">
-      <div class="create_account">
-        <h1>Create an account</h1>
-      </div>
-      <form class="authentication signup">
-        <div class="fullname">
-          <div class="first_name">
-            <label for="first_name">First Name</label>
-            <div><input name="first_name" type="text" placeholder="First Name"></div>
+    <div class="signup" <% if (service !=='signup' ) { %>
+      hidden
+      <%} %>
+        >
+        <div class="create_account">
+          <h1>Create an account</h1>
+        </div>
+        <form class="authentication signup">
+          <div class="fullname">
+            <div class="first_name">
+              <label for="first_name">First Name</label>
+              <div><input name="first_name" type="text" placeholder="First Name"></div>
+            </div>
+            <div class="last_name">
+              <label for="last_name">Last Name</label>
+              <div><input name="last_name" type="text" placeholder="Last Name"></div>
+            </div>
           </div>
-          <div class="last_name">
-            <label for="last_name">Last Name</label>
-            <div><input name="last_name" type="text" placeholder="Last Name"></div>
+          <div class="email">
+            <label for="email">E-mail</label>
+            <div><input name="email" type="email" placeholder="email"></div>
           </div>
-        </div>
-        <div class="email">
-          <label for="email">E-mail</label>
-          <div><input name="email" type="email" placeholder="email"></div>
-        </div>
-        <div class="password">
-          <label for="Password">Password</label>
-          <div><input name="password" type="password" placeholder="password"></div>
-        </div>
-        <div class="confirm_password">
-          <label for="confirm_password">Confirm Password</label>
-          <div><input name="confirm_password" type="password" placeholder="confirm password"></div>
-          <div><p class="authentication_error" hidden></p></div>
-        </div>
-        <button class="signup_button">Sign Up</button>
-      </form>
+          <div class="password">
+            <label for="Password">Password</label>
+            <div><input name="password" type="password" placeholder="password"></div>
+          </div>
+          <div class="confirm_password">
+            <label for="confirm_password">Confirm Password</label>
+            <div><input name="confirm_password" type="password" placeholder="confirm password"></div>
+            <div>
+              <p class="authentication_error" hidden></p>
+            </div>
+          </div>
+          <button class="signup_button">Sign Up</button>
+        </form>
+        <p>Already have an account? <span class="show_login">Log In</span></p>
     </div>
 
-    <div class="login" hidden>
-      <h2>Welcome Back!</h2>
-      <form class="authentication login">
-        <div class="email">
-          <label for="email">E-mail</label>
-          <div><input name="email" type="email" placeholder="email"></div>
-        </div>
-        <div class="password">
-          <label for="password">Password</label>
-          <div><input name="password" type="password" placeholder="password"></div>
-        </div>
-        <button class="signup_button">Login</button>
-        <p class="authentication_error" hidden></p>
-      </form>
+    <div class="login" <% if (service!=='login' ) { %>
+      hidden
+      <%} %> >
+        <h2>Welcome Back!</h2>
+        <form class="authentication login">
+          <div class="email">
+            <label for="email">E-mail</label>
+            <div><input name="email" type="email" placeholder="email"></div>
+          </div>
+          <div class="password">
+            <label for="password">Password</label>
+            <div><input name="password" type="password" placeholder="password"></div>
+          </div>
+          <button class="signup_button">Login</button>
+          <p class="authentication_error" hidden></p>
+        </form>
+        <p>Create an account <span class="show_signup">Here</span></p>
     </div>
 
-    <p>Already have an account? <span class="show_login">Log In</span></p>
-    <p hidden>Create an account <span class="show_signup">Here</span></p>
+
   </main>
 </body>
 
