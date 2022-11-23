@@ -23,13 +23,13 @@ $(() => {
   $('span.bar').mouseenter(function(event) {
     event.preventDefault();
     $(this).closest('li').find('p').slideDown();
-    $(this).css("background", "#a7dbb6");
+    $(this).css("background", "#D2FDFF");
   })
 
   $('span.bar').mouseleave(function(event) {
     event.preventDefault();
     $('.totalscore').slideUp();
-    $(this).css("background", "#94caa4");
+    $(this).css("background", "#B4DFE5");
   })
     
 });

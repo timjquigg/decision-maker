@@ -4,15 +4,13 @@ body {
   box-sizing: border-box;
   justify-content: flex-start;
   align-items: flex-start;
-  background: rgb(253, 249, 241);
-  font-family: 'Montserrat', sans-serif;
-  color: #022c31;
+  background: $background-color;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $dark-font;
 }
 
-header {
-  // margin-left: 30px;
-  // margin-right: 30px;
-  // font-size: 30px;
+h1, h2 {
+  font-family: 'Playfair Display', serif;
 }
 
 main {
@@ -53,10 +51,11 @@ main {
       background-color: transparent;
       font-weight: bold;
       font-size: 25px;
+      color: $dark-font;
     }
 
     button:hover {
-      color: #94caa4;
+      color: $dark-font-hover;
       cursor: pointer;
     }
   }
@@ -72,17 +71,17 @@ section.nopoll {
     margin: 0;
   }
 
-  button.createpoll {
-    margin-top: 20px;
-    font-size: 20px;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #8b5e10;
-    color: #fff;
-    font-weight: bold;
-  }
+  // button.createpoll {
+  //   margin-top: 20px;
+  //   font-size: 20px;
+  //   border: none;
+  //   border-radius: 4px;
+  //   padding: 10px 20px;
+  //   cursor: pointer;
+  //   background-color: #8b5e10;
+  //   color: #fff;
+  //   font-weight: bold;
+  // }
 }
 
 
@@ -117,7 +116,7 @@ section.nopoll {
     }
 
     i:hover {
-      color: #94caa4;
+      color: $dark-font-hover;
       cursor: pointer;
     }
   }
@@ -133,7 +132,7 @@ section.nopoll {
   span {
     margin: 0 1em;
     display: block;
-    background: rgba(#94caa4, .75);
+    background: #B4DFE5;
     animation: draw 1s ease-in-out;
     border-radius: 10px 10px 0 0;
 

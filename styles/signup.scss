@@ -1,3 +1,5 @@
+@import "layout";
+
 main {
   display: flex;
   flex-direction: column;
@@ -33,8 +35,8 @@ main {
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #8b5e10;
-    color: #fff;
+    background-color: $accent-color;
+    color: $light-font;
     font-weight: bold;
   }
 
@@ -48,7 +50,7 @@ main {
   }
 
   button:hover {
-    background-color: #022c31;
+    background-color: $accent-color-hover;
   }
   
 }

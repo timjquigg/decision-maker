@@ -5,6 +5,25 @@ html,
 h3 {
   margin: 0;
 }
+//// theme 1
+$background-color: #f8eeca;
+$dark-color: #303C6C;
+$accent-color: #F4976C;
+$accent-color-hover: #f6c0a8;
+$bar-color: #B4DFE5;
+$bar-hover: #D2FDFF;
+$dark-font: rgb(39, 24, 24);
+$dark-font-hover: rgb(75, 46, 46);
+$light-font: #fff;
+
+//// theme 2
+// $background-color: #EAE7DC;
+// $dark-color: #303C6C;
+// $accent-color: #F4976C;
+// $bar-color: #B4DFE5;
+// $bar-hover: #D2FDFF;
+// $dark-font: rgb(39, 24, 24);
+// $light-font: #fff;
 
 body {
   margin: 0;
@@ -12,16 +31,10 @@ body {
   box-sizing: border-box;
   justify-content: flex-start;
   align-items: flex-start;
-  background: rgb(253, 249, 241);
-  font-family: 'Montserrat', sans-serif;
-  color: #022c31;
+  background: $background-color;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $dark-font;
 }
-
-// header {
-//   // margin-left: 30px;
-//   // margin-right: 30px;
-//   // font-size: 30px;
-// }
 
 main {
   margin-left: 30px;
@@ -76,7 +89,7 @@ main {
   span {
     margin: 0 1em;
     display: block;
-    background: rgba(#94caa4, .75);
+    background: #B4DFE5;
     animation: draw 1s ease-in-out;
     border-radius: 10px 10px 0 0;
 
