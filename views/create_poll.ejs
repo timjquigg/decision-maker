@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+    integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Local Stylesheets -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
@@ -31,6 +35,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/5.0.1/autosize.min.js"
     integrity="sha512-aBxhlAogg9r6Gtes+dsuqW6IQ4Ee0MtjexckbMNOVdxAfi5NSEd38BNEgFiaBWS6cl67r+8OImzxVKDdmswhnA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+    integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 </head>
 
@@ -51,16 +59,18 @@
       </div>
       <form class="new_poll">
         <% if (username===null ) { %>
+          <label for="email">E-mail</label>
           <input name="email" type="email" placeholder="email">
           <% } %>
-            <label for="isAnonymous">Set respondents as anonymous</label>
-            <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
-            <textarea class="poll_question_box" name="poll_question" placeholder="Poll Question"></textarea>
-            <br>
-            <br>
-            <label for="deadline">Deadline</label>
-            <input type="date" class="deadline_box" name="deadline" />
+            <div class="is_anonymous">
 
+              <label for="isAnonymous">Click if poll is anonymous</label>
+              <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
+            </div>
+            <label for="poll_question">Poll Question</label>
+            <textarea class="poll_question_box" name="poll_question" placeholder="Poll Question"></textarea>
+            <label for="deadline">Deadline</label>
+            <input autocomplete="off" class="deadline_box" name="deadline" />
             <div class="options_box">
               <div class="option">
                 <input class="options1 ob" name="option_1" placeholder="Option 1">

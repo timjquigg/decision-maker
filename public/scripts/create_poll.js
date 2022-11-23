@@ -111,8 +111,8 @@ $(() => {
 
   const deleteTextBox = () => {
   // let $lastTextBox = $('.option')
-    $(`.options${textboxCount}`).remove();
-    $(`.description${textboxCount}`).remove();
+    $(`.options${textboxCount}`).parent().remove();
+    // $(`.description${textboxCount}`).remove();
     textboxCount --;
 
   };
@@ -135,6 +135,7 @@ $(() => {
     window.location.href = '../polls';
   });
 
+  $('.deadline_box').datetimepicker();
 });
 
 

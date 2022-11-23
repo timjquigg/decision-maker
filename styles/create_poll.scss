@@ -35,15 +35,23 @@ main {
 textarea {
   margin: 0 0.5em;
   min-width: 300px;
+  border: 1px solid;
+  border-radius: 4px;
 
 }
 
 input {
   min-width: 200px;
-  margin: 0.5em;
+  // height: 2.5rem;
+  padding: 4px;
+  margin: 0 0.5em;
+  border: 1px solid;
+  border-radius: 4px;
 }
 
 textarea {
+  padding: 4px;
+  // height: 2.5rem;
   resize: none;
 }
 
