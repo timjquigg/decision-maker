@@ -238,7 +238,10 @@ router.get('/:id', (req, res) => {
   const pollData = {};
   db.getPollDataById(pollId)
     .then(result => {
-      // console.log(result.rows)
+      if (Date.now() > result.rows[0].deadline) {
+        res.send('Expired');
+        return;
+      }
       result.rows.forEach(data => {
         // console.log(data.poll_id);
         if (!pollData[data.poll_id]) {

@@ -195,7 +195,8 @@ poll_options.id AS option_id,
 question,
 poll_option_title AS options,
 poll_option_description AS description,
-annonymous AS is_Anonymous
+annonymous AS is_Anonymous,
+polls.deadline AS deadline
 FROM polls JOIN poll_options ON polls.id = poll_id
 WHERE polls.id = $1;
 `;
