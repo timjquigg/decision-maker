@@ -35,7 +35,7 @@ main {
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: $accent-color;
+    background-color: $accent-color2;
     color: $light-font;
     font-weight: bold;
   }
@@ -50,7 +50,7 @@ main {
   }
 
   button:hover {
-    background-color: $accent-color-hover;
+    background-color: $accent-color2-hover;
   }
   
 }
