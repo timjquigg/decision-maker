@@ -135,7 +135,9 @@ $(() => {
     window.location.href = '../polls';
   });
 
-  $('.deadline_box').datetimepicker();
+  $('.deadline_box').datetimepicker({
+    format:'d.m.Y H:i',
+    inline: true});
 });
 
 

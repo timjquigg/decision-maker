@@ -51,38 +51,38 @@
     <h1 id="poll_label">Create New Poll</h1>
 
     <div class="poll">
-      <div class="errors">
-
-        <h5 class="question_error">Poll question missing, please enter your question</h5>
-        <h5 class="option_error">Poll option missing, please enter your option</h5>
-        <h5 class="date_error">Please specify the poll deadline</h5>
-      </div>
+      <!-- <div class="errors"> -->
+      <h5 class="question_error" hidden>Poll question missing, please enter your question</h5>
+      <h5 class="option_error" hidden>Poll option missing, please enter your option</h5>
+      <h5 class="date_error" hidden>Please specify the poll deadline</h5>
+      <!-- </div> -->
       <form class="new_poll">
         <% if (username===null ) { %>
           <label for="email">E-mail</label>
           <input name="email" type="email" placeholder="email">
           <% } %>
             <div class="is_anonymous">
-
-              <label for="isAnonymous">Click if poll is anonymous</label>
+              <label for="isAnonymous">Click for anonymous results</label>
               <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
             </div>
-            <label for="poll_question">Poll Question</label>
-            <textarea class="poll_question_box" name="poll_question" placeholder="Poll Question"></textarea>
+            <div class="poll_question">
+              <label for="poll_question">Poll Question</label>
+              <textarea class="poll_question_box" name="poll_question" placeholder="Poll Question"></textarea>
+            </div>
             <label for="deadline">Deadline</label>
-            <input autocomplete="off" class="deadline_box" name="deadline" />
+            <input class="deadline_box" name="deadline" type="text" />
             <div class="options_box">
               <div class="option">
                 <input class="options1 ob" name="option_1" placeholder="Option 1">
-                <textarea class="description1" name="option_1" placeholder="Description"></textarea>
+                <textarea class="description1" name="option_1" placeholder="Description (Optional)"></textarea>
               </div>
               <div class="option">
                 <input class="options2 ob" name="option_2" placeholder="Option 2">
-                <textarea class="description2" name="option_2" placeholder="Description"></textarea>
+                <textarea class="description2" name="option_2" placeholder="Description (Optional)"></textarea>
               </div>
               <div class="option">
                 <input class="options3 ob" name="option_3" placeholder="Option 3">
-                <textarea class="description3" name="option_3" placeholder="Description"></textarea>
+                <textarea class="description3" name="option_3" placeholder="Description (Optional)"></textarea>
               </div>
             </div>
 

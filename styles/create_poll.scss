@@ -17,7 +17,7 @@ main {
 }
 
 .options_box {
-  margin: 2em auto;
+  margin: 1em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +47,16 @@ input {
   margin: 0 0.5em;
   border: 1px solid;
   border-radius: 4px;
+
+}
+
+input[type="checkbox"] {
+  min-width: 0px;
+}
+
+.deadline_box {
+  min-width: 0px;
+  // height: 1em;
 }
 
 textarea {
@@ -57,4 +67,43 @@ textarea {
 
 .poll_question_box {
   min-width: 400px;
+}
+
+div {
+  margin: 1em;
+
+  .deadline {
+    align-items: center;
+  }
+}
+
+.is_anonymous {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.poll_question {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.deadline_box {
+  border-radius: 10px;
+}
+
+.xdsoft_datetimepicker.xdsoft_inline {
+  border-radius: .5em;
+}
+
+button {
+  margin: 0.5em;
+  border-radius: 0.5em;
+
+}
+
+button:hover {
+  cursor: pointer;
 }
