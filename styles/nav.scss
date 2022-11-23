@@ -10,6 +10,7 @@ nav {
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
+  font-family: $theme-font;
 
   h2 {
     margin-left: 40px;
@@ -55,6 +56,10 @@ nav {
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
   }
 
   button.home {
@@ -73,10 +78,12 @@ nav {
 
   button.createpoll {
     margin-right: 20px;
+    margin-bottom: 0;
   }
 
   div.icon {
     margin-right: 20px;
+    margin-top: 0;
   }
 
   i.fa-regular {
@@ -95,7 +102,7 @@ nav {
     button.logout:hover,
     button.login:hover,
     button.signup:hover {
-      background-color:$bar-hover;
+      background-color:$accent-color-hover;
       color:$dark-color;
     }
   }

@@ -41,7 +41,7 @@
       <section  class="nopoll">
         <div><h2>No polls here yet!</h2></div>
         <div><p>Start creating interactive and engaging polls to include your friends.</p></div>
-        <div><button class="createpoll">Create a poll</button></div>
+        <form action="/polls/new" method="GET"><div><button class="createpoll">Create a poll</button></div></form>
       </section>
     <% } %>
     <% for (let title in object) { %>
