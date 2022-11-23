@@ -56,7 +56,6 @@ textarea.poll_question_box {
 
 input {
   min-width: 200px;
-  // height: 2.5rem;
   padding: 4px;
   margin: 0 0.5em;
   border: 1px solid;
@@ -70,7 +69,6 @@ input[type="checkbox"] {
 
 .deadline_box {
   min-width: 0px;
-  // height: 1em;
 }
 
 textarea {
@@ -130,8 +128,6 @@ div {
 }
 
 button {
-  // margin: 0.5em;
-  // border-radius: 0.5em;
   border-radius: 15px;
   padding: 5px 20px;
   background-color: $accent-color2;

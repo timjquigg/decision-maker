@@ -34,12 +34,10 @@
       <!-- <h2>Welcome back <%= username %>!</h2> -->
   </header>
   <main>
-    <!-- <h3 class="pollhistory">
-      Your poll history<i class="fa-solid fa-angles-down"></i>
-    </h3> -->
     <% if (Object.keys(object).length === 0) { %>
       <section  class="nopoll">
         <div><h2>No polls here yet!</h2></div>
+        <img src="/images/Plan-amico.svg" />
         <div><p>Start creating interactive and engaging polls to include your friends.</p></div>
         <form action="/polls/new" method="GET"><div><button id="createpoll">Create a poll</button></div></form>
       </section>

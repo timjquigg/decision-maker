@@ -68,9 +68,9 @@ main {
       border-radius: 25px;
       background-color: $accent-color2;
       font-weight: bold;
-      font-size: 25px;
-      color: $light-font;
-      padding: 7px 20px;
+      font-size: 20px;
+      color: $dark-font;
+      padding: 10px 30px;
       margin-top: 30px;
     }
 
@@ -82,7 +82,7 @@ main {
 }
 
 section.nopoll {
-  margin-top: 200px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
