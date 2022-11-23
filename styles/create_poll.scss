@@ -1,5 +1,9 @@
 @import "layout";
 
+body {
+  height: 100vh;
+}
+
 main {
   text-align: center;
   margin-left: auto;
@@ -44,6 +48,10 @@ textarea {
   border: 1px solid;
   border-radius: 4px;
   border-color: $dark-font-hover;
+}
+
+textarea.poll_question_box {
+  margin-left: 0;
 }
 
 input {
@@ -133,6 +141,7 @@ button {
 
 .submit_button {
   background-color: $accent-color2;
+  color: $light-font;
   padding: 10px 30px;
   border-radius: 20px;
   font-weight: bold;

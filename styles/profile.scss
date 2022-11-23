@@ -111,10 +111,6 @@ section.nopoll {
     align-self: center;
   }
 
-  p.noresponse {
-    margin-top: 70px;
-  }
-
   p.icons {
     margin-top: 20px;
     font-size: 30px;
@@ -203,4 +199,15 @@ button.share {
   border: none;
   background-color: transparent;
   color: $dark-font;
+}
+
+.no-response {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: 300px;
 }
