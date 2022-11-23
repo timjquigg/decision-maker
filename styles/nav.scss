@@ -63,6 +63,8 @@ nav {
   }
 
   button.home {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border-radius: 0;
     padding: 0;
@@ -90,6 +92,15 @@ nav {
     margin-top: 10px;
     text-align: center;
     width: 100%;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .name {
+    font-size: 30px;
   }
 
   button:hover {
