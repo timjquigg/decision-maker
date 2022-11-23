@@ -54,6 +54,7 @@
                     </div>
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>
+                        <%console.log(object[title][i].score)%>
                         <li>
                           <p class="totalscore">total score: <%=object[title][i].score%></p>
                           <span class="bar bar<%=i%>" style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
