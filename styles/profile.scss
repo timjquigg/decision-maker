@@ -52,7 +52,18 @@ main {
       text-align: center;
     }
 
-    button {
+    button.polltitle {
+      border: none;
+      background: transparent;
+      color: $dark-font;
+    }
+
+    button.polltitle:hover {
+      cursor: pointer;
+      color: $dark-font-hover;
+    }
+
+    #createpoll {
       border: none;
       border-radius: 25px;
       background-color: $accent-color2;
@@ -63,7 +74,7 @@ main {
       margin-top: 30px;
     }
 
-    button:hover {
+    #createpoll:hover {
       background-color: $accent-color2-hover;
       cursor: pointer;
     }
@@ -79,18 +90,6 @@ section.nopoll {
   p {
     margin: 0;
   }
-
-  // button.createpoll {
-  //   margin-top: 20px;
-  //   font-size: 20px;
-  //   border: none;
-  //   border-radius: 4px;
-  //   padding: 10px 20px;
-  //   cursor: pointer;
-  //   background-color: #8b5e10;
-  //   color: #fff;
-  //   font-weight: bold;
-  // }
 }
 
 

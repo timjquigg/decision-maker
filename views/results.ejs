@@ -61,11 +61,11 @@
           </ul>
           <%if (!object[title][0].annonymous) { %>
             <section class="participants" id="viewParticipants">
-              <button>
+              <button class="view_names polltitle">
                 <h3>View Participants</h3>
               </button>
               <% for (let names of peopleResponded) { %>
-                <p>
+                <p class="name">
                   <%= names[0] %>
                 </p>
                 <p>responded on <%= names[1] %>
