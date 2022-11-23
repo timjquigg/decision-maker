@@ -91,7 +91,12 @@ nav {
   img.logo {
     margin-left: 40px;
     text-align: center;
-    
+  }
+
+  i.fa-regular {
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
   }
 
   .logo {
@@ -109,7 +114,6 @@ nav {
   }
 
   div.nav-right {
-
     button.createpoll:hover,
     button.logout:hover,
     button.login:hover,
