@@ -185,7 +185,7 @@ router.post('/', (req, res) => {
   const userId = req.session.userId;
   db.addNewPoll(req.body, userId)
     .then(result => {
-      // console.log('poll log:', result.rows);
+      console.log('poll log:', result.rows);
       db.getTotalPoll()
         .then(result => res.send(result.rows[0].count))
         .catch(err => console.log(err.message));
