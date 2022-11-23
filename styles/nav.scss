@@ -2,7 +2,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #022c31;
+  background-color: #123c69ed;
   color: rgb(255, 255, 255);
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -22,12 +22,15 @@ nav {
     margin-right: 20px;
     justify-content: center;
     align-items: center;
+
     h3 {
       margin-right: 20px;
     }
+
     button.signup {
       margin-right: 20px;
     }
+
     div.profile_buttons {
       margin-top: 25px;
       margin-right: 0;
@@ -49,6 +52,8 @@ nav {
   }
 
   button.home {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border-radius: 0;
     padding: 0;
@@ -76,11 +81,21 @@ nav {
     width: 100%;
   }
 
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .name {
+    font-size: 30px;
+  }
+
   button:hover {
     cursor: pointer;
   }
 
   div.nav-right {
+
     button.createpoll:hover,
     button.logout:hover,
     button.login:hover,

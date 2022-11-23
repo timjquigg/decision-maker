@@ -12,6 +12,8 @@ $(() => {
     position: { my: "left+15 center", at: "right center" }
   });
 
+  $('.question').on('click', () => $('.question').toggle('slide'));
+
   $("#sortable").sortable({
     placeholder: "placeholder",
     axis : 'y',
