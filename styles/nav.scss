@@ -1,16 +1,19 @@
+@import "layout";
+
 nav {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #123c69ed;
-  color: rgb(255, 255, 255);
+  background-color: $dark-color;
+  color: $light-font;
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
+  font-family: $theme-font;
 
   h2 {
-    margin-left: 20px;
+    margin-left: 40px;
   }
 
   .fa-chart-simple {
@@ -20,16 +23,20 @@ nav {
   div.nav-right {
     display: flex;
     // flex-direction: column;
-    margin-right: 20px;
+    margin-right: 40px;
     justify-content: center;
     align-items: center;
 
     h3 {
       margin-right: 20px;
     }
-
+    button {
+      background-color: $accent-color;
+      color:$dark-font;
+      font-size: 18px;
+    }
     button.signup {
-      margin-right: 20px;
+      margin-right: 30px;
     }
 
     div.profile_buttons {
@@ -48,8 +55,11 @@ nav {
   button {
     border: none;
     border-radius: 25px;
-    padding: 10px 20px;
-    font-weight: bold;
+    padding: 10px 30px;
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
   }
 
   button.home {
@@ -58,7 +68,7 @@ nav {
     background-color: transparent;
     border-radius: 0;
     padding: 0;
-    color: aliceblue;
+    color: $light-font;
   }
 
   div.createpoll {
@@ -70,25 +80,33 @@ nav {
 
   button.createpoll {
     margin-right: 20px;
+    margin-bottom: 0;
   }
 
   div.icon {
     margin-right: 20px;
+    margin-top: 0;
+  }
+
+  img.logo {
+    margin-left: 40px;
+    text-align: center;
   }
 
   i.fa-regular {
-    margin-top: 10px;
+    margin-top: 8px;
     text-align: center;
     width: 100%;
   }
 
   .logo {
-    height: 50px;
+    height: 43px;
     width: 50px;
   }
 
   .name {
     font-size: 30px;
+    font-weight: bold;
   }
 
   button:hover {
@@ -96,12 +114,12 @@ nav {
   }
 
   div.nav-right {
-
     button.createpoll:hover,
     button.logout:hover,
     button.login:hover,
     button.signup:hover {
-      background-color: rgb(255, 255, 255);
+      background-color:$accent-color-hover;
+      color:$dark-color;
     }
   }
 }

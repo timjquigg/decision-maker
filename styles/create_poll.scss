@@ -1,3 +1,5 @@
+@import "layout";
+
 main {
   text-align: center;
   margin-left: auto;
@@ -32,12 +34,16 @@ main {
   align-items: flex-start;
 }
 
+div.option input {
+  margin: 0;
+}
+
 textarea {
-  margin: 0 0.5em;
+  margin-left: 0.5em;
   min-width: 300px;
   border: 1px solid;
   border-radius: 4px;
-
+  border-color: $dark-font-hover;
 }
 
 input {
@@ -47,7 +53,7 @@ input {
   margin: 0 0.5em;
   border: 1px solid;
   border-radius: 4px;
-
+  border-color: $dark-font-hover;
 }
 
 input[type="checkbox"] {
@@ -66,6 +72,7 @@ textarea {
 }
 
 .poll_question_box {
+  width: 100%;
   min-width: 400px;
 }
 
@@ -88,6 +95,21 @@ div {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  width: 508px;
+  label {
+    font-weight: bold;
+    padding-left: 5px;
+  }
+}
+
+.deadline {
+  display: flex;
+  flex-direction: column;
+  label {
+    font-weight: bold;
+    padding-left: 5px;
+    margin-top: 30px;
+  }
 }
 
 .deadline_box {
@@ -95,15 +117,45 @@ div {
 }
 
 .xdsoft_datetimepicker.xdsoft_inline {
+  margin-top: 5px;
   border-radius: .5em;
 }
 
 button {
-  margin: 0.5em;
-  border-radius: 0.5em;
+  // margin: 0.5em;
+  // border-radius: 0.5em;
+  border-radius: 15px;
+  padding: 5px 20px;
+  background-color: $accent-color;
+  color: $dark-color;
+  border: none;
+}
 
+.submit_button {
+  background-color: $accent-color2;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.add_delete {
+  margin-top: 0;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: $accent-color-hover;
+}
+
+.submit_button:hover {
+  background-color: $accent-color2-hover;
+}
+
+.copyURL, .yourURL {
+  margin-bottom: 10px;
+}
+
+.yourURL, .profile_button {
+  margin-top: 50px;
 }

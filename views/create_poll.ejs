@@ -66,11 +66,9 @@
               <input type="checkbox" class="anonymousBox" name="isAnonymous" value="true">
             </div>
             <div class="poll_question">
-              <label for="poll_question">Poll Question</label>
+              <label for="poll_question">What do you want to ask?</label>
               <textarea class="poll_question_box" name="poll_question" placeholder="Poll Question"></textarea>
             </div>
-            <label for="deadline">Deadline</label>
-            <input class="deadline_box" name="deadline" type="text" />
             <div class="options_box">
               <div class="option">
                 <input class="options1 ob" name="option_1" placeholder="Option 1">
@@ -85,10 +83,16 @@
                 <textarea class="description3" name="option_3" placeholder="Description (Optional)"></textarea>
               </div>
             </div>
-
-            <br>
-            <button class="new_option_textbox">Add Option</button>
-            <button class="delete_option_textbox">Delete Option</button>
+            
+            
+            <div class="add_delete">
+              <button class="new_option_textbox">Add Option</button>
+              <button class="delete_option_textbox">Delete Option</button>
+            </div>
+            <div class="deadline">
+              <label for="deadline">When is the deadline?</label>
+              <input class="deadline_box" name="deadline" type="text" />
+            </div>
             <button type="submit" class="submit_button">Submit</button>
       </form>
     </div>
@@ -96,9 +100,9 @@
     <div class="submission_confirmation">
       <h1 id="success_label">Success!</h1>
       <p>Thank you for your submission</p>
-      <p>Copy and share this URL</p>
+      <p class="copyURL">Copy and share this URL</p>
       <a class="url_respond"></a>
-      <p>Your URL</p>
+      <p class="yourURL">Your URL</p>
       <a class="url_user"></a>
       <br>
       <button class="profile_button">Back to profile</button>

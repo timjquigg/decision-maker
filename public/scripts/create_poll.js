@@ -15,6 +15,8 @@ $(() => {
   $('.question_error').hide();
   $('.option_error').hide();
   $('.date_error').hide();
+  $('.createpoll').hide();
+  $('#welcomeback').hide();
 
   $('form.new_poll').on('submit', function(event) {
     event.preventDefault();
@@ -82,6 +84,7 @@ $(() => {
 
         $('.submission_confirmation').show();
         $('.poll').hide();
+        $('#poll_label').hide();
         return result;
       })
       .catch(error => console.log(error.message));
@@ -136,7 +139,6 @@ $(() => {
   });
 
   $('.deadline_box').datetimepicker({
-    format:'d.m.Y H:i',
     inline: true});
 });
 
