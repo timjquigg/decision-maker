@@ -2,7 +2,9 @@
 <nav>
   <form action="/polls" method="GET">
     <button class="home">
-      <img src="/images/charts.png" class="logo" /><span class="name"><h3>Ranker</h3></span>
+      <img src="/images/chart3.png" class="logo" /><span class="name">
+        <h3>Ranker</h3>
+      </span>
     </button>
   </form>
   <div class="nav-right">
@@ -12,22 +14,30 @@
       <div class="buttons profile_buttons">
         <div class="createpoll">
           <form action="/polls/new" method="GET">
-            <button class="createpoll"><p>Create a new poll</p></button>
+            <button class="createpoll">
+              <p>Create a new poll</p>
+            </button>
             <div class="icon"><i class="fa-regular fa-hand-pointer fa-beat-fade"></i></div>
           </form>
         </div>
       </div>
       <form action="/users/logout" method="POST">
-        <button class="logout"><p>logout</p></button>
+        <button class="logout">
+          <p>logout</p>
+        </button>
       </form>
   </div>
   <% } else { %>
     <div class="nav-right buttons">
       <form action="/users" method="GET">
-        <button class="signup"><p>Sign up</p></button>
+        <button class="signup">
+          <p>Sign up</p>
+        </button>
       </form>
       <form action="/users/:login" method="GET">
-        <button class="login"><p>Login</p></button>
+        <button class="login">
+          <p>Login</p>
+        </button>
       </form>
     </div>
     <% } %>

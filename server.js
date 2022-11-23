@@ -54,6 +54,12 @@ app.get('/', (req, res) => {
   res.render('index', tempVar);
 });
 
+app.get('*', (req, res) => {
+  res.status(404);
+  const tempVar = {username: req.session.userFirst};
+  res.render('404', tempVar);
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

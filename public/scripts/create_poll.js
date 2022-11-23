@@ -8,7 +8,7 @@ $(() => {
 
   console.log('document ready');
 
-  autosize($('textarea'));
+  // autosize($('textarea'));
 
   let textboxCount = 3;
   $('.submission_confirmation').hide();
