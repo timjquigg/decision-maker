@@ -11,7 +11,7 @@ nav {
   margin-bottom: 30px;
 
   h2 {
-    margin-left: 20px;
+    margin-left: 40px;
   }
 
   .fa-chart-simple {
@@ -21,7 +21,7 @@ nav {
   div.nav-right {
     display: flex;
     // flex-direction: column;
-    margin-right: 20px;
+    margin-right: 40px;
     justify-content: center;
     align-items: center;
     h3 {
@@ -29,7 +29,8 @@ nav {
     }
     button {
       background-color: $accent-color;
-      color:$light-font;
+      color:$dark-font;
+      font-size: 18px;
     }
     button.signup {
       margin-right: 20px;
@@ -51,7 +52,6 @@ nav {
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
-    font-weight: bold;
   }
 
   button.home {

@@ -6,24 +6,124 @@ h3 {
   margin: 0;
 }
 //// theme 1
-$background-color: #f8eeca;
-$dark-color: #303C6C;
-$accent-color: #F4976C;
-$accent-color-hover: #f6c0a8;
-$bar-color: #B4DFE5;
-$bar-hover: #D2FDFF;
-$dark-font: rgb(39, 24, 24);
-$dark-font-hover: rgb(75, 46, 46);
-$light-font: #fff;
-
-//// theme 2
-// $background-color: #EAE7DC;
+// $background-color: #f8eeca;
 // $dark-color: #303C6C;
 // $accent-color: #F4976C;
+// $accent-color-hover: #f6c0a8;
 // $bar-color: #B4DFE5;
 // $bar-hover: #D2FDFF;
-// $dark-font: rgb(39, 24, 24);
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
 // $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 2
+// $background-color: #eae7dc;
+// $dark-color: #e98074;
+// $accent-color: #8e8d8a;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #d8c3a5;
+// $bar-hover: #D2FDFF;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 3
+// $background-color: #ececec;
+// $dark-color: #f78888;
+// $accent-color: #f3d250;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #5da2d5;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 4
+// $background-color: #fff;
+// $dark-color: #77a6f7;
+// $accent-color: #00887a;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #ffccbc;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 5
+// $background-color: #edeae5;
+// $dark-color: #026670;
+// $accent-color: #fce181;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #9fedd7;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 6
+// $background-color: #edf5e1;
+// $dark-color: #05386b;
+// $accent-color: #379683;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #8ee4af;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 7
+// $background-color: #eee2dc;
+// $dark-color: #123c69;
+// $accent-color: #ac3b61;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #90abc8;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 8 THIS ONE NOT SO BAD
+// $background-color: #eae7dc;
+// $dark-color: #116466;
+// $accent-color: #d9b08c;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #d1e8e2;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 9 THIS ONE NOT SO BAD
+// $background-color: #eae7dc;
+// $dark-color: #24305e;
+// $accent-color: #f76c6c;
+// $accent-color-hover: #d8c3a5;
+// $bar-color: #a8d0e6;
+// $bar-hover: #90ccf4;
+// $dark-font: rgb(92, 88, 88);
+// $dark-font-hover: rgb(135, 133, 133);
+// $light-font: #fff;
+// $theme-font: 'Source Sans Pro', sans-serif;
+
+//// theme 10
+$background-color: #fff;
+$dark-color: #123c69ed;
+$accent-color: linen;
+$accent-color-hover: #d8c3a5;
+$bar-color: rgba(153, 102, 255, 0.2);
+$bar-hover: #f4f490;
+$dark-font: rgb(92, 88, 88);
+$dark-font-hover: rgb(135, 133, 133);
+$light-font: #fff;
+$theme-font: 'Source Sans Pro', sans-serif;
 
 body {
   margin: 0;
@@ -32,7 +132,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   background: $background-color;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $theme-font;
   color: $dark-font;
 }
 
@@ -89,7 +189,7 @@ main {
   span {
     margin: 0 1em;
     display: block;
-    background: #B4DFE5;
+    background: $bar-color;
     animation: draw 1s ease-in-out;
     border-radius: 10px 10px 0 0;
 

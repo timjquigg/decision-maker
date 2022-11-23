@@ -1,3 +1,5 @@
+@import "layout";
+
 body {
   margin: 0;
   padding: 0;
@@ -5,12 +7,15 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   background: $background-color;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: $dark-font;
+  font-family: $theme-font;
 }
 
-h1, h2 {
+h1 {
   font-family: 'Playfair Display', serif;
+}
+
+h2, h3, h4, p {
+  font-family: 'Montserrat', sans-serif;
 }
 
 main {
@@ -35,6 +40,7 @@ main {
   }
 
   section {
+    margin-top: 100px;
     margin-bottom: 150px;
 
     h3 {
@@ -88,7 +94,7 @@ section.nopoll {
 .chart {
   display: table;
   table-layout: fixed;
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   width: 60%;
   border-radius: 10px;
   height: 300px;
@@ -132,9 +138,13 @@ section.nopoll {
   span {
     margin: 0 1em;
     display: block;
-    background: #B4DFE5;
+    background: $bar-color;
+    border: 1px solid rgb(153, 102, 255);
+    border-bottom: none;
     animation: draw 1s ease-in-out;
     border-radius: 10px 10px 0 0;
+
+    
 
     &:before {
       position: absolute;
@@ -148,6 +158,37 @@ section.nopoll {
       word-wrap: break-word;
     }
   }
+}
+
+span.bar1 {
+  background: rgba(255, 99, 132, 0.2);
+  border: 1px solid rgb(255, 99, 132);
+  border-bottom: none;
+}
+span.bar2 {
+  background: rgba(255, 159, 64, 0.2);
+  border: 1px solid rgb(255, 159, 64);
+  border-bottom: none;
+}
+span.bar3 {
+  background: rgba(255, 205, 86, 0.2);
+  border: 1px solid rgb(255, 205, 86);
+  border-bottom: none;
+}
+span.bar4 {
+  background: rgba(75, 192, 192, 0.2);
+  border: 1px solid rgb(75, 192, 192);
+  border-bottom: none;
+}
+span.bar5 {
+  background: rgba(54, 162, 235, 0.2);
+  border: 1px solid rgb(54, 162, 235);
+  border-bottom: none;
+}
+span.bar6 {
+  background: rgba(201, 203, 207, 0.2);
+  border: 1px solid rgb(201, 203, 207);
+  border-bottom: none;
 }
 
 @keyframes draw {

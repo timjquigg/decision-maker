@@ -9,8 +9,8 @@ main {
     border-radius: 25px;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: $accent-color;
-    color: $dark-font;
+    background-color: $accent-color-hover;
+    color: $light-font;
     font-weight: bold;
   }
   button:hover {

@@ -8,6 +8,10 @@ main section {
     flex-direction: column;
     align-items: center;
   }
+  
+  span.bar {
+    cursor: pointer;
+  }
 }
 
 footer {
@@ -23,6 +27,6 @@ footer {
     cursor: pointer;
   }
   button:hover {
-    color: #ffe6c3;
+    color: $dark-font-hover;
   }
 }

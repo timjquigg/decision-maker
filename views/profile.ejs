@@ -11,7 +11,7 @@
   <!-- External Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,8 +21,6 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/profile.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Local Scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -36,9 +34,9 @@
       <!-- <h2>Welcome back <%= username %>!</h2> -->
   </header>
   <main>
-    <h3 class="pollhistory">
+    <!-- <h3 class="pollhistory">
       Your poll history<i class="fa-solid fa-angles-down"></i>
-    </h3>
+    </h3> -->
     <% if (Object.keys(object).length === 0) { %>
       <section  class="nopoll">
         <div><h2>No polls here yet!</h2></div>
@@ -51,7 +49,7 @@
         <section>
           <form action="/polls/results/<%=object[title][0]['pollId']%>" method="GET">
             <button class="polltitle">
-              <%= title %>
+              <h3><%= title %></h3>
             </button>
           </form>
           <p>
@@ -73,7 +71,7 @@
                       <% for (let i=0; i < object[title].length; i++) { %>
                         
                         <li>
-                          <span style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
+                          <span class="bar<%=i%>" style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
                             title="<%= object[title][i].option %>"></span>
                         </li>
                         <% } %>
