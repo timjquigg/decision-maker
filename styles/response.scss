@@ -1,8 +1,10 @@
+@import "layout";
+
 @mixin align-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
 }
 
 @mixin button {
@@ -11,19 +13,19 @@
   border-radius: 25px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #8b5e10;
+  background-color: $accent-color2;
   color: #fff;
   font-weight: bold;
 
   &:hover {
-    background-color: #022c31;
+    background-color: $accent-color2-hover;
   }
 
 }
 
 .container {
   @include align-center;
-  height: 700px;
+  margin-top: 100px;
 }
 
 .submit_window {
@@ -32,12 +34,13 @@
   align-items: center;
 
   #success_window {
-    font-size: 50px;
+    font-size: 35px;
+    font-family: $theme-font;
   }
 
   #name_greet {
     margin-top: -10px;
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .home_button {
@@ -61,14 +64,15 @@
   }
 
   .name_box {
-    border: 1px solid #484848;
-    border-radius: 4px;
+    border: 2px solid #7a7979;
+    border-radius: 10px;
     width: 353px;
     height: 41px;
     left: 463px;
     top: 335px;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
+    margin-bottom: 30px;
   }
 
   .submit_button {
@@ -84,25 +88,26 @@
 
 .option:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px rgba(68, 71, 107, 0.834);
 
 }
 
 .option {
   list-style-type: none;
-  border: 2px solid gray;
+  border: 2px solid $dark-font-hover;
   border-radius: 10px;
   width: 80%;
   margin: 10px;
   padding: 10px;
   text-align: center;
   inline-size: 100%;
+  background-color: rgba(250, 240, 230, 0.335);
 }
 
 .placeholder {
   list-style-type: none;
   height: 42px;
-  background-color: rgb(253, 249, 241);
+  // background-color: rgb(253, 249, 241);
   border-radius: 10px;
   width: 80%;
   margin: 10px;
@@ -120,14 +125,14 @@ ul {
 
 .ui-tooltip {
   position: fixed;
-  text-align: center;
+  text-align: left;
   padding: 10px 10px;
-  background: white;
+  background: transparent;
   width: 300px;
-  color: black;
-  border-radius: 15px;
-  font: bold 14px Sans-Serif;
-  box-shadow: 0 0 7px black;
+  color: $dark-font;
+  // border-radius: 15px;
+  font:14px $theme-font;
+  // box-shadow: 0 0 7px $dark-font-hover;
 }
 
 .ui-helper-hidden-accessible {
@@ -139,4 +144,9 @@ ul {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+nav div.nav-right div.profile_buttons {
+  margin-top: 0;
+  margin-right: 0;
 }

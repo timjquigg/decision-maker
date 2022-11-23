@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/response.css" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
@@ -31,7 +33,7 @@
 
   <div class="container">
     <div class="submit_window">
-      <h1 id="success_window">Success!</h1>
+      <h2 id="success_window">Success!</h2>
       <h4 id="name_greet">Thank you for your response</h4>
       <button class="home_button">Back to homepage</button>
     </div>
@@ -41,7 +43,7 @@
         <h1 class="question">
           <%= question %>
         </h1>
-        <p>Drag and drop each option in order of preference, starting with the most preferred option</p>
+        <p>Drag and drop to rank the options!</p>
         <ul id="sortable">
           <% options.forEach((option, i)=> { %>
             <li class="ui-state-default option" id=<%=option[0]%> title="<%=option[2]%>"> <%= option[1]%>
@@ -50,7 +52,7 @@
         </ul>
 
         <% if(!anonymous) { %>
-          <input class="name_box" name="name" placeholder="Enter your name"></input>
+          <input class="name_box" name="name" placeholder="Your name"></input>
           <p class="error_name">Please enter your name to submit response</p>
           <% } %>
 
