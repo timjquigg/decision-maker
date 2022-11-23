@@ -41,7 +41,7 @@
         <h1 class="question">
           <%= question %>
         </h1>
-        <p>Drag and drop each option in order of preference, starting with the most preferred option</p>
+        <p>Drag and drop to rank the options!</p>
         <ul id="sortable">
           <% options.forEach((option, i)=> { %>
             <li class="ui-state-default option" id=<%=option[0]%> title="<%=option[2]%>"> <%= option[1]%>
@@ -54,7 +54,7 @@
           <p class="error_name">Please enter your name to submit response</p>
           <% } %>
 
-            <button class="submit_button" type="submit">Submit response</button>
+            <button class="submit_button" type="submit"><i class="fa fa-check"></i>Submit response</button>
 
     </div>
   </div>

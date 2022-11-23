@@ -12,12 +12,10 @@ $(() => {
     position: { my: "left+15 center", at: "right center" }
   });
 
-  $('.question').on('click', () => $('.question').toggle('slide'));
-
   $("#sortable").sortable({
     placeholder: "placeholder",
     axis : 'y',
-    opacity: 0.3,
+    opacity: 0.2,
     cursor: 'grabbing',
     containment: 'parent',
     tolerance: "pointer",
