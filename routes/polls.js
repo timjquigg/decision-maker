@@ -144,18 +144,18 @@ router.post('/', (req, res) => {
 
             ///////////////////////MAILGUN/////////////////////////
             const data = {
-              from: 'Decision Maker <kikopocampo@gmail.com>',
+              from: 'Ranker <kikopocampo@gmail.com>',
               to: req.body.email,
               subject: 'Success! Poll created',
               text: `Hi! You have created a Poll:
               \nShare your poll: http://localhost:8080/polls/${pollId}
-              \nSee the results: http://localhost:8080/polls/results/${pollId}
+              \nSee the result: http://localhost:8080/polls/results/${pollId}
 
-              \nTo start saving your polls, make an account now: http://localhost:8080/users
-              \nThank you for using Decision-Maker.
+              \nTo start saving your polls, create an account now: http://localhost:8080/users
+              \nThank you for choosing Ranker!
 
               \nBest,
-              \nDecision-Maker Team
+              \nRanker Team
               `
             };
             mg.messages().send(data, function(error, body) {
@@ -174,7 +174,7 @@ router.post('/', (req, res) => {
             db.addOptionsToPoll(req.body, pollId)
               .then(result => {
                 // console.log('options log', result.rows);
-                // return result;
+                return result;
               });
           })
           .catch(err => console.log(err));
@@ -206,10 +206,10 @@ router.post('/', (req, res) => {
               \nSee the results: http://localhost:8080/polls/results/${pollId}
 
               \nTo manage your polls, log in to your account: http://localhost:8080/users
-              \nThank you for using Decision-Maker.
+              \nThank you for using Ranker.
 
               \nBest,
-              \nDecision-Maker Team
+              \nRanker Team
               `
           };
           mg.messages().send(data, function(error, body) {
@@ -297,7 +297,7 @@ router.post('/:id', (req, res) => {
 
           ///////////////////////MAILGUN/////////////////////////
           const data = {
-            from: 'Decision Maker <kikopocampo@gmail.com>',
+            from: 'Ranker <kikopocampo@gmail.com>',
             to: email,
             subject: 'Response Notification',
             text: `
@@ -307,10 +307,10 @@ router.post('/:id', (req, res) => {
             \nSee the results: http://localhost:8080/polls/results/${pollId}
 
             \nTo manage your polls, log in to your account: http://localhost:8080/users
-            \nThank you for using Decision-Maker.
+            \nThank you for choosing Ranker.
 
             \nBest,
-            \nDecision-Maker Team
+            \nRanker Team
             `
           };
           mg.messages().send(data, function(error, body) {
