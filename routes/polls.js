@@ -239,7 +239,8 @@ router.get('/:id', (req, res) => {
   db.getPollDataById(pollId)
     .then(result => {
       if (Date.now() > result.rows[0].deadline) {
-        res.send('Expired');
+        const tempVar = {username: req.session.userFirst};
+        res.render('expired', tempVar);
         return;
       }
       result.rows.forEach(data => {
