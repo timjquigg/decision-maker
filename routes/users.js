@@ -12,6 +12,11 @@ const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 
 const checkDuplicateEmail = (email, users) => {
+  //please check :)//
+  if (!users) {
+    return;
+  }
+
   for (const user of users) {
     if (user.first_name !== null) {
       return true;
@@ -55,9 +60,9 @@ router.post('/login', (req, res) => {
   // Send credentials db to see if credentials exist
   db.getUserByEmail(req.body.email)
     .then((users) => {
-      
+
       const user = getRegisteredUser(req.body.email, users);
-      
+
       // If user does not exist
       if (!user) {
         res.send(null);
@@ -77,7 +82,7 @@ router.post('/login', (req, res) => {
         res.send('valid user');
         return;
       }
-      
+
       res.send(null);
       return;
 
@@ -93,12 +98,12 @@ router.post('/signup', (req, res) => {
   const lastName = req.body.last_name;
   const email = req.body.email;
   const password = bcrypt.hashSync(req.body.password, 12);
-  
+
   // Check to see if user already exists
   db.getUserByEmail(email)
     .then((users) => {
-      
-      
+
+
       // If e-mail already exists
       if (checkDuplicateEmail(req.body.email, users)) {
         res.send(null);
