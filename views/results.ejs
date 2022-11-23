@@ -42,13 +42,16 @@
               <% scores.push(Number(object[title][i].score))%>
                 <% } %>
                   <% if (object[title][0].score==='0' ) { %>
-                    <p class="noresponse">There's no response to this poll yet</p>
-                    <p>Share this poll with your frineds!</p>
-                    <p class="icons">
-                      <button class="clipboard share"><i class="fa-solid fa-link"></i></button>
-                      <button class="share"><i class="fa-brands fa-square-twitter"></i></button>
-                      <button class="share"><i class="fa-brands fa-square-facebook"></i></button>
-                    </p>
+                    <div class="no-response">
+                      <p class="noresponse">There's no response to this poll yet</p>
+                      <p>Share this poll with your frineds!</p>
+                      <img src="/images/Online-pana.svg" />
+                      <p class="icons">
+                        <button class="clipboard share"><i class="fa-solid fa-link"></i></button>
+                        <button class="share"><i class="fa-brands fa-square-twitter"></i></button>
+                        <button class="share"><i class="fa-brands fa-square-facebook"></i></button>
+                      </p>
+                    </div>
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>
                         <li>
