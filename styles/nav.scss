@@ -88,19 +88,20 @@ nav {
     margin-top: 0;
   }
 
-  i.fa-regular {
-    margin-top: 10px;
+  img.logo {
+    margin-left: 40px;
     text-align: center;
-    width: 100%;
+    
   }
 
   .logo {
-    height: 50px;
+    height: 43px;
     width: 50px;
   }
 
   .name {
     font-size: 30px;
+    font-weight: bold;
   }
 
   button:hover {
