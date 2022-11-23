@@ -52,5 +52,16 @@ main {
   button:hover {
     background-color: $accent-color2-hover;
   }
+
+  p.switch {
+    margin-right: 0;
+  }
+
+  form.authentication {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   
 }
