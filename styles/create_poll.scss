@@ -1,0 +1,109 @@
+main {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 100px;
+  max-width: 700px;
+}
+
+.poll,
+.new_poll {
+  text-align: center;
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options_box {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.option {
+  margin: 0.5em auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+textarea {
+  margin: 0 0.5em;
+  min-width: 300px;
+  border: 1px solid;
+  border-radius: 4px;
+
+}
+
+input {
+  min-width: 200px;
+  // height: 2.5rem;
+  padding: 4px;
+  margin: 0 0.5em;
+  border: 1px solid;
+  border-radius: 4px;
+
+}
+
+input[type="checkbox"] {
+  min-width: 0px;
+}
+
+.deadline_box {
+  min-width: 0px;
+  // height: 1em;
+}
+
+textarea {
+  padding: 4px;
+  // height: 2.5rem;
+  resize: none;
+}
+
+.poll_question_box {
+  min-width: 400px;
+}
+
+div {
+  margin: 1em;
+
+  .deadline {
+    align-items: center;
+  }
+}
+
+.is_anonymous {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.poll_question {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.deadline_box {
+  border-radius: 10px;
+}
+
+.xdsoft_datetimepicker.xdsoft_inline {
+  border-radius: .5em;
+}
+
+button {
+  margin: 0.5em;
+  border-radius: 0.5em;
+
+}
+
+button:hover {
+  cursor: pointer;
+}

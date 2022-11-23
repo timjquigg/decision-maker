@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/signup.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/users.js"></script>
@@ -29,36 +30,63 @@
 
 <body>
   <main>
-
-    <div class="login">
-      <h2>Login</h2>
-      <form class="authentication login">
-        <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="email">
-        <label for="password">Password</label>
-        <input name="password" type="password" placeholder="password">
-        <button>login</button>
-      </form>
-      <p class="authentication_error" hidden></p>
+    <div class="signup" <% if (service !=='signup' ) { %>
+      hidden
+      <%} %>
+        >
+        <div class="create_account">
+          <h1>Create an account</h1>
+        </div>
+        <form class="authentication signup">
+          <div class="fullname">
+            <div class="first_name">
+              <label for="first_name">First Name</label>
+              <div><input name="first_name" type="text" placeholder="First Name"></div>
+            </div>
+            <div class="last_name">
+              <label for="last_name">Last Name</label>
+              <div><input name="last_name" type="text" placeholder="Last Name"></div>
+            </div>
+          </div>
+          <div class="email">
+            <label for="email">E-mail</label>
+            <div><input name="email" type="email" placeholder="email"></div>
+          </div>
+          <div class="password">
+            <label for="Password">Password</label>
+            <div><input name="password" type="password" placeholder="password"></div>
+          </div>
+          <div class="confirm_password">
+            <label for="confirm_password">Confirm Password</label>
+            <div><input name="confirm_password" type="password" placeholder="confirm password"></div>
+            <div>
+              <p class="authentication_error" hidden></p>
+            </div>
+          </div>
+          <button class="signup_button">Sign Up</button>
+        </form>
+        <p>Already have an account? <span class="show_login">Log In</span></p>
     </div>
 
-    <div class="signup">
-      <h2>Signup</h2>
-      <form class="authentication signup">
-        <label for="first_name">First Name</label>
-        <input name="first_name" type="text" placeholder="First Name">
-        <label for="last_name">Last Name</label>
-        <input name="last_name" type="text" placeholder="Last Name">
-        <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="email">
-        <label for="Password">Password</label>
-        <input name="password" type="password" placeholder="password">
-        <label for="confirm_password">Confirm Password</label>
-        <input name="confirm_password" type="password" placeholder="confirm password">
-        <button>signup</button>
-      </form>
-      <p class="authentication_error" hidden></p>
+    <div class="login" <% if (service!=='login' ) { %>
+      hidden
+      <%} %> >
+        <h2>Welcome Back!</h2>
+        <form class="authentication login">
+          <div class="email">
+            <label for="email">E-mail</label>
+            <div><input name="email" type="email" placeholder="email"></div>
+          </div>
+          <div class="password">
+            <label for="password">Password</label>
+            <div><input name="password" type="password" placeholder="password"></div>
+          </div>
+          <button class="signup_button">Login</button>
+          <p class="authentication_error" hidden></p>
+        </form>
+        <p>Create an account <span class="show_signup">Here</span></p>
     </div>
+
 
   </main>
 </body>

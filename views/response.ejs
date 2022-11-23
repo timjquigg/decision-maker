@@ -13,49 +13,51 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/response.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
     integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/scripts/response.js"></script>
+
 </head>
 
 <body>
   <header>
-
+    <%- include('partials/header.ejs')%>
   </header>
 
-  <div class="submit_window">
-    <h2>Success!</h2>
-    <p id="name_greet">Thank you for answering</p>
-    <button class="home_button">Back to homepage</button>
+  <div class="container">
+    <div class="submit_window">
+      <h1 id="success_window">Success!</h1>
+      <h4 id="name_greet">Thank you for your response</h4>
+      <button class="home_button">Back to homepage</button>
+    </div>
+
+    <div class="submission_form">
+      <form class="submission">
+        <h1 class="question">
+          <%= question %>
+        </h1>
+        <p>Drag and drop each option in order of preference, starting with the most preferred option</p>
+        <ul id="sortable">
+          <% options.forEach((option, i)=> { %>
+            <li class="ui-state-default option" id=<%=option[0]%> title="<%=option[2]%>"> <%= option[1]%>
+            </li>
+            <% }) %>
+        </ul>
+
+        <% if(!anonymous) { %>
+          <input class="name_box" name="name" placeholder="Enter your name"></input>
+          <p class="error_name">Please enter your name to submit response</p>
+          <% } %>
+
+            <button class="submit_button" type="submit">Submit response</button>
+
+    </div>
   </div>
-
-  <form>
-    <h1>
-      <%= question %>
-    </h1>
-
-
-    <ul id="sortable">
-      <% options.forEach((option, i)=> { %>
-        <li class="ui-state-default option" id=<%=option[0] %>><%= option[1]%>
-            <span class="description">
-              <%=option[2]%>
-            </span>
-        </li>
-        <% }) %>
-    </ul>
-    <br>
-    <% if(!anonymous) { %>
-      <input class="name_box" name="name" placeholder="Enter your name"></input>
-      <p class="error_name">Please enter you name to submit response</p>
-      <% } %>
-        <br>
-        <button class="submit_button" type="submit">Submit response</button>
-
-        </div>
   </form>
 </body>
 

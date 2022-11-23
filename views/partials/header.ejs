@@ -2,33 +2,33 @@
 <nav>
   <form action="/polls" method="GET">
     <button class="home">
-      <h2><i class="fa-solid fa-chart-simple"></i>Deisicion Maker</h2>
+      <img src="/images/chart.png" class="logo" /><span class="name">Decision Maker</span>
     </button>
   </form>
   <div class="nav-right">
     <% if (username !==undefined && username !==null) { %>
       <h3>Welcome back <%=username %>!</h3>
       </h3>
-      <div class="buttons">
+      <div class="buttons profile_buttons">
         <div class="createpoll">
           <form action="/polls/new" method="GET">
             <button class="createpoll">Create a new poll</button>
             <div class="icon"><i class="fa-regular fa-hand-pointer fa-beat-fade"></i></div>
           </form>
         </div>
-        <form action="/users/logout" method="POST">
-          <button class="logout">logout</button>
-        </form>
       </div>
-      <% } else { %>
-        <h3>Welcome!</h3>
-        <div class="buttons">
-          <form action="/polls/new" method="GET">
-            <button>Create Anonymous Poll</button>
-          </form>
-          <form action="/users" method="GET">
-            <button>Login</button>
-          </form>
-        </div>
-        <% } %>
+      <form action="/users/logout" method="POST">
+        <button class="logout">logout</button>
+      </form>
+  </div>
+  <% } else { %>
+    <div class="nav-right buttons">
+      <form action="/users" method="GET">
+        <button class="signup">Sign up</button>
+      </form>
+      <form action="/users/:login" method="GET">
+        <button class="login">Login</button>
+      </form>
+    </div>
+    <% } %>
 </nav>

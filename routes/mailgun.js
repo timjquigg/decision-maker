@@ -1,6 +1,11 @@
 // const mailgun = require("mailgun-js");
+<<<<<<< HEAD
 // const DOMAIN = null;
 // const api_key = null;
+=======
+// const DOMAIN = 'null';
+// const api_key = 'null';
+>>>>>>> master
 // const mg = mailgun({apiKey: api_key, domain: DOMAIN});
 // const data = {
 //   from: 'Kiko <kikopocampo@gmail.com>',

@@ -6,11 +6,20 @@
  */
 
 // const e = require('express');
+require('dotenv').config();
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
 const userDB = require('../db/queries/users');
 const userdb = require('../db/queries/users');
+
+//mailgun
+const mailgun = require("mailgun-js");
+
+//Enter domain and api_keys key here
+const DOMAIN = process.env.MG_DOMAIN_KEY;
+const api_key = process.env.MG_API_KEY;
+const mg = mailgun({apiKey: api_key, domain: DOMAIN});
 
 // Only accessible if logged in:
 router.get('/', (req, res) => {
@@ -129,16 +138,44 @@ router.post('/', (req, res) => {
         const userId = user.id;
         db.addNewPoll(req.body, userId)
           .then(result => {
-            console.log('poll log:', result.rows);
+            // console.log('poll log:', result.rows);
             const pollId = result.rows[0].id;
+            console.log(pollId, req.body.email);
+
+            ///////////////////////MAILGUN/////////////////////////
+            const data = {
+              from: 'Decision Maker <kikopocampo@gmail.com>',
+              to: req.body.email,
+              subject: 'Success! Poll created',
+              text: `Hi! You have created a Poll:
+              \nShare your poll: http://localhost:8080/polls/${pollId}
+              \nSee the results: http://localhost:8080/polls/results/${pollId}
+
+              \nTo start saving your polls, make an account now: http://localhost:8080/users
+              \nThank you for using Decision-Maker.
+
+              \nBest,
+              \nDecision-Maker Team
+              `
+            };
+            mg.messages().send(data, function(error, body) {
+              if (error) {
+                console.log(error);
+              }
+              console.log(body);
+            });
+            //////////////////////////////////////////////////////
+
             db.getTotalPoll()
-              .then(result => res.send(result.rows[0].count))
+              .then(result => {
+                res.send(result.rows[0].count);
+              })
               .catch(err => console.log(err.message));
             db.addOptionsToPoll(req.body, pollId)
               .then(result => {
-                console.log('options log', result.rows);
+                // console.log('options log', result.rows);
+                // return result;
               });
-            // return result;
           })
           .catch(err => console.log(err));
       });
@@ -153,6 +190,36 @@ router.post('/', (req, res) => {
         .then(result => res.send(result.rows[0].count))
         .catch(err => console.log(err.message));
       const pollId = result.rows[0].id;
+      db.getEmailByPoll(pollId)
+        .then(result => {
+
+          console.log('apple',result.rows[0]);
+          ///////////////////////MAILGUN/////////////////////////
+          const data = {
+            from: 'Decision Maker <kikopocampo@gmail.com>',
+            to: result.rows[0].email,
+            subject: 'Success! Poll created',
+            text: `Hi, ${result.rows[0].first_name}.
+
+              \nYou have created a Poll:
+              \nShare your poll: http://localhost:8080/polls/${pollId}
+              \nSee the results: http://localhost:8080/polls/results/${pollId}
+
+              \nTo manage your polls, log in to your account: http://localhost:8080/users
+              \nThank you for using Decision-Maker.
+
+              \nBest,
+              \nDecision-Maker Team
+              `
+          };
+          mg.messages().send(data, function(error, body) {
+            if (error) {
+              console.log(error);
+            }
+            console.log(body);
+          });
+          //////////////////////////////////////////////////////
+        });
       db.addOptionsToPoll(req.body, pollId)
         .then(result => {
           // console.log('options log', result.rows);
@@ -185,7 +252,7 @@ router.get('/:id', (req, res) => {
           pollData[data.poll_id].options.push([data.option_id, data.options, data.description]);
         }
       });
-      console.log('apple:',pollData[pollId]);
+      // console.log('apple:',pollData[pollId]);
       // Redirect to home page if not logged in
       // if (!req.session.userId) {
       //   res.redirect('../');
@@ -197,7 +264,7 @@ router.get('/:id', (req, res) => {
         anonymous: pollData[pollId].isAnonymous,
         options: pollData[pollId].options,
       };
-      console.log(tempVar);
+      // console.log(tempVar);
       res.render('response.ejs', tempVar);
       // res.render('response.ejs');
     })
@@ -207,6 +274,7 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   // console.log('apple:', req.body)
   const {name = null, result} = req.body;
+
   // console.log(req.body)
   // console.log(name)
   // console.log(result)
@@ -220,7 +288,43 @@ router.post('/:id', (req, res) => {
   console.log(scoreSheet);
 
   db.addResultsToPoll(name,scoreSheet)
-    .then(result => result)
+    .then(result => {
+      // console.log('apple', result.rows, 'mango', result);
+      db.getPollDataByOptionsId(result.rows[0].poll_option_id)
+        .then(result => {
+          console.log('mango', result.rows[0]);
+          const {id : pollId, email, question, created_on : dateCreated} = result.rows[0];
+
+          ///////////////////////MAILGUN/////////////////////////
+          const data = {
+            from: 'Decision Maker <kikopocampo@gmail.com>',
+            to: email,
+            subject: 'Response Notification',
+            text: `
+            \nHi! Someone has responded to your poll.
+            \nPoll question: ${question}
+            \nCreated at: ${dateCreated}
+            \nSee the results: http://localhost:8080/polls/results/${pollId}
+
+            \nTo manage your polls, log in to your account: http://localhost:8080/users
+            \nThank you for using Decision-Maker.
+
+            \nBest,
+            \nDecision-Maker Team
+            `
+          };
+          mg.messages().send(data, function(error, body) {
+            if (error) {
+              console.log(error);
+            }
+            console.log(body);
+          });
+          //////////////////////////////////////////////////////
+
+          return result;
+        });
+      return result;
+    })
     .catch(error => console.log(error));
 
   // A returned poll is received
@@ -251,7 +355,7 @@ router.get('/results/:id', (req, res) => {
       //console.log('peopleresponded:', peopleResponded);
       db.getOptionsByPollId(pollId)
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           // Get results data
           db.getPollResultsByPoll(data[0].userid)
             .then((score)=>{

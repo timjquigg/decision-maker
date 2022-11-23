@@ -11,26 +11,65 @@ const router  = express.Router();
 const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 
-// Signup - Login page
+const checkDuplicateEmail = (email, users) => {
+  //please check :)//
+  if (!users) {
+    return;
+  }
+
+  for (const user of users) {
+    if (user.first_name !== null) {
+      return true;
+    }
+  }
+};
+
+const getRegisteredUser = (email, users) => {
+  if (!users) {
+    return null;
+  }
+  for (const user of users) {
+    if (user.first_name !== null) {
+      return user;
+    }
+  }
+  return null;
+};
+
+// Signup
 router.get('/', (req, res) => {
-  const tempVar = {username : req.session.userFirst};
+  const tempVar = {
+    username : req.session.userFirst,
+    service: 'signup'};
   res.render('login_signup', tempVar);
 });
 
+// Login
+router.get('/:login', (req, res) => {
+  console.log(req.params);
+  const tempVar = {
+    username : req.session.userFirst,
+    service: 'login'};
+  console.log(tempVar);
+  res.render('login_signup', tempVar);
+});
 
 // Receive login credentials
 router.post('/login', (req, res) => {
 
   // Send credentials db to see if credentials exist
   db.getUserByEmail(req.body.email)
-    .then((user) => {
-      
-      if (user === null) {
+    .then((users) => {
+
+      const user = getRegisteredUser(req.body.email, users);
+
+      // If user does not exist
+      if (!user) {
         res.send(null);
         return;
       }
 
-
+      // Validate password
       if (bcrypt.compareSync(req.body.password, user.password)) {
         // Assign cookie for logged in user
         req.session = {
@@ -44,6 +83,9 @@ router.post('/login', (req, res) => {
         return;
       }
 
+      res.send(null);
+      return;
+
     }).catch((err) => {
       console.log(err);
     });
@@ -56,13 +98,14 @@ router.post('/signup', (req, res) => {
   const lastName = req.body.last_name;
   const email = req.body.email;
   const password = bcrypt.hashSync(req.body.password, 12);
-  
+
   // Check to see if user already exists
   db.getUserByEmail(email)
-    .then((user) => {
-      
+    .then((users) => {
+
+
       // If e-mail already exists
-      if (user !== null) {
+      if (checkDuplicateEmail(req.body.email, users)) {
         res.send(null);
         return;
       }

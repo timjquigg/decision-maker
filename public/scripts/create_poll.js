@@ -8,6 +8,7 @@ $(() => {
 
   console.log('document ready');
 
+  autosize($('textarea'));
 
   let textboxCount = 3;
   $('.submission_confirmation').hide();
@@ -98,9 +99,9 @@ $(() => {
 
 
   const createTextbox = () => {
-    let output = `
+    let output = `<div class="option">
   <input class="options${textboxCount + 1} ob" name="option_${textboxCount + 1}" placeholder="Option ${textboxCount + 1}"></input>
-  <input class="description${textboxCount + 1}" name="option_${textboxCount + 1}" placeholder="Description"></input>`;
+  <textarea class="description${textboxCount + 1}" name="option_${textboxCount + 1}" placeholder="Description"></textarea></div>`;
     if (textboxCount > 6) {
       return;
     }
@@ -110,8 +111,8 @@ $(() => {
 
   const deleteTextBox = () => {
   // let $lastTextBox = $('.option')
-    $(`.options${textboxCount}`).remove();
-    $(`.description${textboxCount}`).remove();
+    $(`.options${textboxCount}`).parent().remove();
+    // $(`.description${textboxCount}`).remove();
     textboxCount --;
 
   };
@@ -134,6 +135,9 @@ $(() => {
     window.location.href = '../polls';
   });
 
+  $('.deadline_box').datetimepicker({
+    format:'d.m.Y H:i',
+    inline: true});
 });
 
 

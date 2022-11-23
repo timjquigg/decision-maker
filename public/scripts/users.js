@@ -2,6 +2,8 @@
 
 $(() => {
 
+  $('.nav-right').hide();
+
   $('.authentication>input').on('change', function(event) {
     $(this).parent().parent().find('p').slideUp();
   });
@@ -15,8 +17,8 @@ $(() => {
     $.post('/users/login',$(this).serialize())
       .then((result) => {
         if (result === '') {
-          const errorText = 'Error: Invalid User';
-          $(this).parent().find('p').text(errorText).slideDown();
+          const errorText = 'Error: Invalid email and/or password';
+          $(this).find('p').text(errorText).slideDown();
           return;
         }
         window.location.href = '../polls';
@@ -35,7 +37,7 @@ $(() => {
       .then((result) => {
         if (result === '') {
           const errorText = 'Error: E-mail already exists';
-          $(this).parent().find('p').text(errorText).slideDown();
+          $(this).find('p').text(errorText).slideDown();
           return;
         }
         window.location.href = '../polls';
@@ -44,12 +46,15 @@ $(() => {
       
   });
   
-  $('#logout').on('click', () => {
-    $.post('/users/logout')
-      .then(() => {
-        window.location.href = '../';
-      });
+  $('.show_login').on('click', function() {
+    console.log('click');
+    $('.nav-right .login').trigger('click');
   });
+
+  $('.show_signup').on('click', function() {
+    $('.nav-right .signup').trigger('click');
+  });
+
 
   const validateLogin = function(source) {
   
@@ -58,7 +63,7 @@ $(() => {
 
     if (email.length === 0 || password.length === 0) {
       const errorText = 'Email & password must not be blank.';
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
     return true;
@@ -88,13 +93,13 @@ $(() => {
       
     if (errorVals.length > 0) {
       const errorText = `${errorVals.join(', ')} must not be blank.`;
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
 
     if (password !== confirmPassword) {
       const errorText = 'Passwords do not match.';
-      $(source).parent().find('p').text(errorText).slideDown();
+      $(source).find('p').text(errorText).slideDown();
       return false;
     }
     return true;
