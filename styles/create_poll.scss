@@ -1,5 +1,9 @@
 @import "layout";
 
+body {
+  height: 100vh;
+}
+
 main {
   text-align: center;
   margin-left: auto;
@@ -46,9 +50,12 @@ textarea {
   border-color: $dark-font-hover;
 }
 
+textarea.poll_question_box {
+  margin-left: 0;
+}
+
 input {
   min-width: 200px;
-  // height: 2.5rem;
   padding: 4px;
   margin: 0 0.5em;
   border: 1px solid;
@@ -62,7 +69,6 @@ input[type="checkbox"] {
 
 .deadline_box {
   min-width: 0px;
-  // height: 1em;
 }
 
 textarea {
@@ -122,17 +128,16 @@ div {
 }
 
 button {
-  // margin: 0.5em;
-  // border-radius: 0.5em;
   border-radius: 15px;
   padding: 5px 20px;
-  background-color: $accent-color;
+  background-color: $accent-color2;
   color: $dark-color;
   border: none;
 }
 
 .submit_button {
   background-color: $accent-color2;
+  color: $dark-font;
   padding: 10px 30px;
   border-radius: 20px;
   font-weight: bold;

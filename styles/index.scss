@@ -1,17 +1,19 @@
 @import "layout";
 
 main {
-  margin-right: 50px;
-  margin-left: 80px;
+  // margin-right: 80px;
+  // margin-left: 100px;
   display: flex;
+  justify-content: center;
   button {
     border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
+    border-radius: 10px;
+    padding: 20px 30px;
     cursor: pointer;
     background-color: $accent-color2;
-    color: $light-font;
+    color: $dark-font;
     font-weight: bold;
+    font-size: 20px;
   }
   button:hover {
     background-color: $accent-color2-hover;
@@ -23,6 +25,7 @@ main {
 }
 
 div.headline {
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -31,6 +34,10 @@ div.headline {
   h1 {
     font-family: 'Playfair Display', serif;
   }
+}
+
+div.description {
+  margin-bottom: 50px;
 }
 
 div.description p {
@@ -45,17 +52,58 @@ h1 {
   line-height: 70px;
 }
 
-section.video {
-  width: 60%;
-  height: 80vh;
+section.image {
+  width: 50%;
+  height: auto;
   margin-bottom: 0;
   display: flex;
   align-items: flex-end;
+  justify-content: end;
+  
 }
 
-video {
-  margin-bottom: 20px;
+.img {
   width: 100%;
+  // margin-left: 150px;
+}
+
+img {
+  // margin-bottom: 20px;
+  max-width: 100%;
+  height: 80vh;
   overflow: hidden;
-  padding-left: 20px;
+  // padding-left: 20px;
+}
+
+button.have-account {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+button.have-account:hover {
+  background-color: transparent;
+  color: $dark-font-hover;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.or .line {
+  border-bottom: 1px solid grey;
+  width: 80px;
+}
+
+.or p {
+  margin: 0 10px;
+  color: grey;
 }

@@ -59,13 +59,13 @@
           <div class="confirm_password">
             <label for="confirm_password">Confirm Password</label>
             <div><input name="confirm_password" type="password" placeholder="confirm password"></div>
+          </div>
             <div>
               <p class="authentication_error" hidden></p>
             </div>
-          </div>
           <button class="signup_button">Sign Up</button>
         </form>
-        <p>Already have an account? <span class="show_login">Log In</span></p>
+        <p class="switch">Already have an account? <span class="show_login">Log In</span></p>
     </div>
 
     <div class="login" <% if (service!=='login' ) { %>
@@ -84,7 +84,7 @@
           <button class="signup_button">Login</button>
           <p class="authentication_error" hidden></p>
         </form>
-        <p>Create an account <span class="show_signup">Here</span></p>
+        <p class="switch">Create an account <span class="show_signup">Here</span></p>
     </div>
 
 
