@@ -50,3 +50,55 @@ VALUES
   (4, 'Canada'),
   (4, 'Brazil'),
   (4, 'Portugal');
+
+INSERT INTO
+  poll_options (poll_id, poll_option_title)
+VALUES
+  (5, 'Eggs'),
+  (5, 'Pancakes'),
+  (5, 'Waffles'),
+  (5, 'French Toast'),
+  (5, 'Coffffeeeeeee');
+
+INSERT INTO
+  poll_options (
+    poll_id,
+    poll_option_title,
+    poll_option_description
+  )
+VALUES
+  (6, 'Hockey', 'Canada''s Game'),
+  (
+    6,
+    'Football',
+    'AKA soccer, futball, The Beautiful Game'
+  ),
+  (6, 'Baseball', 'America''s Past Time'),
+  (6, 'Rugby', ''),
+  (
+    6,
+    'American Football',
+    'Why do they call it football when it''s all in your hands?'
+  ),
+  (6, 'Cricket', '');
+
+INSERT INTO
+  poll_options (poll_id, poll_option_title)
+VALUES
+  (7, '8:00am'),
+  (7, '9:00am'),
+  (7, '10:00am'),
+  (7, '2:00pm'),
+  (7, '3:00pm');
+
+INSERT INTO
+  poll_options (
+    poll_id,
+    poll_option_title,
+    poll_option_description
+  )
+VALUES
+  (8, 'My two front teeth!', ''),
+  (8, 'Coal', 'You know, (char)coal for BBQ!!!'),
+  (8, 'The latest toy!', ''),
+  (8, 'A new computer', '');

@@ -7,7 +7,12 @@ main {
   align-items: center;
   text-align: center;
 
-  .first_name, .last_name, .email, .password, .confirm_password, .signup_button {
+  .first_name,
+  .last_name,
+  .email,
+  .password,
+  .confirm_password,
+  .signup_button {
     margin-top: 25px;
     text-align: left;
   }
@@ -40,11 +45,13 @@ main {
     font-weight: bold;
   }
 
-  .show_login, .show_signup {
+  .show_login,
+  .show_signup {
     color: rgb(0, 83, 161);
   }
 
-  .show_login:hover, .show_signup:hover {
+  .show_login:hover,
+  .show_signup:hover {
     cursor: pointer;
     border-bottom: rgb(0, 83, 161) solid 1px;
   }
@@ -57,11 +64,15 @@ main {
     margin-right: 0;
   }
 
+  p {
+    margin-bottom: 0;
+  }
+
   form.authentication {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  
+
 }

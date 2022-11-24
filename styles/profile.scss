@@ -14,17 +14,24 @@ h1 {
   font-family: 'Playfair Display', serif;
 }
 
-h2, h3, h4, p {
+h2,
+h3,
+h4,
+p {
   font-family: 'Montserrat', sans-serif;
 }
+
+
 
 main {
   margin-left: 30px;
   margin-right: 30px;
 
+
   .pollhistory {
     margin-bottom: 30px;
     margin-left: 10px;
+
     i {
       margin-left: 5px;
     }
@@ -33,6 +40,11 @@ main {
   p {
     margin-bottom: 50px;
     text-align: center;
+  }
+
+  p.bar_title {
+    margin: 0;
+    height: 1rem;
   }
 
   .fa-arrow-trend-down {
@@ -75,7 +87,7 @@ main {
     }
 
     #createpoll:hover {
-      background-color: $accent-color2-hover;
+      // background-color: $accent-color2-hover;
       cursor: pointer;
     }
   }
@@ -87,6 +99,7 @@ section.nopoll {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   p {
     margin: 0;
   }
@@ -97,9 +110,9 @@ section.nopoll {
   display: table;
   table-layout: fixed;
   background-color: #fff;
-  width: 60%;
+  width: 60vw;
   border-radius: 10px;
-  height: 300px;
+  height: 40vh;
   margin: 0 auto;
   padding: 0;
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
@@ -129,12 +142,12 @@ section.nopoll {
     position: relative;
     display: table-cell;
     vertical-align: bottom;
-    height: 200px;
+    height: 5vh;
     padding-top: 30px;
   }
 
   span {
-    margin: 0 1em;
+    margin: 0 1vw;
     display: block;
     background: $bar-color;
     border: 1px solid rgb(153, 102, 255);
@@ -142,7 +155,7 @@ section.nopoll {
     animation: draw 1s ease-in-out;
     border-radius: 10px 10px 0 0;
 
-    
+
 
     &:before {
       position: absolute;
@@ -163,26 +176,31 @@ span.bar1 {
   border: 1px solid rgb(255, 99, 132);
   border-bottom: none;
 }
+
 span.bar2 {
   background: rgba(255, 159, 64, 0.2);
   border: 1px solid rgb(255, 159, 64);
   border-bottom: none;
 }
+
 span.bar3 {
   background: rgba(255, 205, 86, 0.2);
   border: 1px solid rgb(255, 205, 86);
   border-bottom: none;
 }
+
 span.bar4 {
   background: rgba(75, 192, 192, 0.2);
   border: 1px solid rgb(75, 192, 192);
   border-bottom: none;
 }
+
 span.bar5 {
   background: rgba(54, 162, 235, 0.2);
   border: 1px solid rgb(54, 162, 235);
   border-bottom: none;
 }
+
 span.bar6 {
   background: rgba(201, 203, 207, 0.2);
   border: 1px solid rgb(201, 203, 207);
@@ -210,4 +228,57 @@ button.share {
 
 img {
   height: 300px;
+}
+
+
+// @media only screen and (max-width: 1385px) {}
+
+@media only screen and (max-width: 1326px) {
+  span.bar0::before {
+    display: none;
+  }
+
+  span.bar1::before {
+    display: none;
+  }
+
+  span.bar2::before {
+    display: none;
+  }
+
+  span.bar3::before {
+    display: none;
+  }
+
+  span.bar4::before {
+    display: none;
+  }
+
+  span.bar5::before {
+    display: none;
+  }
+
+  span.bar6::before {
+    display: none;
+  }
+
+  span.bar7::before {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: 425px) {
+  main p {
+    margin-bottom: 5px;
+  }
+
+  .chart {
+    height: 30vh;
+  }
+
+  .chart p.icons {
+    font-size: 20px;
+  }
+
 }

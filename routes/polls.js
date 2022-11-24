@@ -40,6 +40,7 @@ router.get('/', (req, res) => {
       db.getPollResultsByPoll(userId)
         .then((score)=>{
           // Convert array of scores, to useable object
+          // console.log(score);
           const newScores = {};
           for (const index in score) {
             newScores[score[index].option] = score[index].score;
@@ -75,6 +76,7 @@ router.get('/', (req, res) => {
               }];
             }
           }
+          // console.log(object);
           const tempVar = {
             object: object,
             username: userFirstName

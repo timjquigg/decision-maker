@@ -250,3 +250,131 @@ VALUES
   (23, 3, NOW() + INTERVAL '1 day'),
   (18, 8, NOW() + INTERVAL '1 day'),
   (24, 2, NOW() + INTERVAL '1 day');
+
+-- Poll #5
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (25, 4, 'Nick', NOW() + INTERVAL '3 hour'),
+  (26, 3, 'Nick', NOW() + INTERVAL '3 hour'),
+  (27, 1, 'Nick', NOW() + INTERVAL '3 hour'),
+  (28, 2, 'Nick', NOW() + INTERVAL '3 hour'),
+  (29, 5, 'Nick', NOW() + INTERVAL '3 hour');
+
+-- Poll #5
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (25, 1, 'Ophelia', NOW() + INTERVAL '1 hour'),
+  (26, 2, 'Ophelia', NOW() + INTERVAL '1 hour'),
+  (27, 3, 'Ophelia', NOW() + INTERVAL '1 hour'),
+  (28, 4, 'Ophelia', NOW() + INTERVAL '1 hour'),
+  (29, 5, 'Ophelia', NOW() + INTERVAL '1 hour');
+
+-- Poll #5
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (25, 5, 'Peter', NOW() + INTERVAL '10 hour'),
+  (26, 2, 'Peter', NOW() + INTERVAL '10 hour'),
+  (27, 4, 'Peter', NOW() + INTERVAL '10 hour'),
+  (28, 1, 'Peter', NOW() + INTERVAL '10 hour'),
+  (29, 3, 'Peter', NOW() + INTERVAL '10 hour');
+
+-- Poll #5
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (25, 2, 'Quinn', NOW() + INTERVAL '12 hour'),
+  (26, 4, 'Quinn', NOW() + INTERVAL '12 hour'),
+  (27, 5, 'Quinn', NOW() + INTERVAL '12 hour'),
+  (28, 1, 'Quinn', NOW() + INTERVAL '12 hour'),
+  (29, 3, 'Quinn', NOW() + INTERVAL '12 hour');
+
+-- Poll #6
+INSERT INTO
+  responses (poll_option_id, score, responded)
+VALUES
+  (30, 1, NOW() + INTERVAL '3 hour'),
+  (31, 2, NOW() + INTERVAL '3 hour'),
+  (32, 3, NOW() + INTERVAL '3 hour'),
+  (33, 4, NOW() + INTERVAL '3 hour'),
+  (34, 5, NOW() + INTERVAL '3 hour'),
+  (35, 6, NOW() + INTERVAL '3 hour');
+
+-- Poll #6
+INSERT INTO
+  responses (poll_option_id, score, responded)
+VALUES
+  (30, 2, NOW() + INTERVAL '1 hour'),
+  (31, 3, NOW() + INTERVAL '1 hour'),
+  (32, 5, NOW() + INTERVAL '1 hour'),
+  (33, 4, NOW() + INTERVAL '1 hour'),
+  (34, 6, NOW() + INTERVAL '1 hour'),
+  (35, 1, NOW() + INTERVAL '1 hour');
+
+-- Poll #6
+INSERT INTO
+  responses (poll_option_id, score, responded)
+VALUES
+  (30, 2, NOW() + INTERVAL '8 hour'),
+  (31, 5, NOW() + INTERVAL '8 hour'),
+  (32, 4, NOW() + INTERVAL '8 hour'),
+  (33, 3, NOW() + INTERVAL '8 hour'),
+  (34, 6, NOW() + INTERVAL '8 hour'),
+  (35, 1, NOW() + INTERVAL '8 hour');
+
+-- Poll #6
+INSERT INTO
+  responses (poll_option_id, score, responded)
+VALUES
+  (30, 5, NOW() + INTERVAL '3 hour'),
+  (31, 6, NOW() + INTERVAL '3 hour'),
+  (32, 3, NOW() + INTERVAL '3 hour'),
+  (33, 1, NOW() + INTERVAL '3 hour'),
+  (34, 2, NOW() + INTERVAL '3 hour'),
+  (35, 4, NOW() + INTERVAL '3 hour');
+
+-- Poll #7
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (36, 6, 'Victor', NOW() + INTERVAL '1 day'),
+  (37, 1, 'Victor', NOW() + INTERVAL '1 day'),
+  (38, 2, 'Victor', NOW() + INTERVAL '1 day'),
+  (39, 3, 'Victor', NOW() + INTERVAL '1 day'),
+  (40, 4, 'Victor', NOW() + INTERVAL '1 day'),
+  (41, 5, 'Victor', NOW() + INTERVAL '1 day');
+
+-- Poll #7
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (36, 5, 'Whitney', NOW() + INTERVAL '2 day'),
+  (37, 2, 'Whitney', NOW() + INTERVAL '2 day'),
+  (38, 1, 'Whitney', NOW() + INTERVAL '2 day'),
+  (39, 4, 'Whitney', NOW() + INTERVAL '2 day'),
+  (40, 3, 'Whitney', NOW() + INTERVAL '2 day'),
+  (41, 6, 'Whitney', NOW() + INTERVAL '2 day');
+
+-- Poll #7
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (36, 2, 'Xavier', NOW() + INTERVAL '1 hour'),
+  (37, 5, 'Xavier', NOW() + INTERVAL '1 hour'),
+  (38, 4, 'Xavier', NOW() + INTERVAL '1 hour'),
+  (39, 6, 'Xavier', NOW() + INTERVAL '1 hour'),
+  (40, 1, 'Xavier', NOW() + INTERVAL '1 hour'),
+  (41, 3, 'Xavier', NOW() + INTERVAL '1 hour');
+
+-- Poll #7
+INSERT INTO
+  responses (poll_option_id, score, name, responded)
+VALUES
+  (36, 3, 'Yvonne', NOW() + INTERVAL '2 hour'),
+  (37, 1, 'Yvonne', NOW() + INTERVAL '2 hour'),
+  (38, 2, 'Yvonne', NOW() + INTERVAL '2 hour'),
+  (39, 5, 'Yvonne', NOW() + INTERVAL '2 hour'),
+  (40, 6, 'Yvonne', NOW() + INTERVAL '2 hour'),
+  (41, 4, 'Yvonne', NOW() + INTERVAL '2 hour');
