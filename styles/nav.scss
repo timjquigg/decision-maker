@@ -26,7 +26,6 @@ nav {
 
   div.nav-right {
     display: flex;
-    // flex-direction: column;
     margin-right: 5vw;
     justify-content: center;
     align-items: center;
@@ -51,7 +50,6 @@ nav {
 
   .buttons {
     margin-right: 20px;
-    // margin-top: 30px;
     display: flex;
     flex-direction: row;
   }
@@ -62,7 +60,6 @@ nav {
     padding: 10px 30px;
     p {
       margin: 0;
-
     }
   }
 
@@ -155,7 +152,6 @@ header h2.welcomeback2 {
     margin-top: -5vw;
     font-weight: lighter;
   }
-  
 }
 
 @media only screen and (max-width: 925px) {

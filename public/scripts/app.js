@@ -1,5 +1,6 @@
 $(() => {
 
+  // Copy URL to share when icon is clicked
   let $temp = $("<input>");
   let $url = $('.clipboard').attr('href');
 
@@ -12,6 +13,7 @@ $(() => {
     alert("URL copied!");
   });
 
+  // Show each option on hover when the screen is samller than 1327
   if ($(window).width() < 1327) {
     $('li span').on('mouseenter', function() {
       const title = $(this).attr('title');

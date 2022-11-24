@@ -1,5 +1,4 @@
 // Graphics to do with results
-// chart
 $(() => {
   $('.totalscore').hide();
   $('#viewParticipants p').hide();
@@ -8,6 +7,7 @@ $(() => {
     $('#viewParticipants p').slideToggle();
   });
 
+  // Copy URL to share when icon is clicked
   let $temp = $("<input>");
   let $url = $(location).attr('href');
 
@@ -19,7 +19,8 @@ $(() => {
     $temp.remove();
     alert("URL copied!");
   });
-
+  
+  // Show scores of each option on hover
   $('span.bar').mouseenter(function(event) {
     event.preventDefault();
     $(this).closest('li').find('p').slideDown();
@@ -30,6 +31,7 @@ $(() => {
     $('.totalscore').slideUp();
   });
     
+  // Show each option on hover when the screen is samller than 1327
   if($(window).width() < 1327) {
   $('li span').on('mouseenter', function() {
     const title = $(this).attr('title');
