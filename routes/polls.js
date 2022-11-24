@@ -21,8 +21,8 @@ const mailgun = require("mailgun-js");
 //IP
 const IP = require('ip');
 
-let ipAddress = IP.address();
-
+let ip = IP.address();
+let ipAddress = ip + ':8080';
 
 //Enter domain and api_keys key here
 const DOMAIN = process.env.MG_DOMAIN_KEY;
@@ -159,10 +159,10 @@ router.post('/', (req, res) => {
               to: req.body.email,
               subject: 'Success! Poll created',
               text: `Hi! You have created a Poll:
-              \nShare your poll: http://${ipAddress}:8080/polls/${pollId}
-              \nSee the result: http://${ipAddress}:8080/polls/results/${pollId}
+              \nShare your poll: http://${ipAddress}/polls/${pollId}
+              \nSee the result: http://${ipAddress}/polls/results/${pollId}
 
-              \nTo start saving your polls, create an account now: http://${ipAddress}:8080/users
+              \nTo start saving your polls, create an account now: http://${ipAddress}/users
               \nThank you for choosing Ranker!
 
               \nBest,
@@ -236,10 +236,10 @@ router.post('/', (req, res) => {
             text: `Hi, ${result.rows[0].first_name}.
 
               \nYou have created a Poll:
-              \nShare your poll: http://${ipAddress}:8080/polls/${pollId}
-              \nSee the result: http://${ipAddress}:8080/polls/results/${pollId}
+              \nShare your poll: http://${ipAddress}/polls/${pollId}
+              \nSee the result: http://${ipAddress}/polls/results/${pollId}
 
-              \nTo manage your polls, log in to your account: http://${ipAddress}:8080/users
+              \nTo manage your polls, log in to your account: http://${ipAddress}/users
               \nThank you for using Ranker.
 
               \nBest,
@@ -352,9 +352,9 @@ router.post('/:id', (req, res) => {
             \nSomeone has responded to your poll!
             \nPoll question: ${question}
             \nCreated at: ${dateCreated}
-            \nSee the results: http://${ipAddress}:8080/polls/results/${pollId}
+            \nSee the results: http://${ipAddress}/polls/results/${pollId}
 
-            \nTo manage your polls, log in to your account: http://${ipAddress}:8080/users
+            \nTo manage your polls, log in to your account: http://${ipAddress}/users
             \nThank you for choosing Ranker.
 
             \nBest,

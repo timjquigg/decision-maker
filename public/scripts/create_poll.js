@@ -83,10 +83,10 @@ $(() => {
       .then(result => {
         console.log('query log:', result);
 
-        $('.url_respond').text(`http://${result.ip}:8080/polls/${result.count}`);
-        $('.url_respond').attr('href', `http://${result.ip}:8080/polls/${result.count}`);
-        $('.url_user').text(`http://${result.ip}:8080/polls/results/${result.count}`);
-        $('.url_user').attr('href', `http://${result.ip}:8080/polls/results/${result.count}`);
+        $('.url_respond').text(`http://${result.ip}/polls/${result.count}`);
+        $('.url_respond').attr('href', `http://${result.ip}/polls/${result.count}`);
+        $('.url_user').text(`http://${result.ip}/polls/results/${result.count}`);
+        $('.url_user').attr('href', `http://${result.ip}/polls/results/${result.count}`);
 
         $('.submission_confirmation').show();
         $('.poll').hide();
