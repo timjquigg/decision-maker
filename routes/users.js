@@ -9,14 +9,17 @@ const express = require('express');
 const db = require('../db/queries/users');
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
-const cookieSession = require('cookie-session');
 
-const checkDuplicateEmail = (email, users) => {
-  //please check :)//
+/*
+Helper Functions
+ */
+
+const checkDuplicateEmail = (users) => {
+  // If DB returns no users, then duplicate does not exist
   if (!users) {
-    return;
+    return false;
   }
-
+  // Checks each user returned by DB, if any have non-NULL name -> duplicate
   for (const user of users) {
     if (user.first_name !== null) {
       return true;
@@ -24,10 +27,12 @@ const checkDuplicateEmail = (email, users) => {
   }
 };
 
-const getRegisteredUser = (email, users) => {
+const getRegisteredUser = (users) => {
+  // If DB returns no users, then user does not exist
   if (!users) {
     return null;
   }
+  // Returns the first user with a non-NULL name
   for (const user of users) {
     if (user.first_name !== null) {
       return user;
@@ -36,7 +41,7 @@ const getRegisteredUser = (email, users) => {
   return null;
 };
 
-// Signup
+// Display Signup Page
 router.get('/', (req, res) => {
   const tempVar = {
     username : req.session.userFirst,
@@ -44,24 +49,21 @@ router.get('/', (req, res) => {
   res.render('login_signup', tempVar);
 });
 
-// Login
+// Display Login Page
 router.get('/:login', (req, res) => {
-  console.log(req.params);
   const tempVar = {
     username : req.session.userFirst,
     service: 'login'};
-  console.log(tempVar);
   res.render('login_signup', tempVar);
 });
 
-// Receive login credentials
+// User attempts to login
 router.post('/login', (req, res) => {
-
   // Send credentials db to see if credentials exist
   db.getUserByEmail(req.body.email)
     .then((users) => {
 
-      const user = getRegisteredUser(req.body.email, users);
+      const user = getRegisteredUser(users);
 
       // If user does not exist
       if (!user) {
@@ -93,7 +95,7 @@ router.post('/login', (req, res) => {
 
 // Receive signup credentials
 router.post('/signup', (req, res) => {
-  // Send credentials to db to create user
+  // Credentials to send to DB
   const firstName = req.body.first_name;
   const lastName = req.body.last_name;
   const email = req.body.email;
@@ -103,9 +105,8 @@ router.post('/signup', (req, res) => {
   db.getUserByEmail(email)
     .then((users) => {
 
-
-      // If e-mail already exists
-      if (checkDuplicateEmail(req.body.email, users)) {
+      // If e-mail already exists return to signup page
+      if (checkDuplicateEmail(users)) {
         res.send(null);
         return;
       }
@@ -113,7 +114,6 @@ router.post('/signup', (req, res) => {
       // If user does not exist create user
       db.addUsers({firstName, lastName, email, password})
         .then((user) => {
-          console.log(user);
           req.session = {
             userId : user.id,
             userFirst : user.first_name,
@@ -125,6 +125,7 @@ router.post('/signup', (req, res) => {
     });
 });
 
+// When user logs out
 router.post('/logout', (req, res) => {
   // Delete cookie, redirect to home
   req.session = null;

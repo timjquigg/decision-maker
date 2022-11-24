@@ -1,53 +1,34 @@
-// Scripts for login - signup - logout
+// Scripts for login - signup
 
 $(() => {
 
+  // Hide sign-up / login buttons on signup/login page
   $('.nav-right').hide();
 
-  $('.authentication>input').on('change', function(event) {
+  // Hide error messages when input changes
+  $('.authentication>input').on('change', function() {
     $(this).parent().parent().find('p').slideUp();
   });
 
+  // Validate and submit login form
   $('form.login').on('submit', function(event) {
     event.preventDefault();
     if (!validateLogin(this)) {
       return;
     }
-
-    $.post('/users/login',$(this).serialize())
-      .then((result) => {
-        if (result === '') {
-          const errorText = 'Error: Invalid email and/or password';
-          $(this).find('p').text(errorText).slideDown();
-          return;
-        }
-        window.location.href = '../polls';
-      });
-    
+    login(this);
   });
   
+  // Validate and submit signup9 form
   $('form.signup').on('submit', function(event) {
     event.preventDefault();
-
     if (!validateSignup(this)) {
       return;
     }
-
-    $.post('/users/signup', $(this).serialize())
-      .then((result) => {
-        if (result === '') {
-          const errorText = 'Error: E-mail already exists';
-          $(this).find('p').text(errorText).slideDown();
-          return;
-        }
-        window.location.href = '../polls';
-      });
-    
-      
+    signup(this);
   });
   
   $('.show_login').on('click', function() {
-    console.log('click');
     $('.nav-right .login').trigger('click');
   });
 
@@ -55,7 +36,10 @@ $(() => {
     $('.nav-right .signup').trigger('click');
   });
 
-
+  /*
+  Helper Functions
+  */
+  
   const validateLogin = function(source) {
   
     const email = $(source.email).val();
@@ -105,4 +89,27 @@ $(() => {
     return true;
   };
 
+  const login = function(credentials) {
+    $.post('/users/login',$(credentials).serialize())
+      .then((result) => {
+        if (result === '') {
+          const errorText = 'Error: Invalid email and/or password';
+          $(credentials).find('p').text(errorText).slideDown();
+          return;
+        }
+        window.location.href = '../polls';
+      });
+  };
+
+  const signup = function(credentials) {
+    $.post('/users/signup', $(credentials).serialize())
+      .then((result) => {
+        if (result === '') {
+          const errorText = 'Error: E-mail already exists';
+          $(credentials).find('p').text(errorText).slideDown();
+          return;
+        }
+        window.location.href = '../polls';
+      });
+  };
 });
