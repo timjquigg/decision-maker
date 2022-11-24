@@ -80,8 +80,7 @@ const addNewPoll = (pollInfo, userID = null) => {
 };
 
 const addOptionsToPoll = (pollInfo, pollId) => {
-// console.log('APPLE:', pollInfo);
-// let pollId = pollId;
+
   const queryParams = [pollId];
 
   let queryString = `INSERT INTO
@@ -95,6 +94,10 @@ VALUES`;
 
   for (const keys in pollInfo) {
   // console.log(keys)
+  // data shows up as (id, option_title, option_desc)
+  // .includes filters out id and just reads the options data
+  // counter specifies the value of the '$num' based on the current length
+  // of the queryParams
     if (keys.includes('option')) {
     // console.log(pollInfo[keys])
       if (counter <= 1) {
@@ -113,8 +116,6 @@ VALUES`;
     // console.log(counter)
     }
   }
-
-  // console.log({queryString,queryParams})
 
   queryString += `RETURNING *;`;
 
@@ -182,8 +183,7 @@ const getNamesResponded = (pollId) => {
     });
 };
 
-// from get '/polls/:id' --- Not logged in
-// return promise to router
+// Gets the information of the poll to be used to render the response page
 const getPollDataById = (id) => {
   let queryParams = [id];
   let queryString = `
@@ -206,22 +206,15 @@ const getPollDataById = (id) => {
 
 // from post '/polls/:id'
 // return promise to router
+
+// adds the result to poll, name is null by default for users not signed in
 const addResultsToPoll = (name = null, pollResponse) => {
 
   let scoreSheet = pollResponse;
-  let queryParams = [name];
-  // console.log('respondents:',respondentName,'scoresheet', scoreSheet);
-  // respondents: asd
-  // scoresheet [ [ 1, 5 ], [ 2, 4 ], [ 3, 3 ], [ 4, 2 ], [ 5, 1 ] ]
 
-  // let queryString =
-  // `
-  // INSERT INTO responses
-  // (poll_option_id, score, name, responded)
-  // VALUES
-  // ($1, $2, 'Bobby', NOW()), ($2, $3, $1, NOW()), ($4, $5, $1, NOW())
-  // RETURNING *;
-  // `
+  // query params initiated with the name as $1
+  let queryParams = [name];
+  // counter initializes the max score per poll
   let counter = queryParams.length;
   let queryString =
 `
@@ -231,6 +224,7 @@ VALUES
 
 `;
 
+  // it builds the value as ($1, $2, $3), ($1, $4, $5), ... depends on num of options
   scoreSheet.forEach((data, index) => {
     if (index <= 0) {
       queryString += `(`;
@@ -256,6 +250,9 @@ VALUES
 
 };
 
+// gets the latest number of the polls to be used for the url,
+// it gets called as soon as the user creates a poll and send it back to the
+// ejs file.
 const getTotalPoll = () => {
   let queryString = `SELECT COUNT(*) FROM polls;`;
   return db
@@ -264,6 +261,7 @@ const getTotalPoll = () => {
     .catch(err => console.log(err));
 };
 
+// used for mailgun if the user is logged in.
 const getEmailByPoll = (pollId) => {
   let queryString = `SELECT DISTINCT(email), first_name
   FROM polls JOIN users
@@ -276,6 +274,8 @@ const getEmailByPoll = (pollId) => {
     .catch(err => console.log(err));
 };
 
+// retrieves the data of a specific poll based on an option
+// used for mailgun
 const getPollDataByOptionsId = (optionId) => {
   let queryString = `SELECT polls.id, email, question, polls.created_on
   FROM polls
