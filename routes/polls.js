@@ -203,13 +203,20 @@ router.post('/', (req, res) => {
     .then(result => {
       console.log('poll log:', result.rows);
       db.getTotalPoll()
-        .then(result => res.send(result.rows[0].count))
+        .then(result => {
+          const pollData = {
+            count : result.rows[0].count,
+            ip: ipAddress
+          };
+          console.log('185', pollData);
+          res.send(pollData);
+        })
         .catch(err => console.log(err.message));
       const pollId = result.rows[0].id;
       db.getEmailByPoll(pollId)
         .then(result => {
 
-          // console.log('apple',result.rows[0]);
+          console.log('apple',result.rows[0]);
           ///////////////////////MAILGUN/////////////////////////
           const data = {
             from: 'Decision Maker <kikopocampo@gmail.com>',

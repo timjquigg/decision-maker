@@ -6,11 +6,9 @@
 
 $(() => {
 
-  console.log('document ready');
-
   autosize($('textarea'));
 
-  let textboxCount = 3;
+
 
   $('.submission_confirmation').hide();
   $('.question_error').hide();
@@ -18,8 +16,6 @@ $(() => {
   $('.date_error').hide();
   $('.createpoll').hide();
   $('#welcomeback').hide();
-  // $('.fa-solid').show();
-
 
   // event listener IF screensize is changed
 
@@ -27,7 +23,9 @@ $(() => {
     event.preventDefault();
     console.log('on submit');
     let valueCheck = 0;
+
     //if question textbox is empty
+
     if (!$('.poll_question_box').val()) {
       $('.question_error').show();
       $('.poll_question_box').css('box-shadow', '0 0 5px 0.5px red');
@@ -80,9 +78,6 @@ $(() => {
       $('.date_error').hide();
     });
 
-
-
-
     //If submission is successful.
     $.post('/polls', $(this).serialize())
       .then(result => {
@@ -100,18 +95,39 @@ $(() => {
       })
       .catch(error => console.log(error.message));
 
-    // $('.submission_confirmation').show();
-    // $('.poll').hide();
-    // $('#poll_label').hide();
   });
 
+  // highlights required textboxes if empty
   $('.poll_question_box').on('focus', function(event) {
     event.preventDefault();
     $('.question_error').hide();
     $('.poll_question_box').css('box-shadow', '');
   });
 
+  // creates a new textbox
+  $('.new_option_textbox').on('click', function(event) {
+    event.preventDefault();
 
+    $('.options_box').append(createTextbox());
+
+  });
+
+  // deletes the last textbox
+  $('.delete_option_textbox').on('click', function(event) {
+    event.preventDefault();
+    deleteTextBox();
+
+  });
+
+  // sends the user back to profile after submitting form
+  $('.profile_button').on('click', function(event) {
+    window.location.href = '../polls';
+  });
+
+  $('.deadline_box').datetimepicker({
+    inline: true});
+
+  let textboxCount = 3;
 
   const createTextbox = () => {
     let output = `<div class="option">
@@ -139,27 +155,6 @@ $(() => {
 
   };
 
-  $('.new_option_textbox').on('click', function(event) {
-    event.preventDefault();
-
-    $('.options_box').append(createTextbox());
-
-  });
-
-
-
-  $('.delete_option_textbox').on('click', function(event) {
-    event.preventDefault();
-    deleteTextBox();
-
-  });
-
-  $('.profile_button').on('click', function(event) {
-    window.location.href = '../polls';
-  });
-
-  $('.deadline_box').datetimepicker({
-    inline: true});
 });
 
 

@@ -40,6 +40,7 @@ $(() => {
     }
   });
 
+  //initiates the sortable UI for the options
   $("#sortable").sortable({
     placeholder: "placeholder",
     axis : 'y',
@@ -49,14 +50,17 @@ $(() => {
     tolerance: "pointer",
   });
 
+  // displays when the user submits the form and the name textbox is empty
   $('.name_box').on('focus',() => {
     $('.error_name').hide('slow');
   });
 
+  // redirects the user to the home page
   $('.home_button').on('click', () => {
     window.location.href = '../';
   });
 
+  //submits the post
   $('.submission').on('submit', function(event) {
     event.preventDefault();
     let result = $('#sortable').sortable('toArray');
