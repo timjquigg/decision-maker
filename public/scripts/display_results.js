@@ -9,7 +9,8 @@ $(() => {
 
   // Copy URL to share when icon is clicked
   let $temp = $("<input>");
-  let $url = $(location).attr('href');
+  // let $url = $(location).attr('href');
+  let $url = $('.clipboard').attr('href');
 
   $('.clipboard').on('click', function(event) {
     event.preventDefault();

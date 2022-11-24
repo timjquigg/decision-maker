@@ -48,7 +48,8 @@
                       <p>Share this poll with your friends!</p>
                       <img src="/images/Online-pana.svg" />
                       <p class="icons">
-                        <button class="clipboard share"><i class="fa-solid fa-link"></i></button>
+                        <button class="clipboard share" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/<%=object[title][0].pollId%>">
+                          <i class="fa-solid fa-link"></i></button>
                         <button class="share"><i class="fa-brands fa-square-twitter"></i></button>
                         <button class="share"><i class="fa-brands fa-square-facebook"></i></button>
                       </p>
@@ -91,9 +92,9 @@
         <% } %>
   </main>
   <footer>
-    <p>Share this poll with your friends!</p>
+    <p>Share the results with your friends!</p>
     <p class="icons">
-      <button class="clipboard"><i class="fa-solid fa-link"></i></button>
+      <button class="clipboard" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/results/<%=object[title][0].pollId%>"><i class="fa-solid fa-link"></i></button>
       <button><i class="fa-brands fa-square-twitter"></i></button>
       <button><i class="fa-brands fa-square-facebook"></i></button>
     </p>
