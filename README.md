@@ -12,6 +12,7 @@ Ranker is a web application that lets user create polls to be shared with their 
 
  !["Home"](public/images/photos-md/home-page.jpeg)
  !["Details"](public/images/photos-md/detail-page.jpeg)
+ !["Details"](public/images/respond.gif)
 
  ## Usage
 
