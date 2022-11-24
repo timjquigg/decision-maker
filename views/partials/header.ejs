@@ -7,8 +7,8 @@
       </span>
     </button>
   </form>
+  <% if (username !==undefined && username !==null) { %>
   <div class="nav-right">
-    <% if (username !==undefined && username !==null) { %>
       <h3 id="welcomeback">Welcome back <%=username %>!</h3>
       </h3>
       <div class="buttons profile_buttons">
@@ -30,7 +30,7 @@
       </form>
   </div>
   <% } else { %>
-    <div class="nav-right buttons">
+    <div class="nav-right buttons home-nav">
       <form action="/users" method="GET">
         <button class="signup">
           <p>Sign up</p>
@@ -39,6 +39,7 @@
       <form action="/users/:login" method="GET">
         <button class="login">
           <p>Login</p>
+          <i class="fa-solid fa-right-to-bracket"></i>
         </button>
       </form>
     </div>

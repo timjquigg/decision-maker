@@ -12,7 +12,7 @@ nav {
   margin-bottom: 30px;
   font-family: $theme-font;
 
-  i.fa-circle-plus, i.fa-right-from-bracket {
+  i.fa-circle-plus, i.fa-right-from-bracket, i.fa-right-to-bracket {
     display: none;
   }
 
@@ -212,5 +212,20 @@ header h2.welcomeback2 {
       background-color: transparent;
     }
   }
+
+  nav div.home-nav p {
+    display: none;
+  }
+  nav div.home-nav button i.fa-right-to-bracket {
+    display: block;
+    color: $dark-font;
+    font-size: 30px;
+    margin: 20px;
+  }
+  nav div.nav-right button.login {
+    margin-top: 15px;
+  }
 }
+
+
 
