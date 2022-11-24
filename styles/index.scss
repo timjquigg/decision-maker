@@ -25,7 +25,7 @@ main {
 }
 
 div.headline {
-  margin-left: 100px;
+  margin-left: 5vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -100,10 +100,86 @@ button.have-account:hover {
 
 .or .line {
   border-bottom: 1px solid grey;
-  width: 80px;
+  width: 100px;
 }
 
 .or p {
   margin: 0 10px;
   color: grey;
+}
+
+@media only screen and (max-width: 1385px) {
+  main::after {
+    background-image: url(/images/Charts-bro.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: "";
+    opacity: 0.10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+  section.image {
+    display: none;
+  }
+
+  div.headline {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  div.description p {
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  nav {
+    background-color: transparent;
+    box-shadow: none;
+    .name {
+      color: $dark-font;
+    }
+  }
+
+  main {
+    width: 100vw;
+    margin: 0;
+  }
+
+  .dark {
+    background-color: $dark-color;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    align-items: center;
+    p {
+      color: $light-font;
+    }
+    button.have-account {
+      padding: 0;
+    }
+    button.have-account:hover {
+      text-decoration: underline;
+      text-decoration-color: #fff;
+    }
+    .or {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
 }

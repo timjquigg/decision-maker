@@ -48,20 +48,22 @@
         <p>Decision Maker gives you the power to design a wide variety of interactive polls. Polling your audience can
           be the most effective way to increase engagement and make a presentation dynamic and memorable.</p>
       </div>
-      <form action="/users" method="GET">
-        <button>Create an account</button>
-      </form>
-      <form action="/users/:login" method="GET">
-        <button class="have-account"><p>I already have an account</p></button>
-      </form>
-      <div class="or">
-        <div class="line"></div>
-        <p>or</p>
-        <div class="line"></div>
+      <div class="dark">
+        <form action="/users" method="GET">
+          <button>Create an account</button>
+        </form>
+        <form action="/users/:login" method="GET">
+          <button class="have-account"><p>I already have an account</p></button>
+        </form>
+        <div class="or">
+          <div class="line"></div>
+          <p>or</p>
+          <div class="line"></div>
+        </div>
+        <form action="/polls/new" method="GET">
+          <button class="guest">Create poll as guest</button>
+        </form>
       </div>
-      <form action="/polls/new" method="GET">
-        <button class="guest">Create poll as guest</button>
-      </form>
     </div>
     <section class="image">
       <div class="img">
