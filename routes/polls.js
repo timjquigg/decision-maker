@@ -236,8 +236,17 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const pollId = req.params.id;
   const pollData = {};
+  if (!Number.isInteger(Number(pollId))) {
+    res.redirect('../404');
+    return;
+  }
+
   db.getPollDataById(pollId)
     .then(result => {
+      if (result.rows.length === 0) {
+        res.redirect('../404');
+        return;
+      }
       if (Date.now() > result.rows[0].deadline) {
         const tempVar = {username: req.session.userFirst};
         res.render('expired', tempVar);
@@ -305,7 +314,7 @@ router.post('/:id', (req, res) => {
             to: email,
             subject: 'Response Notification',
             text: `
-            \nHi! Someone has responded to your poll.
+            \nSomeone has responded to your poll!
             \nPoll question: ${question}
             \nCreated at: ${dateCreated}
             \nSee the results: http://localhost:8080/polls/results/${pollId}

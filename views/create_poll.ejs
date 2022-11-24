@@ -11,6 +11,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- External Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -20,12 +23,14 @@
     integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
   <!-- Local Stylesheets -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/create_poll.css" />
+  <link rel="stylesheet" href="/styles/media_new_poll.css" />
 
   <!-- Local JavaScript -->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -50,11 +55,14 @@
 
     <h1 id="poll_label">Create New Poll</h1>
 
+
+
     <div class="poll">
       <!-- <div class="errors"> -->
       <h5 class="question_error" hidden>Poll question missing, please enter your question</h5>
       <h5 class="option_error" hidden>Poll option missing, please enter your option</h5>
       <h5 class="date_error" hidden>Please specify the poll deadline</h5>
+      <h5 class="min_option_error" hidden>Must have at least 2 options</h5>
       <!-- </div> -->
       <form class="new_poll">
         <% if (username===null ) { %>
@@ -72,19 +80,19 @@
             <div class="options_box">
               <div class="option">
                 <input class="options1 ob" name="option_1" placeholder="Option 1">
-                <textarea class="description1" name="option_1" placeholder="Description (Optional)"></textarea>
+                <textarea class="description1 desc" name="option_1" placeholder="Description (Optional)"></textarea>
               </div>
               <div class="option">
                 <input class="options2 ob" name="option_2" placeholder="Option 2">
-                <textarea class="description2" name="option_2" placeholder="Description (Optional)"></textarea>
+                <textarea class="description2 desc" name="option_2" placeholder="Description (Optional)"></textarea>
               </div>
               <div class="option">
                 <input class="options3 ob" name="option_3" placeholder="Option 3">
-                <textarea class="description3" name="option_3" placeholder="Description (Optional)"></textarea>
+                <textarea class="description3 desc" name="option_3" placeholder="Description (Optional)"></textarea>
               </div>
             </div>
-            
-            
+
+
             <div class="add_delete">
               <button class="new_option_textbox">Add Option</button>
               <button class="delete_option_textbox">Delete Option</button>

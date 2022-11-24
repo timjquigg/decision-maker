@@ -10,7 +10,7 @@ $(() => {
 
 
 
-
+  // init check of screensize (smaller screens)
   if ($(window).width() <= 1023) {
     $('.description_container').show();
     $(document).tooltip({
@@ -18,13 +18,14 @@ $(() => {
     });
   }
 
+  // init check of screensize (desktop)
   if ($(window).width() > 1024) {
     $(document).tooltip({
       position: { my: "left+15 center", at: "right center" }
     });
   }
 
-
+  // event listener IF screensize is changed during
   $(window).resize(() => {
     if ($(window).width() <= 1024) {
       $('.description_container').show();
