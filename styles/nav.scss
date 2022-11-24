@@ -89,7 +89,7 @@ nav {
   }
 
   img.logo {
-    margin-left: 40px;
+    margin-left: 5vw;
     text-align: center;
   }
 
@@ -121,5 +121,32 @@ nav {
       background-color:$accent-color-hover;
       color:$dark-color;
     }
+  }
+}
+
+@media only screen and (max-width: 1385px) {
+  nav {
+    background-color: transparent;
+    box-shadow: none;
+    .name {
+      color: $dark-font;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  span.name h3 {
+    font-size: 25px;
+  }
+  img.logo {
+    height: 33px;
+    width: 40px;
+  }
+  nav {
+    height: 50px;
+  }
+  button.home {
+    margin-top: 15px;
   }
 }

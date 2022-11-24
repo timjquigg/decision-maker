@@ -134,7 +134,11 @@ button.have-account:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+  }
+
+  div.title {
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 
   div.description p {
@@ -144,14 +148,6 @@ button.have-account:hover {
     font-size: 20px;
     margin-left: 10vw;
     margin-right: 10vw;
-  }
-
-  nav {
-    background-color: transparent;
-    box-shadow: none;
-    .name {
-      color: $dark-font;
-    }
   }
 
   main {
@@ -182,4 +178,15 @@ button.have-account:hover {
       margin-right: 0;
     }
   }
+}
+
+@media only screen and (max-width: 425px) {
+  div.headline {
+    text-align: center;
+  }
+  main::after {
+    top: 300px;
+  }
+
+  
 }
