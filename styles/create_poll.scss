@@ -9,8 +9,7 @@ main {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  // min-width: 100px;
-  // max-width: 700px;
+
 }
 
 .poll,
@@ -74,13 +73,11 @@ input[type="checkbox"] {
 
 textarea {
   padding: 4px;
-  // height: 2.5rem;
   resize: none;
 }
 
 .poll_question_box {
   width: 90%;
-  // min-width: 400px;
 
 
 }
@@ -178,6 +175,7 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   img {
     max-width: 1000px;
   }
@@ -189,10 +187,6 @@ button:hover {
     overflow-x: hidden
   }
 
-  // .container {
-  //   max-width: 100%;
-  //   overflow-x: hidden;
-  // }
 
   .option {
     flex-direction: column;

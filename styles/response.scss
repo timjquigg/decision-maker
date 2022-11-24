@@ -118,7 +118,6 @@
   .placeholder {
     list-style-type: none;
     height: 42px;
-    // background-color: rgb(253, 249, 241);
     border-radius: 10px;
     width: 80%;
     margin: 10px;
@@ -170,7 +169,6 @@ nav div.nav-right div.profile_buttons {
 @mixin desc-format {
   text-align: center;
   font-size: 17px;
-  // border: 2px solid red;
   font-weight: bold;
   width: 70%;
 }
