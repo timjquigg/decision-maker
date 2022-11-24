@@ -20,7 +20,9 @@ const mailgun = require("mailgun-js");
 
 //IP
 const IP = require('ip');
-const ipAddress = IP.address();
+
+let ipAddress = IP.address();
+
 
 //Enter domain and api_keys key here
 const DOMAIN = process.env.MG_DOMAIN_KEY;
@@ -144,6 +146,11 @@ router.post('/', (req, res) => {
           .then(result => {
             const pollId = result.rows[0].id;
 
+
+            if (process.env.NODE_ENV === 'production') {
+              ipAddress = req.hostname;
+            }
+
             // shoots an email to the creator of the email
 
             ///////////////////////MAILGUN/////////////////////////
@@ -173,6 +180,11 @@ router.post('/', (req, res) => {
             // gets the latest poll number to be used for the url
             db.getTotalPoll()
               .then(result => {
+
+                if (process.env.NODE_ENV === 'production') {
+                  ipAddress = req.hostname;
+                }
+
                 const pollData = {
                   count : result.rows[0].count,
                   ip: ipAddress
@@ -196,6 +208,11 @@ router.post('/', (req, res) => {
     .then(result => {
       db.getTotalPoll()
         .then(result => {
+
+          if (process.env.NODE_ENV === 'production') {
+            ipAddress = req.hostname;
+          }
+
           const pollData = {
             count : result.rows[0].count,
             ip: ipAddress
@@ -206,6 +223,10 @@ router.post('/', (req, res) => {
       const pollId = result.rows[0].id;
       db.getEmailByPoll(pollId)
         .then(result => {
+
+          if (process.env.NODE_ENV === 'production') {
+            ipAddress = req.hostname;
+          }
 
           ///////////////////////MAILGUN/////////////////////////
           const data = {
@@ -317,6 +338,10 @@ router.post('/:id', (req, res) => {
         .then(result => {
 
           const {id : pollId, email, question, created_on : dateCreated} = result.rows[0];
+
+          if (process.env.NODE_ENV === 'production') {
+            ipAddress = req.hostname;
+          }
 
           ///////////////////////MAILGUN/////////////////////////
           const data = {
