@@ -27,7 +27,7 @@ nav {
   div.nav-right {
     display: flex;
     // flex-direction: column;
-    margin-right: 40px;
+    margin-right: 5vw;
     justify-content: center;
     align-items: center;
 
@@ -176,9 +176,11 @@ header h2.welcomeback2 {
   button.home {
     margin-top: 15px;
   }
+  #welcomeback {
+    display: none;
+  }
   nav div.nav-right button.logout {
     margin-top: 25px;
-    margin-right: 0;
   }
   i.fa-hand-pointer {
     display: none;
