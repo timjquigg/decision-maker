@@ -1,5 +1,7 @@
 // load .env data into process.env
-// require('dotenv').config();
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
