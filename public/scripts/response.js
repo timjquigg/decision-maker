@@ -6,10 +6,37 @@ $(() => {
   // hides the error and submit window
   $('.error_name').css('display', 'none');
   $('.submit_window').hide();
+  $('.description_container').hide();
 
 
-  $(document).tooltip({
-    position: { my: "left+15 center", at: "right center" }
+
+
+  if ($(window).width() <= 1023) {
+    $('.description_container').show();
+    $(document).tooltip({
+      position: { my: "center", at: "center", of: ".description_container" }
+    });
+  }
+
+  if ($(window).width() > 1024) {
+    $(document).tooltip({
+      position: { my: "left+15 center", at: "right center" }
+    });
+  }
+
+
+  $(window).resize(() => {
+    if ($(window).width() <= 1024) {
+      $('.description_container').show();
+      $(document).tooltip({
+        position: { my: "center", at: "center", of: ".description_container" }
+      });
+    } else {
+      $('.description_container').hide();
+      $(document).tooltip({
+        position: { my: "left+15 center", at: "right center" }
+      });
+    }
   });
 
   $("#sortable").sortable({

@@ -26,6 +26,13 @@
 .container {
   @include align-center;
   margin-top: 100px;
+  width: 100vw;
+  margin-bottom: 100px;
+}
+
+.description_container {
+  text-align: center;
+  height: 20px
 }
 
 .submit_window {
@@ -54,6 +61,7 @@
 
 .name_box {
   margin-top: 30px;
+  width: 90%;
 }
 
 .submission_form {
@@ -144,6 +152,10 @@ ul {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.ui-widget-content {
+  font-weight: bold;
 }
 
 nav div.nav-right div.profile_buttons {
