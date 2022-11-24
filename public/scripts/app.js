@@ -2,7 +2,7 @@ $(() => {
 
   let $temp = $("<input>");
   let $url = $('.clipboard').attr('href');
-  
+
   $('.clipboard').on('click', function(event) {
     event.preventDefault();
     $("body").append($temp);
@@ -12,15 +12,15 @@ $(() => {
     alert("URL copied!");
   });
 
-  if($(window).width() < 1327) {
-  $('li span').on('mouseenter', function() {
-    const title = $(this).attr('title');
-    $(this).parent().parent().next().text(title);
-  });
-  $('li span').on('mouseleave', function() {
-    const title = $(this).attr('title');
-    $(this).parent().parent().next().text('');
-  });
-}
+  if ($(window).width() < 1327) {
+    $('li span').on('mouseenter', function() {
+      const title = $(this).attr('title');
+      $(this).parent().parent().next().text(title);
+    });
+    $('li span').on('mouseleave', function() {
+      const title = $(this).attr('title');
+      $(this).parent().parent().next().text('');
+    });
+  }
 
 });

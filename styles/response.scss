@@ -35,7 +35,8 @@
 
   .description_container {
     text-align: center;
-    height: 20px
+    height: 20px;
+    width: 50%;
   }
 
   .submit_window {
@@ -131,37 +132,85 @@
     padding: 0;
     width: 100%;
   }
+}
 
-  //////////////////////////////////
+/////^/////
+//////////////////////////////////
 
-  .ui-tooltip {
-    position: fixed;
-    text-align: left;
-    padding: 10px 10px;
-    background: transparent;
-    width: 300px;
-    color: $dark-font;
-    // border-radius: 15px;
-    font: 14px $theme-font;
-    // box-shadow: 0 0 7px $dark-font-hover;
+.ui-tooltip {
+  position: fixed;
+  text-align: left;
+  padding: 10px 10px;
+  background: transparent;
+  width: 300px;
+  color: $dark-font;
+  font: 14px $theme-font;
+}
+
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.ui-widget-content {
+  font-weight: bold;
+}
+
+nav div.nav-right div.profile_buttons {
+  margin-top: 0;
+  margin-right: 0;
+}
+
+
+@mixin desc-format {
+  text-align: center;
+  font-size: 17px;
+  // border: 2px solid red;
+  font-weight: bold;
+  width: 70%;
+}
+
+@media screen and (min-width: 564px) and (max-width: 1023px) {
+
+  window {
+    width: auto
   }
 
-  .ui-helper-hidden-accessible {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  .placeholder {
+    background-color: #fff;
   }
 
   .ui-widget-content {
-    font-weight: bold;
+    @include desc-format;
+  }
+}
+
+@media screen and (max-width: 563px) {
+  .placeholder {
+    background-color: #fff;
   }
 
-  nav div.nav-right div.profile_buttons {
-    margin-top: 0;
-    margin-right: 0;
+  .ui-widget-content {
+    @include desc-format;
+
   }
+
+  .question {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .submission {
+    width: 80%;
+  }
+
+  .instruction {
+    text-align: center;
+  }
+}

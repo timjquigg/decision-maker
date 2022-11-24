@@ -2,20 +2,21 @@
 
 body {
   height: 100vh;
+  width: 100vw;
 }
 
 main {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  min-width: 100px;
-  max-width: 700px;
+  // min-width: 100px;
+  // max-width: 700px;
 }
 
 .poll,
 .new_poll {
   text-align: center;
-  margin: 1em auto;
+  margin: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +24,7 @@ main {
 }
 
 .options_box {
-  margin: 1em auto;
+  margin: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,8 +79,10 @@ textarea {
 }
 
 .poll_question_box {
-  width: 100%;
-  min-width: 400px;
+  width: 90%;
+  // min-width: 400px;
+
+
 }
 
 div {
@@ -102,15 +105,18 @@ div {
   justify-content: space-evenly;
   align-items: center;
   width: 508px;
+
   label {
     font-weight: bold;
     padding-left: 5px;
+    margin-bottom: 10px;
   }
 }
 
 .deadline {
   display: flex;
   flex-direction: column;
+
   label {
     font-weight: bold;
     padding-left: 5px;
@@ -157,10 +163,40 @@ button:hover {
   background-color: $accent-color2-hover;
 }
 
-.copyURL, .yourURL {
+.copyURL,
+.yourURL {
   margin-bottom: 10px;
 }
 
-.yourURL, .profile_button {
+.yourURL,
+.profile_button {
   margin-top: 50px;
+}
+
+@media screen and (max-width: 563px) {
+
+  body {
+    overflow-x: hidden
+  }
+
+  // .container {
+  //   max-width: 100%;
+  //   overflow-x: hidden;
+  // }
+
+  .option {
+    flex-direction: column;
+    align-items: center;
+
+    .ob {
+      margin-bottom: 8px;
+    }
+
+  }
+
+  .poll_question_box {
+    width: 75%;
+  }
+
+
 }

@@ -20,11 +20,6 @@ $(() => {
   $('#welcomeback').hide();
   // $('.fa-solid').show();
 
-  if ($(window).width() <= 564) {
-    $('.show').show();
-    // $('.hide').hide();
-    $('.desc').hide();
-  }
 
   // event listener IF screensize is changed
 
@@ -58,6 +53,7 @@ $(() => {
         $(this).css('box-shadow', '0 0 5px 0.5px red');
       }
     });
+
     $optionBox.on('focus', function(event) {
       event.preventDefault();
       $(this).css('box-shadow', '');
@@ -147,52 +143,6 @@ $(() => {
     event.preventDefault();
 
     $('.options_box').append(createTextbox());
-
-    if ($(window).width() <= 564) {
-      $('.show').show();
-      $('.hide').hide();
-      // $('.desc').hide();
-
-      $('.desc').each(function(e) {
-
-        if ($(this).is(":hidden")) {
-          // $(this).find('.show').hide();
-          // $(this).find('.hide').show();
-          console.log('aha');
-          $('.show').show();
-          $('.hide').hide();
-        }
-
-        if (!$(this).val()) {
-          console.log($(this).val());
-          $(this).hide();
-        }
-
-        if ($(this).val() && $(this).siblings('.show').is(':visible')) {
-          $(this).siblings('.show').hide();
-          $(this).siblings('.hide').show();
-        }
-
-      });
-
-    }
-
-    $('.show').on('click', function(e) {
-      e.preventDefault();
-      $(this).siblings('.desc').show();
-      $(this).siblings('.hide').show();
-      $(this).hide();
-      console.log('1');
-    });
-
-    $('.hide').on('click', function(e) {
-      e.preventDefault();
-      $(this).siblings('.desc').hide();
-      $(this).siblings('.show').show();
-      $(this).hide();
-      $(this).siblings('.desc').val('');
-      console.log('2');
-    });
 
   });
 
