@@ -24,8 +24,9 @@
   <script type="text/javascript" src="/scripts/display_results.js"></script>
 </head>
 <header>
-    <%- include('partials/header.ejs') %>
+  <%- include('partials/header.ejs') %>
 </header>
+
 <body>
   <main>
     <% for (let title in object) { %>
@@ -55,14 +56,17 @@
                     <% } else { %>
                       <% for (let i=0; i < object[title].length; i++) { %>
                         <%console.log(object[title][i].score)%>
-                        <li>
-                          <p class="totalscore">total score: <%=object[title][i].score%></p>
-                          <span class="bar bar<%=i%>" style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
-                            title="<%= object[title][i].option %>"></span>
-                        </li>
-                        <% } %>
+                          <li>
+                            <p class="totalscore">total score: <%=object[title][i].score%>
+                            </p>
+                            <span class="bar bar<%=i%>"
+                              style="height: <%= Math.round((Number(object[title][i].score) / Math.max(...scores)) * 100) %>%"
+                              title="<%= object[title][i].option %>"></span>
+                          </li>
                           <% } %>
+                            <% } %>
           </ul>
+          <p class="bar_title">&nbsp;</p>
           <%if (!object[title][0].annonymous) { %>
             <section class="participants" id="viewParticipants">
               <button class="view_names polltitle">
