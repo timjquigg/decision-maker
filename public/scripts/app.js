@@ -12,7 +12,7 @@ $(() => {
     alert("URL copied!");
   });
 
-
+  if($(window).width() < 1327) {
   $('li span').on('mouseenter', function() {
     const title = $(this).attr('title');
     $(this).parent().parent().next().text(title);
@@ -21,5 +21,6 @@ $(() => {
     const title = $(this).attr('title');
     $(this).parent().parent().next().text('');
   });
+}
 
 });
