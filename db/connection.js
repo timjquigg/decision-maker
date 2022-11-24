@@ -10,7 +10,7 @@ const dbParams = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  dbParams[ssl] = {rejectUnauthorized: false};
+  dbParams['ssl'] = {rejectUnauthorized: false};
 }
 
 const db = new Pool(dbParams);
