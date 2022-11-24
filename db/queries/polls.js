@@ -27,7 +27,6 @@ const getPollsByUserID = (id) => {
   const queryParam = [id];
   return db.query(queryString, queryParam)
     .then((results) => {
-
       if (results) {
         return results.rows;
       } else {

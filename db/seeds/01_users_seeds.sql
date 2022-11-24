@@ -19,4 +19,16 @@ VALUES
     'Cochrane',
     'cindy@example.com',
     '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'
+  ),
+  (
+    'Dean',
+    'Davies',
+    'dean@example.com',
+    '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'
+  ),
+  (
+    'Erica',
+    'Evans',
+    'erica@example.com',
+    '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'
   );
