@@ -18,7 +18,7 @@ Ranker is a web application that lets user create polls to be shared with their 
  Users can create an account to begin which gives the user access to previously made polls:
 
  !["Signup"](public/images/photos-md/sign-up.jpeg)
- !["Create"](public/images/overview.mp4)
+ !["Create"](public/images/photos-md/create-poll.jpeg)
 
 
 or can continue as a guest. 
