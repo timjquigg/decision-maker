@@ -7,14 +7,20 @@
 
 // const e = require('express');
 require('dotenv').config();
+
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
 const userDB = require('../db/queries/users');
 const userdb = require('../db/queries/users');
 
+
 //mailgun
 const mailgun = require("mailgun-js");
+
+//IP
+const IP = require('ip');
+const ipAddress = IP.address();
 
 //Enter domain and api_keys key here
 const DOMAIN = process.env.MG_DOMAIN_KEY;
@@ -113,6 +119,8 @@ router.get('/new', (req, res) => {
 // });
 
 router.post('/', (req, res) => {
+  console.log(IP.address());
+
   // Send data from poll creation form to db js file
   // forward promise response to front end so
   // client side js can display links
@@ -150,10 +158,10 @@ router.post('/', (req, res) => {
               to: req.body.email,
               subject: 'Success! Poll created',
               text: `Hi! You have created a Poll:
-              \nShare your poll: http://localhost:8080/polls/${pollId}
-              \nSee the result: http://localhost:8080/polls/results/${pollId}
+              \nShare your poll: http://${ipAddress}:8080/polls/${pollId}
+              \nSee the result: http://${ipAddress}:8080/polls/results/${pollId}
 
-              \nTo start saving your polls, create an account now: http://localhost:8080/users
+              \nTo start saving your polls, create an account now: http://${ipAddress}:8080/users
               \nThank you for choosing Ranker!
 
               \nBest,
@@ -170,7 +178,13 @@ router.post('/', (req, res) => {
 
             db.getTotalPoll()
               .then(result => {
-                res.send(result.rows[0].count);
+                const pollData = {
+                  count : result.rows[0].count,
+                  ip: ipAddress
+                };
+                console.log('185', pollData);
+                res.send(pollData);
+                // res.send(result.rows[0].count);
               })
               .catch(err => console.log(err.message));
             db.addOptionsToPoll(req.body, pollId)
@@ -195,7 +209,7 @@ router.post('/', (req, res) => {
       db.getEmailByPoll(pollId)
         .then(result => {
 
-          console.log('apple',result.rows[0]);
+          // console.log('apple',result.rows[0]);
           ///////////////////////MAILGUN/////////////////////////
           const data = {
             from: 'Decision Maker <kikopocampo@gmail.com>',
@@ -204,10 +218,10 @@ router.post('/', (req, res) => {
             text: `Hi, ${result.rows[0].first_name}.
 
               \nYou have created a Poll:
-              \nShare your poll: http://localhost:8080/polls/${pollId}
-              \nSee the results: http://localhost:8080/polls/results/${pollId}
+              \nShare your poll: http://${ipAddress}:8080/polls/${pollId}
+              \nSee the result: http://${ipAddress}:8080/polls/results/${pollId}
 
-              \nTo manage your polls, log in to your account: http://localhost:8080/users
+              \nTo manage your polls, log in to your account: http://${ipAddress}:8080/users
               \nThank you for using Ranker.
 
               \nBest,
@@ -319,9 +333,9 @@ router.post('/:id', (req, res) => {
             \nSomeone has responded to your poll!
             \nPoll question: ${question}
             \nCreated at: ${dateCreated}
-            \nSee the results: http://localhost:8080/polls/results/${pollId}
+            \nSee the results: http://${ipAddress}:8080/polls/results/${pollId}
 
-            \nTo manage your polls, log in to your account: http://localhost:8080/users
+            \nTo manage your polls, log in to your account: http://${ipAddress}:8080/users
             \nThank you for choosing Ranker.
 
             \nBest,
