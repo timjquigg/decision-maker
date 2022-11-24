@@ -40,6 +40,7 @@ router.get('/', (req, res) => {
       db.getPollResultsByPoll(userId)
         .then((score)=>{
           // Convert array of scores, to useable object
+          // console.log(score);
           const newScores = {};
           for (const index in score) {
             newScores[score[index].option] = score[index].score;
@@ -75,6 +76,7 @@ router.get('/', (req, res) => {
               }];
             }
           }
+          // console.log(object);
           const tempVar = {
             object: object,
             username: userFirstName
@@ -236,8 +238,16 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const pollId = req.params.id;
   const pollData = {};
+  if (typeof Number(pollId) !== 'number') {
+    res.redirect('../404');
+    return;
+  }
   db.getPollDataById(pollId)
     .then(result => {
+      if (result.rows.length === 0) {
+        res.redirect('../404');
+        return;
+      }
       if (Date.now() > result.rows[0].deadline) {
         const tempVar = {username: req.session.userFirst};
         res.render('expired', tempVar);
