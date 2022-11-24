@@ -58,7 +58,6 @@ const addUsers = (credentials) => {
     .catch((err) => {
       console.log(err.message);
     });
-
 };
 
 
