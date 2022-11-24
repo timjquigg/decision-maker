@@ -12,8 +12,6 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/polls');
 const userDB = require('../db/queries/users');
-const userdb = require('../db/queries/users');
-
 
 //mailgun
 const mailgun = require("mailgun-js");
@@ -82,12 +80,12 @@ router.get('/', (req, res) => {
               }];
             }
           }
-          // console.log(object);
+          
           const tempVar = {
             object: object,
             username: userFirstName
           };
-          // console.log("object:", object);
+          
           res.render('profile', tempVar);
         });
     })
@@ -377,29 +375,23 @@ router.get('/results/:id', (req, res) => {
   const userId = req.session.userId;
   const userFirstName = req.session.userFirst;
   const pollId = req.params.id;
+  // get an array of people responded to a poll
   db.getNamesResponded(pollId)
     .then(names => {
-      // console.log('names:', names);
       let peopleResponded = [];
       for (let name of names) {
-        // console.log('name.respondedby:', name.respondedby);
         let innerArr = [];
         innerArr.push(name.respondedby);
         innerArr.push(name['time_responded']);
         peopleResponded.push(innerArr);
       }
-      //console.log('peopleresponded:', peopleResponded);
+      
       db.getOptionsByPollId(pollId)
         .then((data) => {
           console.log(data);
           // Get results data
           db.getPollResultsByPoll(data[0].userid)
             .then((score)=>{
-              // db.getResultsByPollId(pollId)
-              //   .then((data) => {
-              //     // Get results data
-              //     db.getPollResultsByPoll(userId)
-              //       .then((score)=>{
               // Convert array of scores, to useable object
               const newScores = {};
               for (const index in score) {
@@ -441,7 +433,7 @@ router.get('/results/:id', (req, res) => {
                 username: userFirstName,
                 peopleResponded
               };
-              // console.log("object:", object);
+              
               res.render('results', tempVar);
             });
         });
@@ -449,121 +441,5 @@ router.get('/results/:id', (req, res) => {
     .catch(e => res.send(e));
 });
 
-
-// router.get('/results/:id', (req, res) => {
-//   // const userId = req.session.userId;
-//   const userFirstName = req.session.userFirst;
-//   const pollId = req.params.id;
-
-//   db.getOptionsByPollId(pollId)
-//     .then((data) => {
-//       console.log(data);
-//       // Get results data
-//       db.getPollResultsByPoll(data[0].userid)
-//         .then((score)=>{
-//           // Convert array of scores, to useable object
-//           const newScores = {};
-//           for (const index in score) {
-//             newScores[score[index].option] = score[index].score;
-//           }
-
-//           const object = {};
-
-//           for (let i = 0; i < data.length; i++) {
-//             const group = data[i];
-//             const poll = group.title;
-
-//             // If results are not available yet, make score 0
-//             let thisScore;
-//             if (newScores[group.option]) {
-//               thisScore = newScores[group.option];
-//             } else {
-//               thisScore = '0';
-//             }
-
-//             if (object[poll]) {
-//               object[poll].push({
-//                 option: group.option,
-//                 score: thisScore,
-//                 date_created: group.date_created,
-//                 pollId: group.poll_id
-//               });
-//             } else {
-//               object[poll] = [{
-//                 option: group.option,
-//                 score: thisScore,
-//                 date_created: group.date_created,
-//                 pollId: group.poll_id
-//               }];
-//             }
-//           }
-//           // console.log(object);
-//           const tempVar = {
-//             object: object,
-//             username: userFirstName
-//           };
-//           console.log("object:", object);
-//           res.render('results', tempVar);
-//         });
-//     })
-//     .catch(e => res.send(e));
-// });
-
-// router.get('/results/:id', (req, res) => {
-//   const userId = req.session.userId;
-//   const userFirstName = req.session.userFirst;
-//   const pollId = req.params.id;
-
-//   db.getResultsByPollId(pollId)
-//     .then((data) => {
-//       // Get results data
-//       db.getPollResultsByPoll(userId)
-//         .then((score)=>{
-//           // Convert array of scores, to useable object
-//           const newScores = {};
-//           for (const index in score) {
-//             newScores[score[index].option] = score[index].score;
-//           }
-
-//           const object = {};
-
-//           for (let i = 0; i < data.length; i++) {
-//             const group = data[i];
-//             const poll = group.title;
-
-//             // If results are not available yet, make score 0
-//             let thisScore;
-//             if (newScores[group.option]) {
-//               thisScore = newScores[group.option];
-//             } else {
-//               thisScore = '0';
-//             }
-
-//             if (object[poll]) {
-//               object[poll].push({
-//                 option: group.option,
-//                 score: thisScore,
-//                 date_created: group.date_created,
-//                 pollId: group.poll_id
-//               });
-//             } else {
-//               object[poll] = [{
-//                 option: group.option,
-//                 score: thisScore,
-//                 date_created: group.date_created,
-//                 pollId: group.poll_id
-//               }];
-//             }
-//           }
-//           const tempVar = {
-//             object: object,
-//             username: userFirstName
-//           };
-//           console.log("object:", object);
-//           res.render('results', tempVar);
-//         });
-//     })
-//     .catch(e => res.send(e));
-// });
 
 module.exports = router;

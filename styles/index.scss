@@ -1,8 +1,6 @@
 @import "layout";
 
 main {
-  // margin-right: 80px;
-  // margin-left: 100px;
   display: flex;
   justify-content: center;
   button {
@@ -64,15 +62,12 @@ section.image {
 
 .img {
   width: 100%;
-  // margin-left: 150px;
 }
 
 img {
-  // margin-bottom: 20px;
   max-width: 100%;
   height: 80vh;
   overflow: hidden;
-  // padding-left: 20px;
 }
 
 button.have-account {
@@ -187,6 +182,4 @@ button.have-account:hover {
   main::after {
     top: 300px;
   }
-
-  
 }

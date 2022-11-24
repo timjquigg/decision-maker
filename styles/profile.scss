@@ -18,7 +18,7 @@ h2,
 h3,
 h4,
 p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $theme-font;
 }
 
 
@@ -231,8 +231,6 @@ img {
 }
 
 
-// @media only screen and (max-width: 1385px) {}
-
 @media only screen and (max-width: 1326px) {
   span.bar0::before {
     display: none;
@@ -280,5 +278,4 @@ img {
   .chart p.icons {
     font-size: 20px;
   }
-
 }
