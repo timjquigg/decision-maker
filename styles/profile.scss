@@ -216,7 +216,9 @@ img {
 }
 
 
-@media only screen and (max-width: 1385px) {
-  
+@media only screen and (max-width: 425px) {
+  .chart p.icons {
+    font-size: 20px;
+  }
 
 }
