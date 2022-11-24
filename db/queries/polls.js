@@ -113,7 +113,7 @@ VALUES`;
       queryParams.push(pollInfo[keys][1]);
       queryString += `, $${counter}`;
       queryString += `)`;
-    // console.log(counter)
+
     }
   }
 
