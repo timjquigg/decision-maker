@@ -80,12 +80,12 @@ router.get('/', (req, res) => {
               }];
             }
           }
-          
+
           const tempVar = {
             object: object,
             username: userFirstName
           };
-          
+
           res.render('profile', tempVar);
         });
     })
@@ -117,22 +117,14 @@ router.get('/new', (req, res) => {
 // });
 
 router.post('/', (req, res) => {
-  console.log(IP.address());
+
 
   // Send data from poll creation form to db js file
   // forward promise response to front end so
   // client side js can display links
 
-  // console.log('Poll Info', req.body);
-
   //Adds a new poll to the db then adds the options of that poll to the db.
-  // if (!req.session) {
-  // req.session = {
-  //   userId : null,
-  //   userFirst : null,
-  //   userLast : null,
-  //   userEmail : req.body.email
-  // };
+
   if (req.body.email) {
     const userCredentials = {
       firstName: null,
@@ -144,11 +136,13 @@ router.post('/', (req, res) => {
       .then((user) => {
         console.log(user);
         const userId = user.id;
+
+        //adds a new poll to the db
         db.addNewPoll(req.body, userId)
           .then(result => {
-            // console.log('poll log:', result.rows);
             const pollId = result.rows[0].id;
-            console.log(pollId, req.body.email);
+
+            // shoots an email to the creator of the email
 
             ///////////////////////MAILGUN/////////////////////////
             const data = {
@@ -174,20 +168,18 @@ router.post('/', (req, res) => {
             });
             //////////////////////////////////////////////////////
 
+            // gets the latest poll number to be used for the url
             db.getTotalPoll()
               .then(result => {
                 const pollData = {
                   count : result.rows[0].count,
                   ip: ipAddress
                 };
-                console.log('185', pollData);
                 res.send(pollData);
-                // res.send(result.rows[0].count);
               })
               .catch(err => console.log(err.message));
             db.addOptionsToPoll(req.body, pollId)
               .then(result => {
-                // console.log('options log', result.rows);
                 return result;
               });
           })
@@ -196,17 +188,16 @@ router.post('/', (req, res) => {
     return;
   }
 
+  //if user is logged in
   const userId = req.session.userId;
   db.addNewPoll(req.body, userId)
     .then(result => {
-      console.log('poll log:', result.rows);
       db.getTotalPoll()
         .then(result => {
           const pollData = {
             count : result.rows[0].count,
             ip: ipAddress
           };
-          console.log('185', pollData);
           res.send(pollData);
         })
         .catch(err => console.log(err.message));
@@ -214,7 +205,6 @@ router.post('/', (req, res) => {
       db.getEmailByPoll(pollId)
         .then(result => {
 
-          console.log('apple',result.rows[0]);
           ///////////////////////MAILGUN/////////////////////////
           const data = {
             from: 'Decision Maker <kikopocampo@gmail.com>',
@@ -243,11 +233,10 @@ router.post('/', (req, res) => {
         });
       db.addOptionsToPoll(req.body, pollId)
         .then(result => {
-          // console.log('options log', result.rows);
 
           return result;
         });
-      // return result;
+
     })
     .catch(err => console.log(err));
 
@@ -262,6 +251,8 @@ router.get('/:id', (req, res) => {
     return;
   }
 
+  // gets the poll information based on the pollID
+  // (poll.id, the question, if anonymous, and the option details [option_id, option_title, and option_description if any])
   db.getPollDataById(pollId)
     .then(result => {
       if (result.rows.length === 0) {
@@ -274,10 +265,10 @@ router.get('/:id', (req, res) => {
         return;
       }
       result.rows.forEach(data => {
-        // console.log(data.poll_id);
+
         if (!pollData[data.poll_id]) {
           pollData[data.poll_id] = {
-            // optionId: data.option_id,
+
             question : data.question,
             isAnonymous: data.is_anonymous,
             options : [[data.option_id,data.options, data.description]]
@@ -286,33 +277,27 @@ router.get('/:id', (req, res) => {
           pollData[data.poll_id].options.push([data.option_id, data.options, data.description]);
         }
       });
-      // console.log('apple:',pollData[pollId]);
-      // Redirect to home page if not logged in
-      // if (!req.session.userId) {
-      //   res.redirect('../');
-      //   return;
-      // }
+
       const tempVar = {
         username: req.session.userFirst,
         question: pollData[pollId].question,
         anonymous: pollData[pollId].isAnonymous,
         options: pollData[pollId].options,
       };
-      // console.log(tempVar);
+
       res.render('response.ejs', tempVar);
-      // res.render('response.ejs');
     })
     .catch(err => console.log(err.message));
 });
 
 router.post('/:id', (req, res) => {
-  // console.log('apple:', req.body)
+
   const {name = null, result} = req.body;
 
-  // console.log(req.body)
-  // console.log(name)
-  // console.log(result)
   let resultLen = result.length;
+  // initializes the score sheet with the format [[option.id,score],[option.id, score], ...]
+  // Which will then be used by the addResultsToPoll function to form the query
+  // in a similar format VALUE(($1,$2,$3), ($1,$4,$5),...)
   const scoreSheet = [];
   result.forEach(optionId => {
     scoreSheet.push([Number(optionId), resultLen]);
@@ -320,13 +305,15 @@ router.post('/:id', (req, res) => {
   });
 
   console.log(scoreSheet);
-
+  // inserts the result in the db based on the score sheet
   db.addResultsToPoll(name,scoreSheet)
     .then(result => {
-      // console.log('apple', result.rows, 'mango', result);
+
+      // gets specific info about the poll based on the option to be used for
+      // the email body
       db.getPollDataByOptionsId(result.rows[0].poll_option_id)
         .then(result => {
-          console.log('mango', result.rows[0]);
+
           const {id : pollId, email, question, created_on : dateCreated} = result.rows[0];
 
           ///////////////////////MAILGUN/////////////////////////
@@ -361,11 +348,6 @@ router.post('/:id', (req, res) => {
     })
     .catch(error => console.log(error));
 
-  // A returned poll is received
-
-  // send form data to db js for adding to db
-  // after recieving promise from db, client side
-  // js display thank you and link to home page
 
 
 });
@@ -385,7 +367,7 @@ router.get('/results/:id', (req, res) => {
         innerArr.push(name['time_responded']);
         peopleResponded.push(innerArr);
       }
-      
+
       db.getOptionsByPollId(pollId)
         .then((data) => {
           console.log(data);
@@ -433,7 +415,7 @@ router.get('/results/:id', (req, res) => {
                 username: userFirstName,
                 peopleResponded
               };
-              
+
               res.render('results', tempVar);
             });
         });
