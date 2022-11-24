@@ -12,6 +12,10 @@ nav {
   margin-bottom: 30px;
   font-family: $theme-font;
 
+  i.fa-circle-plus, i.fa-right-from-bracket {
+    display: none;
+  }
+
   h2 {
     margin-left: 40px;
   }
@@ -106,7 +110,6 @@ nav {
 
   .name {
     font-size: 30px;
-    font-weight: bold;
   }
 
   button:hover {
@@ -118,10 +121,18 @@ nav {
     button.logout:hover,
     button.login:hover,
     button.signup:hover {
-      background-color:$accent-color-hover;
+      background-color:$accent-color2-hover;
       color:$dark-color;
     }
   }
+}
+
+#welcomeback {
+  font-weight: lighter;
+}
+
+header h2.welcomeback2 {
+  display: none;
 }
 
 @media only screen and (max-width: 1385px) {
@@ -131,11 +142,27 @@ nav {
     .name {
       color: $dark-font;
     }
+    i.fa-hand-pointer {
+      color: $accent-color;
+    }
   }
-
+  header h2.welcomeback2 {
+    display: block;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    margin-left: 5vw;
+    margin-top: -5vw;
+    font-weight: lighter;
+  }
+  
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 925px) {
+  header h2.welcomeback2 {
+    display: none;
+  }
+
   span.name h3 {
     font-size: 25px;
   }
@@ -149,4 +176,39 @@ nav {
   button.home {
     margin-top: 15px;
   }
+  nav div.nav-right button.logout {
+    margin-top: 25px;
+    margin-right: 0;
+  }
+  i.fa-hand-pointer {
+    display: none;
+  }
+  p.long-button {
+    display: none;
+  }
+  nav div.nav-right button {
+    background-color: transparent;
+    padding: 0;
+    margin:0;
+  }
+  button i.fa-circle-plus, button i.fa-right-from-bracket {
+    display: block;
+    color: $accent-color;
+    font-size: 30px;
+    margin: 20px;
+  }
+
+  button i.fa-circle-plus:hover, button i.fa-right-from-bracket:hover {
+    color: $accent-color2;
+  }
+  
+  nav div.nav-right {
+    button.createpoll:hover,
+    button.logout:hover,
+    button.login:hover,
+    button.signup:hover {
+      background-color: transparent;
+    }
+  }
 }
+

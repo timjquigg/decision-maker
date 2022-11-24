@@ -18,9 +18,12 @@ h2, h3, h4, p {
   font-family: 'Montserrat', sans-serif;
 }
 
+
+
 main {
   margin-left: 30px;
   margin-right: 30px;
+
 
   .pollhistory {
     margin-bottom: 30px;
@@ -75,7 +78,7 @@ main {
     }
 
     #createpoll:hover {
-      background-color: $accent-color2-hover;
+      // background-color: $accent-color2-hover;
       cursor: pointer;
     }
   }
@@ -210,4 +213,10 @@ button.share {
 
 img {
   height: 300px;
+}
+
+
+@media only screen and (max-width: 1385px) {
+  
+
 }
