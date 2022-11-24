@@ -10,36 +10,28 @@ Ranker is a web application that lets user create polls to be shared with their 
  2. Start the web server by using the `npm run local` command. The app will be served at <http://localhost:8080>
  3. Visit <http://localhost:8080> in your browser to get started.
 
- !["Home"](public/images/photos-md/home-page.jpeg)
- !["Details"](public/images/photos-md/detail-page.jpeg)
- !["Details"](public/images/respond.gif)
+<img src="public/images/overview.gif" alt="respondPoll" style="width:100%;"/>
 
  ## Usage
 
  Users can create an account to begin which gives the user access to previously made polls:
 
  !["Signup"](public/images/photos-md/sign-up.jpeg)
- !["Create"](public/images/photos-md/create-poll.jpeg)
 
 
 or can continue as a guest. 
 
-!["CreateAnon"](public/images/photos-md/create-anonymous.jpeg)
+<img src="public/images/createNewPoll.gif" alt="respondPoll" style="width:100%;"/>
 
 After creating the poll, the user will receive two URLs which can be shared for responses and another one for the result.
 
 
-!["Success"](public/images/photos-md/poll-form.jpeg)
-
-links can then be used to access the response page 
-
-!["Response"](public/images/photos-md/response.jpeg)
-
+Links can then be used to access the response page 
 and the result page of the poll:
 
-!["Success"](public/images/photos-md/detail-page.jpeg)
+<img src="public/images/respond.gif" alt="respondPoll" style="width:100%;"/>
 
-!["Success"](public/images/photos-md/detail-analytics.jpeg)
+
 
 ## Dependencies
 
