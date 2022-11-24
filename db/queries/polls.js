@@ -37,6 +37,7 @@ const getPollsByUserID = (id) => {
       console.log('error message from database:', err.message);
     });
 };
+
 const getPollResultsByPoll = (id) => {
   const queryString = `
   SELECT
@@ -146,10 +147,8 @@ const getOptionsByPollId = (pollId) => {
   GROUP BY users.id, polls.id, poll_options.poll_option_title, users.first_name, users.last_name;
   `;
   const queryParam = [pollId];
-  // console.log(queryParam);
   return db.query(queryString, queryParam)
     .then((results) => {
-      // console.log(results);
       if (results) {
         return results.rows;
       } else {
@@ -173,7 +172,6 @@ const getNamesResponded = (pollId) => {
   return db.query(queryString, [pollId])
     .then(results => {
       if (results) {
-        // console.log('results from getNamesResponses', results.rows);
         return results.rows;
       } else {
         return null;
@@ -189,16 +187,16 @@ const getNamesResponded = (pollId) => {
 const getPollDataById = (id) => {
   let queryParams = [id];
   let queryString = `
-SELECT poll_id,
-poll_options.id AS option_id,
-question,
-poll_option_title AS options,
-poll_option_description AS description,
-annonymous AS is_Anonymous,
-polls.deadline AS deadline
-FROM polls JOIN poll_options ON polls.id = poll_id
-WHERE polls.id = $1;
-`;
+  SELECT poll_id,
+  poll_options.id AS option_id,
+  question,
+  poll_option_title AS options,
+  poll_option_description AS description,
+  annonymous AS is_Anonymous,
+  polls.deadline AS deadline
+  FROM polls JOIN poll_options ON polls.id = poll_id
+  WHERE polls.id = $1;
+  `;
   return db
     .query(queryString, queryParams)
     .then(result => result)
@@ -293,9 +291,6 @@ const getPollDataByOptionsId = (optionId) => {
 };
 
 
-
-
-
 module.exports = {
   addNewPoll,
   addOptionsToPoll,
@@ -311,6 +306,3 @@ module.exports = {
 };
 
 
-// };
-
-// module.exports = { getPollsByUserID,  };
