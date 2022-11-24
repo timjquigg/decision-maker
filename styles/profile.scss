@@ -100,9 +100,9 @@ section.nopoll {
   display: table;
   table-layout: fixed;
   background-color: #fff;
-  width: 60%;
+  width: 60vw;
   border-radius: 10px;
-  height: 300px;
+  height: 40vh;
   margin: 0 auto;
   padding: 0;
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
@@ -132,12 +132,12 @@ section.nopoll {
     position: relative;
     display: table-cell;
     vertical-align: bottom;
-    height: 200px;
+    height: 5vh;
     padding-top: 30px;
   }
 
   span {
-    margin: 0 1em;
+    margin: 0 1vw;
     display: block;
     background: $bar-color;
     border: 1px solid rgb(153, 102, 255);
@@ -215,10 +215,43 @@ img {
   height: 300px;
 }
 
+@media only screen and (max-width: 925px) {
+  span.bar0::before {
+    display: none;
+  }
+  span.bar1::before {
+    display: none;
+  }
+  span.bar2::before {
+    display: none;
+  }
+  span.bar3::before {
+    display: none;
+  }
+  span.bar4::before {
+    display: none;
+  }
+  span.bar5::before {
+    display: none;
+  }
+  span.bar6::before {
+    display: none;
+  }
+  span.bar7::before {
+    display: none;
+  }
+}
+
 
 @media only screen and (max-width: 425px) {
+  main p {
+    margin-bottom: 5px;
+  }
+  .chart {
+    height: 30vh;
+  }
   .chart p.icons {
     font-size: 20px;
   }
-
+  
 }
