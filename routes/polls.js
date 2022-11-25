@@ -23,6 +23,7 @@ const IP = require('ip');
 
 let ip = IP.address();
 let ipAddress = ip + ':8080';
+let protocol = 'http://';
 
 //Enter domain and api_keys key here
 const DOMAIN = process.env.MG_DOMAIN_KEY;
@@ -149,6 +150,7 @@ router.post('/', (req, res) => {
 
             if (process.env.NODE_ENV === 'production') {
               ipAddress = req.hostname;
+              protocol = 'https://';
             }
 
             // shoots an email to the creator of the email
@@ -159,10 +161,10 @@ router.post('/', (req, res) => {
               to: req.body.email,
               subject: 'Success! Poll created',
               text: `Hi! You have created a Poll:
-              \nShare your poll: http://${ipAddress}/polls/${pollId}
-              \nSee the result: http://${ipAddress}/polls/results/${pollId}
+              \nShare your poll: ${protocol}${ipAddress}/polls/${pollId}
+              \nSee the result: ${protocol}${ipAddress}/polls/results/${pollId}
 
-              \nTo start saving your polls, create an account now: http://${ipAddress}/users
+              \nTo start saving your polls, create an account now: ${protocol}${ipAddress}/users
               \nThank you for choosing Ranker!
 
               \nBest,
@@ -183,11 +185,13 @@ router.post('/', (req, res) => {
 
                 if (process.env.NODE_ENV === 'production') {
                   ipAddress = req.hostname;
+                  protocol = 'https://';
                 }
 
                 const pollData = {
                   count : result.rows[0].count,
-                  ip: ipAddress
+                  ip: ipAddress,
+                  protocol,
                 };
                 res.send(pollData);
               })
@@ -211,11 +215,13 @@ router.post('/', (req, res) => {
 
           if (process.env.NODE_ENV === 'production') {
             ipAddress = req.hostname;
+            protocol = 'https://';
           }
 
           const pollData = {
             count : result.rows[0].count,
-            ip: ipAddress
+            ip: ipAddress,
+            protocol,
           };
           res.send(pollData);
         })
@@ -226,6 +232,7 @@ router.post('/', (req, res) => {
 
           if (process.env.NODE_ENV === 'production') {
             ipAddress = req.hostname;
+            protocol = 'https://';
           }
 
           ///////////////////////MAILGUN/////////////////////////
@@ -236,10 +243,10 @@ router.post('/', (req, res) => {
             text: `Hi, ${result.rows[0].first_name}.
 
               \nYou have created a Poll:
-              \nShare your poll: http://${ipAddress}/polls/${pollId}
-              \nSee the result: http://${ipAddress}/polls/results/${pollId}
+              \nShare your poll: ${protocol}${ipAddress}/polls/${pollId}
+              \nSee the result: ${protocol}${ipAddress}/polls/results/${pollId}
 
-              \nTo manage your polls, log in to your account: http://${ipAddress}/users
+              \nTo manage your polls, log in to your account: ${protocol}${ipAddress}/users
               \nThank you for using Ranker.
 
               \nBest,
@@ -341,6 +348,7 @@ router.post('/:id', (req, res) => {
 
           if (process.env.NODE_ENV === 'production') {
             ipAddress = req.hostname;
+            protocol = 'https://';
           }
 
           ///////////////////////MAILGUN/////////////////////////
@@ -352,9 +360,9 @@ router.post('/:id', (req, res) => {
             \nSomeone has responded to your poll!
             \nPoll question: ${question}
             \nCreated at: ${dateCreated}
-            \nSee the results: http://${ipAddress}/polls/results/${pollId}
+            \nSee the results:${protocol}${ipAddress}/polls/results/${pollId}
 
-            \nTo manage your polls, log in to your account: http://${ipAddress}/users
+            \nTo manage your polls, log in to your account: ${protocol}${ipAddress}/users
             \nThank you for choosing Ranker.
 
             \nBest,
