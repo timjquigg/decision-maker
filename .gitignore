@@ -3,3 +3,4 @@ public/styles
 .env
 *.log
 *.sqlite3
+db/queries/test_queries.sql
