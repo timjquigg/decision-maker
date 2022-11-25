@@ -237,7 +237,7 @@ router.post('/', (req, res) => {
 
           ///////////////////////MAILGUN/////////////////////////
           const data = {
-            from: 'Decision Maker <kikopocampo@gmail.com>',
+            from: 'Ranker <kikopocampo@gmail.com>',
             to: result.rows[0].email,
             subject: 'Success! Poll created',
             text: `Hi, ${result.rows[0].first_name}.
