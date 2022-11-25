@@ -9,8 +9,10 @@ $(() => {
 
   // Copy URL to share when icon is clicked
   let $temp = $("<input>");
-  // let $url = $(location).attr('href');
   let $url = $('.clipboard').attr('href');
+  if (!$(location).attr('href').includes('lighthouse')) {
+    $url = $('.clipboard').attr('id');
+  }
 
   $('.clipboard').on('click', function(event) {
     event.preventDefault();
