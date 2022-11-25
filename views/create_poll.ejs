@@ -63,11 +63,12 @@
       <h5 class="option_error" hidden>Poll option missing, please enter your option</h5>
       <h5 class="date_error" hidden>Please specify the poll deadline</h5>
       <h5 class="min_option_error" hidden>Must have at least 2 options</h5>
+      <h5 class="email_error" hidden>Must have an email entered</h5>
       <!-- </div> -->
       <form class="new_poll">
         <% if (username===null ) { %>
           <label for="email">E-mail</label>
-          <input name="email" type="email" placeholder="email">
+          <input name="email" type="email" placeholder="email" class="email">
           <% } %>
             <div class="is_anonymous">
               <label for="isAnonymous">Click for anonymous results</label>

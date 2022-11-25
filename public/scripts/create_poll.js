@@ -17,12 +17,21 @@ $(() => {
   $('.createpoll').hide();
   $('#welcomeback').hide();
 
+
+
   // event listener IF screensize is changed
 
   $('form.new_poll').on('submit', function(event) {
     event.preventDefault();
     console.log('on submit');
     let valueCheck = 0;
+
+    if ($(".email").is(":visible")) {
+      if (!$('.email').val()) {
+        $('.email_error').show('slow');
+        return;
+      }
+    }
 
     //if question textbox is empty
 
