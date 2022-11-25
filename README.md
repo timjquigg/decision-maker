@@ -9,10 +9,11 @@ Ranker is a web application that lets user create polls to be shared with their 
  1. Install dependencies using the `npm install` command
  2. Start the web server by using the `npm run local` command. The app will be served at <http://localhost:8080>
  3. Visit <http://localhost:8080> in your browser to get started.
+ 4. Or simply visit <https://lighthouse-midterm-ranker.herokuapp.com/> - We've hosted our website on Heroku.
 
 <img src="public/images/overview2.gif" alt="respondPoll" style="width:600px"/>
 
- ## Usage
+## Usage
 
  Users can create an account to begin which gives the user access to previously made polls, or can continue as a guest. 
 
@@ -25,6 +26,15 @@ and the result page of the poll:
 
 <img src="public/images/respond2.gif" alt="respondPoll" style="width:600px"/>
 
+## Features
+
+- Users can create a poll with up to 7 options (and descriptions) instantly with or without an account. Users can also make the poll anonymous.
+- Polls can be shared to friends via Facebook or Twitter, or simply by sending the url to friends.
+- People can then rank the options by dragging and dropping the options and submit the response.
+- Users will receive an email whenever someone answers to your poll.
+- If the user has an account, they can log in and see the results of all the polls they've created with Ranker.
+- In the result page, users can see how many scores each option received, and who responded to the poll (if the poll is not anonymous).
+- Share the result with friends on social media!
 
 
 ## Dependencies
