@@ -48,7 +48,7 @@
                       <p>Share this poll with your friends!</p>
                       <img src="/images/Online-pana.svg" />
                       <p class="icons">
-                        <button class="clipboard share" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/<%=object[title][0].pollId%>">
+                        <button class="clipboard share" id="http://localhost:8080/polls/<%=object[title][0].pollId%>" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/<%=object[title][0].pollId%>">
                           <i class="fa-solid fa-link"></i></button>
                         <button class="share"><i class="fa-brands fa-square-twitter"></i></button>
                         <button class="share"><i class="fa-brands fa-square-facebook"></i></button>
@@ -95,7 +95,7 @@
     <p>Share the results with your friends!</p>
     <p class="icons">
       <% for (let title in object) { %>
-      <button class="clipboard" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/<%=object[title][0].pollId%>"><i class="fa-solid fa-link"></i></button>
+      <button class="clipboard" id="http://localhost:8080/polls/<%=object[title][0].pollId%>" href="https://lighthouse-midterm-ranker.herokuapp.com/polls/<%=object[title][0].pollId%>"><i class="fa-solid fa-link"></i></button>
       <button><i class="fa-brands fa-square-twitter"></i></button>
       <button><i class="fa-brands fa-square-facebook"></i></button>
       <% } %>
