@@ -10,26 +10,20 @@ Ranker is a web application that lets user create polls to be shared with their 
  2. Start the web server by using the `npm run local` command. The app will be served at <http://localhost:8080>
  3. Visit <http://localhost:8080> in your browser to get started.
 
-<img src="public/images/overview.gif" alt="respondPoll" style="width:700px"/>
+<img src="public/images/overview2.gif" alt="respondPoll" style="width:600px"/>
 
  ## Usage
 
- Users can create an account to begin which gives the user access to previously made polls:
+ Users can create an account to begin which gives the user access to previously made polls, or can continue as a guest. 
 
- !["Signup"](public/images/photos-md/sign-up.jpeg)
-
-
-or can continue as a guest. 
-
-<img src="public/images/createNewPoll.gif" alt="respondPoll" style="width:700px"/>
+<img src="public/images/createPoll2.gif" alt="respondPoll" style="width:600px"/>
 
 After creating the poll, the user will receive two URLs which can be shared for responses and another one for the result.
-
 
 Links can then be used to access the response page 
 and the result page of the poll:
 
-<img src="public/images/respond.gif" alt="respondPoll" style="width:700px"/>
+<img src="public/images/respond2.gif" alt="respondPoll" style="width:600px"/>
 
 
 
